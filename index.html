@@ -1,109 +1,22 @@
-<!doctype html>
-<!-- The Time Machine GitHub pages theme was designed and developed by Jon Rohan, on Feb 7, 2012. -->
-<!-- Follow him for fun. http://twitter.com/jonrohan. Tail his code on http://github.com/jonrohan -->
-<html>
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+---
+layout: default
+title: �ҵ�Blog
+---
+    <center>
+����<h2>{{ page.title }}</h2>
 
-  <link rel="stylesheet" href="stylesheets/stylesheet.css" media="screen"/>
-  <link rel="stylesheet" href="stylesheets/pygment_trac.css"/>
-  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-  <script type="text/javascript" src="javascripts/script.js"></script>
+    Welcome to my git pages. 
 
-  <title>第一个博客</title>
-  <meta name="description" content="第一个博客，GitHub很强大！">
+����<p>��������</p>
+����<ul>
+��������{% for post in site.posts %}
+������������<li>{{ post.date | date_to_string }} <a href="{{ site.baseurl }}{{site.proname}}{{ post.url }}">{{ post.title }}</a></li>
+��������{% endfor %}
+����</ul>
+    <br/>
+    <a href ="gh-pages-guide.html">Git Pages Guide</a>
+    <br/>
+    <a href ="n.html">Temp Page</a>
 
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-
-</head>
-
-<body>
-
-  <div class="wrapper">
-    <header>
-      <h1 class="title">第一个博客</h1>
-    </header>
-    <div id="container">
-      <p class="tagline">第一个博客，GitHub很强大！</p>
-      <div id="main" role="main">
-        <div class="download-bar">
-        <div class="inner">
-          <a href="https://github.com/Yhzhtk/blog/tarball/master" class="download-button tar"><span>Download</span></a>
-          <a href="https://github.com/Yhzhtk/blog/zipball/master" class="download-button zip"><span>Download</span></a>
-          <a href="https://github.com/Yhzhtk/blog" class="code">View 第一个博客 on GitHub</a>
-        </div>
-        <span class="blc"></span><span class="trc"></span>
-        </div>
-        <article class="markdown-body">
-          <h3>Welcome to GitHub Pages.</h3>
-
-<h3>欢迎来到 GitHub Pages</h3>
-
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
-
-<p>自动页面生成器是创建漂亮的项目页面的一种最简单的方式。撰写你的页面内容使用GitHub Flavored Markdown，选择一个设计模板，然后发布。项目创建完成之后，你可以检出新分支。</p>
-
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
-</code></pre>
-
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
-
-<p>如果你正在使用GitHub for Mac，sync你的仓库，你就可以看到新分支。</p>
-
-<h3>Designer Templates</h3>
-
-<h3>设计模板</h3>
-
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
-
-<p>我们已经设计了一些可以直接使用的美观的模板。下一步你可以选择他们作为布局。在发布之前你也可以很简单的返回上一步编辑。在发布以后，你可以再查看页面生成器并切换模板。如果你删除一些格式，内容照样会保存。</p>
-
-<h3>Rather Drive Stick?</h3>
-
-<h3>宁愿自己写</h3>
-
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
-
-<p>如果你不希望使用自动生成器，也可以push一个分支名<code>gh-pages</code>到你的仓库，创建一个页面。为了支持有规律的HTML内容，GitHub Pages支持Jekyll，一个简单的由Tom Preston-Werner开发的静态博客网站生成器。 Jekyll的每个页面必须拷贝整个网站的头部和尾部，这使编写博客变得简单，他也提供智能的博客支持和其他的优秀的模板特性。</p>
-
-<h3>Authors and Contributors</h3>
-
-<h3>作者和贡献者</h3>
-
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
-
-<p>你可以<a href="https://github.com/blog/821" class="user-mention">@mention</a>一个GitHub用户名而创建一个他们的个人资料连接。结果 <code>&lt;a&gt;</code> 标签将连接到贡献者的GitHub个人资料页。例如：在2007年, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) 创建了GitHub。</p>
-
-<h3>Support or Contact</h3>
-
-<h3>支持和联系</h3>
-
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
-
-<p>使用GitHub Pages有问题，你可以检出文档 <a href="http://help.github.com/pages">http://help.github.com/pages</a> 或者联系 <a href="mailto:support@github.com">support@github.com</a>， 我们会帮助你解决。</p>
-        </article>
-      </div>
-    </div>
-    <footer>
-      <div class="owner">
-      <p><a href="https://github.com/Yhzhtk" class="avatar"><img src="https://secure.gravatar.com/avatar/a4809ca625ee551fcef02f00129cddff?s=30&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png" width="48" height="48"/></a> <a href="https://github.com/Yhzhtk">Yhzhtk</a> maintains <a href="https://github.com/Yhzhtk/blog">第一个博客</a></p>
-
-
-      </div>
-      <div class="creds">
-        <small>This page generated using <a href="https://pages.github.com/">GitHub Pages</a><br/>theme by <a href="http://twitter.com/jonrohan/">Jon Rohan</a></small>
-      </div>
-    </footer>
-  </div>
-  <div class="current-section">
-    <a href="#top">Scroll to top</a>
-    <a href="https://github.com/Yhzhtk/blog/tarball/master" class="tar">tar</a><a href="https://github.com/Yhzhtk/blog/zipball/master" class="zip">zip</a><a href="" class="code">source code</a>
-    <p class="name"></p>
-  </div>
-
-  
-</body>
-</html>
+    https://github.com/Yhzhtk
+    <center>
