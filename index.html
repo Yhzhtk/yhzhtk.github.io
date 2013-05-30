@@ -1,22 +1,13 @@
 ---
 layout: default
-title: 我的Blog
+title: Yhzhtk Pages（技术博客）
 ---
-    <center>
-　　<h2>{{ page.title }}</h2>
-
-    Welcome to my git pages. 
-
-　　<p>最新文章</p>
+　　<h3>博客列表</h3>
 　　<ul>
 　　　　{% for post in site.posts %}
-　　　　　　<li>{{ post.date | date_to_string }} <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></li>
+　　　　　　<li><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a> {{ post.date | date_to_string }}</li>
 　　　　{% endfor %}
 　　</ul>
     <br/>
-    <a href ="gh-pages-guide.html">Git Pages Guide</a>
-    <br/>
-    <a href ="n.html">Temp Page</a>
 
-    https://github.com/Yhzhtk
-    <center>
+    By <a href ="gh-pages-guide.html">Git Pages</a>

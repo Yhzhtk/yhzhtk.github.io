@@ -1,11 +1,22 @@
 <!DOCTYPE html>
-　　<html>
+<html>
 　　<head>
-　　　　<meta content="text/html;" />
 　　　　<title>{{ page.title }}</title>
 　　</head>
-　　<body>
-　　　　{{ content }}
-　　</body>
+    <body>
+        <center>
+         <div width=80%>
+　　       <h2>{{ page.title }}</h2>
+	   <br/>{{ post.date | date_to_string }}
+　　　　   <br/>{{ content }}
+           <br/><br/>
+           <div width=50%>
+              <hr/>
+              <a href="/">Blog Home</a>&amp;<a href="https://github.com/Yhzhtk">My Git Home</a>
+              <br/>
+           </div>
+         </div>
+        </center>
+    </body>
 </html>
 
