@@ -1,13 +1,9 @@
 ---
 layout: default
-title: Yhzhtk Pages£¨¼¼Êõ²©¿Í£©
+title: Yhzhtk Pagesï¼ˆæŠ€æœ¯åšå®¢ï¼‰
 ---
-¡¡¡¡<h3>²©¿ÍÁÐ±í</h3>
-¡¡¡¡<ul>
-¡¡¡¡¡¡¡¡{% for post in site.posts %}
-¡¡¡¡¡¡¡¡¡¡¡¡<li><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a> {{ post.date | date_to_string }}</li>
-¡¡¡¡¡¡¡¡{% endfor %}
-¡¡¡¡</ul>
-    <br/>
-
-    By <a href ="gh-pages-guide.html">Git Pages</a>
+ã€€ã€€<h4>åšå®¢åˆ—è¡¨</h4>
+ã€€ã€€{% for post in site.posts %}
+ã€€ã€€ã€€ã€€<a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a> {{ post.date | date_to_string }}<br/>
+ã€€ã€€{% endfor %}
+    
