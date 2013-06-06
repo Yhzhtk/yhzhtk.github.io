@@ -1,24 +1,31 @@
 <!DOCTYPE html>
 <html>
 　　<head>
+		<link rel="icon" href="{{ site.baseurl }}/favicon.ico" />
+		<link rel="shortcut icon" href="{{ site.baseurl }}/favicon.ico" />
         <meta http-equiv="content-type" content="text/html; charset=utf-8">
 		<link href="{{ site.baseurl }}/bootstrap/css/bootstrap.css" rel="stylesheet">
 		<link href="{{ site.baseurl }}/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
 　　　　<title>{{ page.title }}</title>
 　　</head>
     <body>
-         <div style="width:80%;">
-　　       <h2>{{ page.title }}</h2>
-	       {{ date }}
-		   <hr/>
-		   {{ content }}
-           <br/><br/>
-           <div style="width:50%">
-              <hr/>
-              <a href="{{ site.baseurl }}/index.html">首页</a>&nbsp;&nbsp;<a href="https://github.com/Yhzhtk">我的GitHub</a>&nbsp;&nbsp;By&nbsp;<a href ="{{ site.baseurl }}/gh-pages-guide.html">GitHub Pages</a>
-           <br/><br/>
-           </div>
-         </div>
+		 <div class="container">
+			<div class="site">
+				<div style="width:80%;margin:0px auto;">
+				<div class="header">
+				    <h1 class="title"><a href="{{ site.baseurl }}/index.html">{{ site.name }}</a></h1>
+				</div>
+				   <hr/>
+				   {{ content }}
+				   <br/><br/>
+				   <div style="width:50%">
+					  <hr/>
+					  <a href="{{ site.baseurl }}/index.html">首页</a>&nbsp;&nbsp;<a href="https://github.com/Yhzhtk">我的GitHub</a>&nbsp;&nbsp;By&nbsp;<a href ="{{ site.baseurl }}/gh-pages-guide.html">GitHub Pages</a>
+				   <br/><br/>
+				   </div>
+				 </div>
+			 </div>
+        </div>
     </body>
 </html>
 

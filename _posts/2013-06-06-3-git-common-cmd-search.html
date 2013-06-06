@@ -1,0 +1,1505 @@
+---
+layout: post
+title: Git 常用命令速查表
+tag: git 命令 查询
+---
+<p><span style="line-height:1.6em">本文将对Git 命令，做一下全面而系统的简短总结，整理成简洁、明了的图表结构，方便查询</span></p>
+
+<p><strong>一、 Git 常用命令速查</strong></p>
+
+<p>git branch 查看本地所有分支<br />
+git status 查看当前状态&nbsp;<br />
+git commit 提交&nbsp;<br />
+git branch -a 查看所有的分支<br />
+git branch -r 查看远程所有分支<br />
+git commit -am &quot;init&quot; 提交并且加注释&nbsp;<br />
+git remote add origin git@192.168.1.119:ndshow<br />
+git push origin master 将文件给推到服务器上&nbsp;<br />
+git remote show origin 显示远程库origin里的资源&nbsp;<br />
+git push origin master:develop<br />
+git push origin master:hb-dev 将本地库与服务器上的库进行关联&nbsp;<br />
+git checkout --track origin/dev 切换到远程dev分支<br />
+git branch -D master develop 删除本地库develop<br />
+git checkout -b dev 建立一个新的本地分支dev<br />
+git merge origin/dev 将分支dev与当前分支进行合并<br />
+git checkout dev 切换到本地dev分支<br />
+git remote show 查看远程库<br />
+git add .<br />
+git rm 文件名(包括路径) 从git中删除指定文件<br />
+git clone git://github.com/schacon/grit.git 从服务器上将代码给拉下来<br />
+git config --list 看所有用户<br />
+git ls-files 看已经被提交的<br />
+git rm [file name] 删除一个文件<br />
+git commit -a 提交当前repos的所有的改变<br />
+git add [file name] 添加一个文件到git index<br />
+git commit -v 当你用－v参数的时候可以看commit的差异<br />
+git commit -m &quot;This is the message describing the commit&quot; 添加commit信息<br />
+git commit -a -a是代表add，把所有的change加到git index里然后再commit<br />
+git commit -a -v 一般提交命令<br />
+git log 看你commit的日志<br />
+git diff 查看尚未暂存的更新<br />
+git rm a.a 移除文件(从暂存区和工作区中删除)<br />
+git rm --cached a.a 移除文件(只从暂存区中删除)<br />
+git commit -m &quot;remove&quot; 移除文件(从Git中删除)<br />
+git rm -f a.a 强行移除修改后文件(从暂存区和工作区中删除)<br />
+git diff --cached 或 $ git diff --staged 查看尚未提交的更新<br />
+git stash push 将文件给push到一个临时空间中<br />
+git stash pop 将文件从临时空间pop下来<br />
+---------------------------------------------------------<br />
+git remote add origin git@github.com:username/Hello-World.git<br />
+git push origin master 将本地项目给提交到服务器中<br />
+-----------------------------------------------------------<br />
+git pull 本地与服务器端同步<br />
+-----------------------------------------------------------------<br />
+git push (远程仓库名) (分支名) 将本地分支推送到服务器上去。<br />
+git push origin serverfix:awesomebranch<br />
+------------------------------------------------------------------<br />
+git fetch 相当于是从远程获取最新版本到本地，不会自动merge<br />
+git commit -a -m &quot;log_message&quot; (-a是提交所有改动，-m是加入log信息) 本地修改同步至服务器端 ：<br />
+git branch branch_0.1 master 从主分支master创建branch_0.1分支<br />
+git branch -m branch_0.1 branch_1.0 将branch_0.1重命名为branch_1.0<br />
+git checkout branch_1.0/master 切换到branch_1.0/master分支<br />
+du -hs</p>
+
+<p>&nbsp;</p>
+
+<p>git branch 删除远程branch</p>
+
+<p>git push origin&nbsp;<strong><span style="color:rgb(255, 0, 0)">:</span></strong>branch_remote_name</p>
+
+<p>git branch -r -d branch_remote_name<br />
+<br />
+-----------------------------------------------------------</p>
+
+<p>初始化版本库，并提交到远程服务器端<br />
+mkdir WebApp<br />
+cd WebApp<br />
+git init 本地初始化<br />
+touch README<br />
+git add README 添加文件<br />
+git commit -m &#39;first commit&#39;<br />
+git remote add origin git@github.com:daixu/WebApp.git 增加一个远程服务器端</p>
+
+<p>上面的命令会增加URL地址为&#39;git@github.com:daixu/WebApp.git&#39;，名称为origin的远程服务器库，以后提交代码的时候只需要使用 origin别名即可</p>
+
+<p>&nbsp;</p>
+
+<p><strong>二、 Git 命令速查表</strong></p>
+
+<p><span style="color:rgb(0, 0, 0); font-family:arial; font-size:14px">1、常用的Git命令</span></p>
+
+<table border="1" cellpadding="5" cellspacing="0" style="color:rgb(0, 0, 0); font-family:arial; font-size:14px; line-height:26px; width:800px">
+	<thead>
+		<tr>
+			<td style="background-color:rgb(218, 238, 243)">
+			<p><strong><span style="color:rgb(78, 78, 78)">命令</span></strong></p>
+			</td>
+			<td style="background-color:rgb(218, 238, 243)">
+			<p><strong><span style="color:rgb(78, 78, 78)">简要说明</span></strong></p>
+			</td>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git add</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">添加至暂存区</span></p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git add&ndash;interactive</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">交互式添加</span></p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git apply</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">应用补丁</span></p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git am</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">应用邮件格式补丁</span></p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git annotate</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">同义词，等同于 git blame</span></p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git archive</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">文件归档打包</span></p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git bisect</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">二分查找</span></p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git blame</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">文件逐行追溯</span></p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git branch</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">分支管理</span></p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git cat-file</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">版本库对象研究工具</span></p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git checkout</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">检出到工作区、切换或创建分支</span></p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git cherry-pick</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">提交拣选</span></p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git citool</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">图形化提交，相当于 git gui&nbsp;</span>命令</p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git clean</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">清除工作区未跟踪文件</span></p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git clone</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">克隆版本库</span></p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git commit</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">提交</span></p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git config</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">查询和修改配置</span></p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git describe</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">通过里程碑直观地显示提交ID</span></p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git diff</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">差异比较</span></p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git difftool</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">调用图形化差异比较工具</span></p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git fetch</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">获取远程版本库的提交</span></p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git format-patch</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">创建邮件格式的补丁文件。参见 git am&nbsp;</span>命令</p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git grep</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">文件内容搜索定位工具</span></p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git gui</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">基于Tcl/Tk</span>的图形化工具，侧重提交等操作</p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git help</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">帮助</span></p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git init</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">版本库初始化</span></p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git init-db*</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">同义词，等同于 git init</span></p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git log</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">显示提交日志</span></p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git merge</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">分支合并</span></p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git mergetool</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">图形化冲突解决</span></p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git mv</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">重命名</span></p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git pull</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">拉回远程版本库的提交</span></p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git push</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">推送至远程版本库</span></p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git rebase</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">分支变基</span></p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git rebase&ndash;interactive</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">交互式分支变基</span></p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git reflog</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">分支等引用变更记录管理</span></p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git remote</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">远程版本库管理</span></p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git repo-config*</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">同义词，等同于 git config</span></p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git reset</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">重置改变分支&ldquo;</span>游标&rdquo;指向</p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git rev-parse</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">将各种引用表示法转换为哈希值等</span></p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git revert</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">反转提交</span></p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git rm</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">删除文件</span></p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git show</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">显示各种类型的对象</span></p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git stage*</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">同义词，等同于 git add</span></p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git stash</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">保存和恢复进度</span></p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git status</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">显示工作区文件状态</span></p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git tag</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">里程碑管理</span></p>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>&nbsp;</p>
+
+<p>2、对象库操作相关命令</p>
+
+<table border="1" cellpadding="5" cellspacing="0" style="color:rgb(0, 0, 0); font-family:arial; font-size:14px; line-height:26px; width:800px">
+	<thead>
+		<tr>
+			<td style="background-color:rgb(218, 238, 243)">
+			<p><strong><span style="color:rgb(78, 78, 78)">命令</span></strong></p>
+			</td>
+			<td style="background-color:rgb(218, 238, 243)">
+			<p><strong><span style="color:rgb(78, 78, 78)">简要说明</span></strong></p>
+			</td>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git commit-tree</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">从树对象创建提交</span></p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git hash-object</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">从标准输入或文件计算哈希值或创建对象</span></p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git ls-files</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">显示工作区和暂存区文件</span></p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git ls-tree</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">显示树对象包含的文件</span></p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git mktag</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">读取标准输入创建一个里程碑对象</span></p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git mktree</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">读取标准输入创建一个树对象</span></p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git read-tree</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">读取树对象到暂存区</span></p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git update-index</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">工作区内容注册到暂存区及暂存区管理</span></p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git unpack-file</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">创建临时文件包含指定 blob&nbsp;</span>的内容</p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git write-tree</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">从暂存区创建一个树对象</span></p>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>&nbsp;</p>
+
+<p>3、引用操作相关命令</p>
+
+<table border="1" cellpadding="5" cellspacing="0" style="color:rgb(0, 0, 0); font-family:arial; font-size:14px; line-height:26px; width:800px">
+	<thead>
+		<tr>
+			<td style="background-color:rgb(218, 238, 243)">
+			<p><strong><span style="color:rgb(78, 78, 78)">命令</span></strong></p>
+			</td>
+			<td style="background-color:rgb(218, 238, 243)">
+			<p><strong><span style="color:rgb(78, 78, 78)">简要说明</span></strong></p>
+			</td>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git check-ref-format</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">检查引用名称是否符合规范</span></p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git for-each-ref</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">引用迭代器，用于shell</span>编程</p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git ls-remote</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">显示远程版本库的引用</span></p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git name-rev</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">将提交ID</span>显示为友好名称</p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git peek-remote*</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">过时命令，请使用 git ls-remote</span></p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git rev-list</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">显示版本范围</span></p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git show-branch</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">显示分支列表及拓扑关系</span></p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git show-ref</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">显示本地引用</span></p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git symbolic-ref</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">显示或者设置符号引用</span></p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git update-ref</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">更新引用的指向</span></p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git verify-tag</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">校验 GPG&nbsp;</span>签名的Tag</p>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>&nbsp;</p>
+
+<p>4、版本库管理相关命令</p>
+
+<table border="1" cellpadding="5" cellspacing="0" style="color:rgb(0, 0, 0); font-family:arial; font-size:14px; line-height:26px; width:800px">
+	<thead>
+		<tr>
+			<td style="background-color:rgb(218, 238, 243)">
+			<p><strong><span style="color:rgb(78, 78, 78)">命令</span></strong></p>
+			</td>
+			<td style="background-color:rgb(218, 238, 243)">
+			<p><strong><span style="color:rgb(78, 78, 78)">简要说明</span></strong></p>
+			</td>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git count-objects</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">显示松散对象的数量和磁盘占用</span></p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git filter-branch</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">版本库重构</span></p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git fsck</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">对象库完整性检查</span></p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git fsck-objects*</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">同义词，等同于 git fsck</span></p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git gc</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">版本库存储优化</span></p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git index-pack</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">从打包文件创建对应的索引文件</span></p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git lost-found*</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">过时，请使用 git fsck &ndash;lost-found&nbsp;</span>命令</p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git pack-objects</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">从标准输入读入对象ID</span>，打包到文件</p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git pack-redundant</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">查找多余的 pack&nbsp;</span>文件</p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git pack-refs</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">将引用打包到 .git/packed-refs&nbsp;</span>文件中</p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git prune</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">从对象库删除过期对象</span></p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git prune-packed</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">将已经打包的松散对象删除</span></p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git relink</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">为本地版本库中相同的对象建立硬连接</span></p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git repack</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">将版本库未打包的松散对象打包</span></p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git show-index</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">读取包的索引文件，显示打包文件中的内容</span></p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git unpack-objects</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">从打包文件释放文件</span></p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git verify-pack</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">校验对象库打包文件</span></p>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>&nbsp;</p>
+
+<p>5、数据传输相关命令</p>
+
+<table border="1" cellpadding="5" cellspacing="0" style="color:rgb(0, 0, 0); font-family:arial; font-size:14px; line-height:26px; width:800px">
+	<thead>
+		<tr>
+			<td colspan="" style="background-color:rgb(218, 238, 243)">
+			<p><strong><span style="color:rgb(78, 78, 78)">命令</span></strong></p>
+			</td>
+			<td style="background-color:rgb(218, 238, 243)">
+			<p><strong><span style="color:rgb(78, 78, 78)">简要说明</span></strong></p>
+			</td>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git fetch-pack</span></p>
+			</td>
+			<td colspan="2" style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">执行 git fetch&nbsp;</span>或 git pull 命令时在本地执行此命令，用于从其他版本库获取缺失的对象</p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git receive-pack</span></p>
+			</td>
+			<td colspan="2" style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">执行 git push&nbsp;</span>命令时在远程执行的命令，用于接受推送的数据</p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git send-pack</span></p>
+			</td>
+			<td colspan="2" style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">执行 git push&nbsp;</span>命令时在本地执行的命令，用于向其他版本库推送数据</p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git upload-archive</span></p>
+			</td>
+			<td colspan="2" style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">执行 git archive &ndash;remote&nbsp;</span>命令基于远程版本库创建归档时，远程版本库执行此命令传送归档</p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git upload-pack</span></p>
+			</td>
+			<td colspan="2" style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">执行 git fetch&nbsp;</span>或 git pull 命令时在远程执行此命令，将对象打包、上传</p>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>&nbsp;</p>
+
+<p>6、邮件相关命令</p>
+
+<table border="1" cellpadding="5" cellspacing="0" style="color:rgb(0, 0, 0); font-family:arial; font-size:14px; line-height:26px; width:800px">
+	<thead>
+		<tr>
+			<td style="background-color:rgb(218, 238, 243)">
+			<p><strong><span style="color:rgb(78, 78, 78)">命令</span></strong></p>
+			</td>
+			<td style="background-color:rgb(218, 238, 243)">
+			<p><strong><span style="color:rgb(78, 78, 78)">简要说明</span></strong></p>
+			</td>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git imap-send</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">将补丁通过 IMAP&nbsp;</span>发送</p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git mailinfo</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">从邮件导出提交说明和补丁</span></p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git mailsplit</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">将 mbox&nbsp;</span>或 Maildir 格式邮箱中邮件逐一提取为文件</p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git request-pull</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">创建包含提交间差异和执行PULL</span>操作地址的信息</p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git send-email</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">发送邮件</span></p>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>&nbsp;</p>
+
+<p>7、协议相关命令</p>
+
+<table border="1" cellpadding="5" cellspacing="0" style="color:rgb(0, 0, 0); font-family:arial; font-size:14px; line-height:26px; width:800px">
+	<thead>
+		<tr>
+			<td style="background-color:rgb(218, 238, 243)">
+			<p><strong><span style="color:rgb(78, 78, 78)">命令</span></strong></p>
+			</td>
+			<td style="background-color:rgb(218, 238, 243)">
+			<p><strong><span style="color:rgb(78, 78, 78)">简要说明</span></strong></p>
+			</td>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git daemon</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">实现Git</span>协议</p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git http-backend</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">实现HTTP</span>协议的CGI程序，支持智能HTTP协议</p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git instaweb</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">即时启动浏览器通过 gitweb&nbsp;</span>浏览当前版本库</p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git shell</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">受限制的shell</span>，提供仅执行Git命令的SSH访问</p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git update-server-info</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">更新哑协议需要的辅助文件</span></p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git http-fetch</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">通过HTTP</span>协议获取版本库</p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git http-push</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">通过HTTP/DAV</span>协议推送</p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git remote-ext</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">由Git</span>命令调用，通过外部命令提供扩展协议支持</p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git remote-fd</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">由Git</span>命令调用，使用文件描述符作为协议接口</p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git remote-ftp</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">由Git</span>命令调用，提供对FTP协议的支持</p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git remote-ftps</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">由Git</span>命令调用，提供对FTPS协议的支持</p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git remote-http</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">由Git</span>命令调用，提供对HTTP协议的支持</p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git remote-https</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">由Git</span>命令调用，提供对HTTPS协议的支持</p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git remote-testgit</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">协议扩展示例脚本</span></p>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>&nbsp;</p>
+
+<p>8、版本库转换和交互相关命令</p>
+
+<table border="1" cellpadding="5" cellspacing="0" style="color:rgb(0, 0, 0); font-family:arial; font-size:14px; line-height:26px; width:800px">
+	<thead>
+		<tr>
+			<td style="background-color:rgb(218, 238, 243)">
+			<p><strong><span style="color:rgb(78, 78, 78)">命令</span></strong></p>
+			</td>
+			<td style="background-color:rgb(218, 238, 243)">
+			<p><strong><span style="color:rgb(78, 78, 78)">简要说明</span></strong></p>
+			</td>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git archimport</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">导入Arch</span>版本库到Git</p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git bundle</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">提交打包和解包，以便在不同版本库间传递</span></p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git cvsexportcommit</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">将Git</span>的一个提交作为一个CVS检出</p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git cvsimport</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">导入CVS</span>版本库到Git。或者使用 cvs2git</p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git cvsserver</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">Git</span><span style="color:rgb(78, 78, 78)">的CVS</span>协议模拟器，可供CVS命令访问Git版本库</p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git fast-export</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">将提交导出为 git-fast-import&nbsp;</span>格式</p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git fast-import</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">其他版本库迁移至Git</span>的通用工具</p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git svn</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">Git&nbsp;</span><span style="color:rgb(78, 78, 78)">作为前端操作 Subversion</span></p>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>&nbsp;</p>
+
+<p>9、合并相关的辅助命令</p>
+
+<table border="1" cellpadding="5" cellspacing="0" style="color:rgb(0, 0, 0); font-family:arial; font-size:14px; line-height:26px; width:800px">
+	<thead>
+		<tr>
+			<td style="background-color:rgb(218, 238, 243)">
+			<p><strong><span style="color:rgb(78, 78, 78)">命令</span></strong></p>
+			</td>
+			<td style="background-color:rgb(218, 238, 243)">
+			<p><strong><span style="color:rgb(78, 78, 78)">简要说明</span></strong></p>
+			</td>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git merge-base</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">供其他脚本调用，找到两个或多个提交最近的共同祖先</span></p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git merge-file</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">针对文件的两个不同版本执行三向文件合并</span></p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git merge-index</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">对index</span>中的冲突文件调用指定的冲突解决工具</p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git merge-octopus</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">合并两个以上分支。参见 git merge&nbsp;</span>的octopus合并策略</p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git merge-one-file</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">由 git merge-index&nbsp;</span>调用的标准辅助程序</p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git merge-ours</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">合并使用本地版本，抛弃他人版本。参见 git merge&nbsp;</span>的ours合并策略</p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git merge-recursive</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">针对两个分支的三向合并。参见 git merge&nbsp;</span>的recursive合并策略</p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git merge-resolve</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">针对两个分支的三向合并。参见 git merge&nbsp;</span>的resolve合并策略</p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git merge-subtree</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">子树合并。参见 git merge&nbsp;</span>的 subtree 合并策略</p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git merge-tree</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">显式三向合并结果，不改变暂存区</span></p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git fmt-merge-msg</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">供执行合并操作的脚本调用，用于创建一个合并提交说明</span></p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git rerere</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">重用所记录的冲突解决方案</span></p>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>&nbsp;</p>
+
+<p>10、 杂项</p>
+
+<table border="1" cellpadding="5" cellspacing="0" style="color:rgb(0, 0, 0); font-family:arial; font-size:14px; line-height:26px; width:800px">
+	<thead>
+		<tr>
+			<td style="background-color:rgb(218, 238, 243)">
+			<p><strong><span style="color:rgb(78, 78, 78)">命令</span></strong></p>
+			</td>
+			<td style="background-color:rgb(218, 238, 243)">
+			<p><strong><span style="color:rgb(78, 78, 78)">简要说明</span></strong></p>
+			</td>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git bisect&ndash;helper</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">由 git bisect&nbsp;</span>命令调用，确认二分查找进度</p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git check-attr</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">显示某个文件是否设置了某个属性</span></p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git checkout-index</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">从暂存区拷贝文件至工作区</span></p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git cherry</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">查找没有合并到上游的提交</span></p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git diff-files</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">比较暂存区和工作区，相当于 git diff &ndash;raw</span></p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git diff-index</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">比较暂存区和版本库，相当于 git diff &ndash;cached &ndash;raw</span></p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git diff-tree</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">比较两个树对象，相当于 git diff &ndash;raw A B</span></p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git difftool&ndash;helper</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">由 git difftool&nbsp;</span>命令调用，默认要使用的差异比较工具</p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git get-tar-commit-id</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">从 git archive&nbsp;</span>创建的 tar 包中提取提交ID</p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git gui&ndash;askpass</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">命令 git gui&nbsp;</span>的获取用户口令输入界面</p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git notes</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">提交评论管理</span></p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git patch-id</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">补丁过滤行号和空白字符后生成补丁唯一ID</span></p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git quiltimport</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">将Quilt</span>补丁列表应用到当前分支</p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git replace</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">提交替换</span></p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git shortlog</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">对 git log&nbsp;</span>的汇总输出，适合于产品发布说明</p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git stripspace</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">删除空行，供其他脚本调用</span></p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git submodule</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">子模组管理</span></p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git tar-tree</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">过时命令，请使用 git archive</span></p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git var</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">显示 Git&nbsp;</span>环境变量</p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git web&ndash;browse</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">启动浏览器以查看目录或文件</span></p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git whatchanged</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">显示提交历史及每次提交的改动</span></p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git-mergetool&ndash;lib</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">包含于其他脚本中，提供合并/</span>差异比较工具的选择和执行</p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git-parse-remote</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">包含于其他脚本中，提供操作远程版本库的函数</span></p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:red">git-sh-setup</span></p>
+			</td>
+			<td style="background-color:rgb(238, 238, 238)">
+			<p><span style="color:rgb(78, 78, 78)">包含于其他脚本中，提供 shell&nbsp;</span>编程的函数库</p>
+
+			<div>&nbsp;</div>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>&nbsp;</p>
+
+<p>转自&nbsp;<a href="http://blog.csdn.net/sunboy_2050/article/details/7529841">http://blog.csdn.net/sunboy_2050/article/details/7529841</a></p>

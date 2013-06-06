@@ -8,13 +8,11 @@ title: Yhzhtk Pages（技术博客）
 			<h3>
 				博客列表
 			</h3>
-			<ol>
+			<ul type="circle">
 			{% for post in site.posts %}
-				<li>
-　　　　			<a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a> {{ post.date | date_to_string }}<br/>
-				</li>
+				<li>{{ post.date | date: "%Y-%m-%d" }}&nbsp;&nbsp;&nbsp;&nbsp;<a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a> <br/></li>
 　　		{% endfor %}
-			</ol>
+			</ul>
 		</div>
 	</div>
 </div>
