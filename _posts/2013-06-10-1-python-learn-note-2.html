@@ -1,0 +1,100 @@
+---
+layout: post
+title: Python 面向对象、异常等学习笔记
+tag: python 学习 异常 文件
+---
+<p>昨天把python的基本用法看了一遍，今天继续，学习python的新的特性，面向对象、异常、文件操作等。</p>
+
+<p>1、在python中，一切都是对象，包括int，可以使用help(int)查看。</p>
+
+<p>2、在python的类中，每个方法定义时需要设置一个额外的参数（第一个参数）为self（类似Java中的this），表示调用本对象的这个方法，但是在使用时就不需要加上这个参数了，python会自动提供这个值。</p>
+
+<p>3、__init__类的构造函数，__del__是类的析构函数，因为是类的函数，所以定义有一个参数必须是self，如def __init__(self)，使用时不需要参数。</p>
+
+<p>4、类的变量和对象的变量，它们根据是类还是对象 拥有 这个变量而区分。类的变量可以理解是Java中的静态变量，而对象就是普通变量。类的变量在类的第一缩进层定义，而普通变量使用self.变量名。</p>
+
+<p>5、Python中所有的类成员（包括数据成员）都是 公共的 ，所有的方法都是 有效的 。</p>
+
+<p>只有一个例外：如果你使用的数据成员名称以 双下划线前缀 比如__privatevar，Python的名称管理体系会有效地把它作为私有变量。这样就有一个惯例，如果某个变量只想在类或对象中使用，就应该以单下划线前缀。而其他的名称都将作为公共的，可以被其他类/对象使用。记住这只是一个惯例，并不是Python所要求的（与双下划线前缀不同）。</p>
+
+<p>6、类的继承，在__init__中实现父类的__init__表示继承了父类。举例说明：</p>
+<pre>
+#!/usr/bin/python
+# Filename: inherit.py
+
+class SchoolMember:
+    '''Represents any school member.'''
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+        print '(Initialized SchoolMember: %s)' % self.name
+
+    def tell(self):
+        '''Tell my details.'''
+        print 'Name:"%s" Age:"%s"' % (self.name, self.age),
+
+class Teacher(SchoolMember):
+    '''Represents a teacher.'''
+    def __init__(self, name, age, salary):
+        SchoolMember.__init__(self, name, age)
+        self.salary = salary
+        print '(Initialized Teacher: %s)' % self.name
+
+    def tell(self):
+        SchoolMember.tell(self)
+        print 'Salary: "%d"' % self.salary
+
+class Student(SchoolMember):
+    '''Represents a student.'''
+    def __init__(self, name, age, marks):
+        SchoolMember.__init__(self, name, age)
+        self.marks = marks
+        print '(Initialized Student: %s)' % self.name
+
+    def tell(self):
+        SchoolMember.tell(self)
+        print 'Marks: "%d"' % self.marks
+
+t = Teacher('Mrs. Shrividya', 40, 30000)
+s = Student('Swaroop', 22, 75)
+
+print # prints a blank line
+
+members = [t, s]
+for member in members:
+    member.tell() # works for both Teachers and Students
+</pre>
+<p>运行结果为：</p>
+<pre>
+$ python inherit.py
+(Initialized SchoolMember: Mrs. Shrividya)
+(Initialized Teacher: Mrs. Shrividya)
+(Initialized SchoolMember: Swaroop)
+(Initialized Student: Swaroop)
+
+Name:"Mrs. Shrividya" Age:"40" Salary: "30000"
+Name:"Swaroop" Age:"22" Marks: "75"
+</pre>
+<p>如果在继承元组中列了一个以上的类，那么它就被称作 多重继承 。</p>
+
+<p>7、Python读写文件，python中有file对象，可以读写文件</p>
+
+<p>定义如f =&nbsp;file(&#39;poem.txt&#39;,&nbsp;&#39;w&#39;)，其中 &#39;w&#39;是模式，可为读模式（&#39;r&#39;）、写模式（&#39;w&#39;）或追加模式（&#39;a&#39;）。</p>
+
+<p>用f.write(str)写文件，可用f.readline()读文件的一行，如果len(line)为0，则判断为文件结束。注意，在读写文件之后，要f.close()关闭文件。</p>
+
+<p>8、存储器（我觉得翻译为序列化器更好点，提供持久化功能）</p>
+
+<p>Python提供一个标准的模块，称为pickle。使用它你可以在一个文件中储存任何Python对象，之后你又可以把它完整无缺地取出来。这被称为&nbsp;持久地&nbsp;储存对象。</p>
+
+<p>还有另一个模块称为cPickle，它的功能和pickle模块完全相同，只不过它是用C语言编写的，因此要快得多（比pickle快1000倍）。你可以使用它们中的任一个，而我们在这里将使用cPickle模块。记住，我们把这两个模块都简称为pickle模块。</p>
+
+<p>使用cPickle.dump(obj, file)序列化，使用cPickle.load(file)反序列化。</p>
+
+<p>9、异常</p>
+
+<p>try..except 和java中的一样，可以指定捕获异常，另外你还可以让try..catch块关联上一个else从句。当没有异常发生的时候，else从句将被执行。</p>
+
+<p>使用raise可以引发异常，raise&nbsp;Exception().</p>
+
+<p>try..finally，在一个try块下，你可以同时使用except从句和finally块。如果你要同时使用它们的话，需要把一个嵌入另外一个。</p>
