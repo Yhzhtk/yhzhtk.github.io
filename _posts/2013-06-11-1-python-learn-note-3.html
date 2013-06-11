@@ -1,0 +1,48 @@
+---
+layout: post
+title: Python 模块，lambda，列表综合等学习笔记
+tag: python 学习 sys os 列表综合 exec eval assert repr
+---
+<p>1、Python的sys模块。<br />
+&nbsp;&nbsp; &nbsp;sys.argv列表，它包含命令行参数，第一个argv[0]是运行的python文件名称，从第二个开始即为python的运行的参数。<br />
+&nbsp;&nbsp; &nbsp;sys.exit([status])，退出怎个程序，可以利用help(sys.exit)来了解更多详情。<br />
+&nbsp;&nbsp; &nbsp;sys.version字符串给你提供安装的Python的版本信息。sys.version_info元组则提供一个更简单的方法来使你的程序具备Python版本要求功能。<br />
+&nbsp;&nbsp; &nbsp;sys.stdin、sys.stdout和sys.stderr它们分别对应你的程序的标准输入、标准输出和标准错误流。</p>
+
+<p>2、Python的os模块。<br />
+&nbsp;&nbsp; &nbsp;这个模块包含普遍的操作系统功能。如果你希望你的程序能够与平台无关的话，这个模块是尤为重要的。即它允许一个程序在编写后不需要任何改动，也不会发生任何问题，就可以在Linux和Windows下运行。一个例子就是使用os.sep可以取代操作系统特定的路径分割符。<br />
+&nbsp;&nbsp; &nbsp;下面列出了一些在os模块中比较有用的部分。它们中的大多数都简单明了。<br />
+&nbsp;&nbsp; &nbsp;os.name字符串指示你正在使用的平台。比如对于Windows，它是&#39;nt&#39;，而对于Linux/Unix用户，它是&#39;posix&#39;。<br />
+&nbsp;&nbsp; &nbsp;os.getcwd()函数得到当前工作目录，即当前Python脚本工作的目录路径。<br />
+&nbsp;&nbsp; &nbsp;os.getenv()和os.putenv()函数分别用来读取和设置环境变量。<br />
+&nbsp;&nbsp; &nbsp;os.listdir()返回指定目录下的所有文件和目录名。<br />
+&nbsp;&nbsp; &nbsp;os.remove()函数用来删除一个文件。<br />
+&nbsp;&nbsp; &nbsp;os.system()函数用来运行shell命令。<br />
+&nbsp;&nbsp; &nbsp;os.linesep字符串给出当前平台使用的行终止符。例如，Windows使用&#39;\r\n&#39;，Linux使用&#39;\n&#39;而Mac使用&#39;\r&#39;。<br />
+&nbsp;&nbsp; &nbsp;os.path.split()函数返回一个路径的目录名和文件名。<br />
+&nbsp;&nbsp; &nbsp;os.path.isfile()和os.path.isdir()函数分别检验给出的路径是一个文件还是目录。<br />
+&nbsp;&nbsp; &nbsp;os.path.existe()函数用来检验给出的路径是否真地存在。</p>
+
+<p>3、列表综合<br />
+&nbsp;&nbsp; &nbsp;举例：你有一个数的列表，而你想要得到一个对应的列表，使其中所有大于2的数都是原来的2倍。对于这种应用，列表综合是最理想的方法。<br />
+&nbsp;&nbsp; &nbsp;使用 listtwo = [2*i for i in listone if i &gt; 2] 一条语句就可以达到功能。</p>
+
+<p>4、函数参数使用数据结构<br />
+&nbsp;&nbsp; &nbsp;当要使函数接收元组或字典形式的参数的时候，有一种特殊的方法，它分别使用*和**前缀。这种方法在函数需要获取可变数量的参数的时候特别有用。<br />
+&nbsp;&nbsp; &nbsp;在args变量前有*前缀，所有多余的函数参数都会作为一个元组存储在args中。如果使用的是**前缀，多余的参数则会被认为是一个字典的键/值对。</p>
+
+<p>5、lambda表达式<br />
+&nbsp;&nbsp; &nbsp;lambda s: s*n，使用lambda表达式生成函数对象。<br />
+&nbsp;&nbsp; &nbsp;lambda需要一个参数，后面仅跟单个表达式作为函数体，而表达式的值被这个新建的函数返回。注意，即便是print语句也不能用在lambda形式中，只能使用表达式。</p>
+
+<p>6、exec和eval语句<br />
+&nbsp;&nbsp; &nbsp;exec语句用来执行储存在字符串或文件中的Python语句，如exec &#39;print &quot;Hello World&quot;&#39;，则输出Hello World。<br />
+&nbsp;&nbsp; &nbsp;eval语句用来计算存储在字符串中的有效Python表达式。如eval(&#39;2*3&#39;)，结果为6.</p>
+
+<p>7、assert语句<br />
+&nbsp;&nbsp; &nbsp;assert语句用来声明某个条件是真的。当assert语句失败的时候，会引发一个AssertionError。</p>
+
+<p>8、repr函数<br />
+&nbsp;&nbsp; &nbsp;repr函数用来取得对象的规范字符串表示。反引号（也称转换符）可以完成相同的功能。注意，在大多数时候有eval(repr(object)) == object。<br />
+&nbsp;&nbsp; &nbsp;基本上，repr函数和反引号用来获取对象的可打印的表示形式。你可以通过定义类的__repr__方法来控制你的对象在被repr函数调用的时候返回的内容</p>
+
