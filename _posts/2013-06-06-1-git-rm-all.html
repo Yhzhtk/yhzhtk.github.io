@@ -13,78 +13,60 @@ tag: git 删除文件
 
 <p>我们先创建一个试验用的版本库，并往里面提交一个10M的大文件再删除:</p>
 
-<div class="dp-highlighter bg_python" style="line-height: 20px; font-family: Consolas, 'Courier New', Courier, mono, serif; font-size: 12px; background-color: rgb(231, 229, 220); width: 687.046875px; overflow: auto; padding-top: 1px; margin: 18px 0px !important;">
-<div class="bar" style="padding-left: 45px;">
-<div class="tools" style="padding: 3px 8px 10px 10px; font-size: 9px; line-height: normal; font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; color: silver; background-color: rgb(248, 248, 248); border-left-width: 3px; border-left-style: solid; border-left-color: rgb(108, 226, 108);"><strong>[python]</strong>&nbsp;<a class="ViewSource" href="http://blog.csdn.net/meteor1113/article/details/4407209#" style="color: rgb(160, 160, 160); text-decoration: none; background-image: url(http://static.blog.csdn.net/scripts/SyntaxHighlighter/styles/images/default/ico_plain.gif); background-color: inherit; border: none; padding: 1px; margin: 0px 10px 0px 0px; font-size: 9px; display: inline-block; width: 16px; height: 16px; text-indent: -2000px; background-position: 0% 0%; background-repeat: no-repeat no-repeat;" title="view plain">view plain</a><a class="CopyToClipboard" href="http://blog.csdn.net/meteor1113/article/details/4407209#" style="color: rgb(160, 160, 160); text-decoration: none; background-image: url(http://static.blog.csdn.net/scripts/SyntaxHighlighter/styles/images/default/ico_copy.gif); background-color: inherit; border: none; padding: 1px; margin: 0px 10px 0px 0px; font-size: 9px; display: inline-block; width: 16px; height: 16px; text-indent: -2000px; background-position: 0% 0%; background-repeat: no-repeat no-repeat;" title="copy">copy</a></div>
-</div>
-
-<ol start="1">
-	<li><span style="background-color:inherit; color:black">$&nbsp;mkdir&nbsp;t&nbsp;&nbsp;</span></li>
-	<li><span style="background-color:inherit; color:black">$&nbsp;cd&nbsp;t&nbsp;&nbsp;</span></li>
-	<li><span style="background-color:inherit; color:black">$&nbsp;git&nbsp;init&nbsp;&nbsp;</span></li>
-	<li><span style="background-color:inherit; color:black">Initialized&nbsp;empty&nbsp;Git&nbsp;repository&nbsp;<strong>in</strong><span style="background-color:inherit">&nbsp;&nbsp;</span></span></li>
-	<li><span style="background-color:inherit; color:black">&nbsp;/Users/apple/t/.git/&nbsp;&nbsp;</span></li>
-	<li><span style="background-color:inherit; color:black">$&nbsp;dd&nbsp;<strong>if</strong><span style="background-color:inherit">=/dev/urandom&nbsp;of=testme.txt&nbsp;bs=</span><span style="background-color:inherit">10240</span><span style="background-color:inherit">&nbsp;count=</span><span style="background-color:inherit">1024</span><span style="background-color:inherit">&nbsp;&nbsp;</span></span></li>
-	<li><span style="background-color:inherit; color:black"><span style="background-color:inherit">1024</span><span style="background-color:inherit">+</span><span style="background-color:inherit">0</span><span style="background-color:inherit">&nbsp;records&nbsp;</span><strong>in</strong><span style="background-color:inherit">&nbsp;&nbsp;</span></span></li>
-	<li><span style="background-color:inherit; color:black"><span style="background-color:inherit">1024</span><span style="background-color:inherit">+</span><span style="background-color:inherit">0</span><span style="background-color:inherit">&nbsp;records&nbsp;out&nbsp;&nbsp;</span></span></li>
-	<li><span style="background-color:inherit; color:black"><span style="background-color:inherit">10485760</span><span style="background-color:inherit">&nbsp;bytes&nbsp;transferred&nbsp;</span><strong>in</strong><span style="background-color:inherit">&nbsp;</span><span style="background-color:inherit">1.684808</span><span style="background-color:inherit">&nbsp;secs&nbsp;(</span><span style="background-color:inherit">6223712</span><span style="background-color:inherit">&nbsp;bytes/sec)&nbsp;&nbsp;</span></span></li>
-	<li><span style="background-color:inherit; color:black">$&nbsp;git&nbsp;add&nbsp;testme.txt&nbsp;&nbsp;</span></li>
-	<li><span style="background-color:inherit; color:black">$&nbsp;git&nbsp;commit&nbsp;-m&nbsp;<span style="background-color:inherit; color:blue">&quot;a&quot;</span><span style="background-color:inherit">&nbsp;&nbsp;</span></span></li>
-	<li><span style="background-color:inherit; color:black">[master&nbsp;(root-commit)]:&nbsp;created&nbsp;<span style="background-color:inherit">6fbb432</span><span style="background-color:inherit">:&nbsp;</span><span style="background-color:inherit; color:blue">&quot;a&quot;</span><span style="background-color:inherit">&nbsp;&nbsp;</span></span></li>
-	<li><span style="background-color:inherit; color:black">&nbsp;<span style="background-color:inherit">1</span><span style="background-color:inherit">&nbsp;files&nbsp;changed,&nbsp;</span><span style="background-color:inherit">0</span><span style="background-color:inherit">&nbsp;insertions(+),&nbsp;</span><span style="background-color:inherit">0</span><span style="background-color:inherit">&nbsp;deletions(-)&nbsp;&nbsp;</span></span></li>
-	<li><span style="background-color:inherit; color:black">&nbsp;create&nbsp;mode&nbsp;<span style="background-color:inherit">100644</span><span style="background-color:inherit">&nbsp;testme.txt&nbsp;&nbsp;</span></span></li>
-	<li><span style="background-color:inherit; color:black">$&nbsp;git&nbsp;rm&nbsp;testme.txt&nbsp;&nbsp;</span></li>
-	<li><span style="background-color:inherit; color:black">rm&nbsp;<span style="background-color:inherit; color:blue">&#39;testme.txt&#39;</span><span style="background-color:inherit">&nbsp;&nbsp;</span></span></li>
-	<li><span style="background-color:inherit; color:black">$&nbsp;git&nbsp;commit&nbsp;-m&nbsp;r&nbsp;&nbsp;</span></li>
-	<li><span style="background-color:inherit; color:black">[master]:&nbsp;created&nbsp;bb38396:&nbsp;<span style="background-color:inherit; color:blue">&quot;r&quot;</span><span style="background-color:inherit">&nbsp;&nbsp;</span></span></li>
-	<li><span style="background-color:inherit; color:black">&nbsp;<span style="background-color:inherit">1</span><span style="background-color:inherit">&nbsp;files&nbsp;changed,&nbsp;</span><span style="background-color:inherit">0</span><span style="background-color:inherit">&nbsp;insertions(+),&nbsp;</span><span style="background-color:inherit">0</span><span style="background-color:inherit">&nbsp;deletions(-)&nbsp;&nbsp;</span></span></li>
-	<li><span style="background-color:inherit; color:black">&nbsp;delete&nbsp;mode&nbsp;<span style="background-color:inherit">100644</span><span style="background-color:inherit">&nbsp;testme.txt&nbsp;&nbsp;</span></span></li>
-</ol>
-</div>
+<pre><code>
+$ mkdir t  
+$ cd t  
+$ git init  
+Initialized empty Git repository in  
+ /Users/apple/t/.git/  
+$ dd if=/dev/urandom of=testme.txt bs=10240 count=1024  
+1024+0 records in  
+1024+0 records out  
+10485760 bytes transferred in 1.684808 secs (6223712 bytes/sec)  
+$ git add testme.txt  
+$ git commit -m "a"  
+[master (root-commit)]: created 6fbb432: "a"  
+ 1 files changed, 0 insertions(+), 0 deletions(-)  
+ create mode 100644 testme.txt  
+$ git rm testme.txt  
+rm 'testme.txt'  
+$ git commit -m r  
+[master]: created bb38396: "r"  
+ 1 files changed, 0 insertions(+), 0 deletions(-)  
+ delete mode 100644 testme.txt  
+</code></pre>
 
 <p>这时候我们看看版本库的大小:</p>
 
-<div class="dp-highlighter bg_python" style="line-height: 20px; font-family: Consolas, 'Courier New', Courier, mono, serif; font-size: 12px; background-color: rgb(231, 229, 220); width: 687.046875px; overflow: auto; padding-top: 1px; margin: 18px 0px !important;">
-<div class="bar" style="padding-left: 45px;">
-<div class="tools" style="padding: 3px 8px 10px 10px; font-size: 9px; line-height: normal; font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; color: silver; background-color: rgb(248, 248, 248); border-left-width: 3px; border-left-style: solid; border-left-color: rgb(108, 226, 108);"><strong>[python]</strong>&nbsp;<a class="ViewSource" href="http://blog.csdn.net/meteor1113/article/details/4407209#" style="color: rgb(160, 160, 160); text-decoration: none; background-image: url(http://static.blog.csdn.net/scripts/SyntaxHighlighter/styles/images/default/ico_plain.gif); background-color: inherit; border: none; padding: 1px; margin: 0px 10px 0px 0px; font-size: 9px; display: inline-block; width: 16px; height: 16px; text-indent: -2000px; background-position: 0% 0%; background-repeat: no-repeat no-repeat;" title="view plain">view plain</a><a class="CopyToClipboard" href="http://blog.csdn.net/meteor1113/article/details/4407209#" style="color: rgb(160, 160, 160); text-decoration: none; background-image: url(http://static.blog.csdn.net/scripts/SyntaxHighlighter/styles/images/default/ico_copy.gif); background-color: inherit; border: none; padding: 1px; margin: 0px 10px 0px 0px; font-size: 9px; display: inline-block; width: 16px; height: 16px; text-indent: -2000px; background-position: 0% 0%; background-repeat: no-repeat no-repeat;" title="copy">copy</a></div>
-</div>
-
-<ol start="1">
-	<li><span style="background-color:inherit; color:black">$&nbsp;du&nbsp;-hs&nbsp;&nbsp;</span></li>
-	<li><span style="background-color:inherit; color:black">&nbsp;<span style="background-color:inherit">10M</span><span style="background-color:inherit">&nbsp;&nbsp;&nbsp;&nbsp;.&nbsp;&nbsp;</span></span></li>
-</ol>
-</div>
+<pre><code>
+$ du -hs  
+ 10M    . 
+</code></pre>
 
 <p>很明显虽然testme.txt已经被删除了，但是因为版本历史里曾经有过这个文件，所以git仍然把它存在库中，以后可以通过它再把它恢复回来。</p>
 
 <p>但我实在是不希望这么一个空版本库占用我10M宝贵的硬盘空间，所以我要把它全删掉，这就要用到git的filter-branch命令了。具体这个命令的用法可以看文档，下面是这个例子中的用法:</p>
 
-<div class="dp-highlighter bg_python" style="line-height: 20px; font-family: Consolas, 'Courier New', Courier, mono, serif; font-size: 12px; background-color: rgb(231, 229, 220); width: 687.046875px; overflow: auto; padding-top: 1px; margin: 18px 0px !important;">
-<div class="bar" style="padding-left: 45px;">
-<div class="tools" style="padding: 3px 8px 10px 10px; font-size: 9px; line-height: normal; font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; color: silver; background-color: rgb(248, 248, 248); border-left-width: 3px; border-left-style: solid; border-left-color: rgb(108, 226, 108);"><strong>[python]</strong>&nbsp;<a class="ViewSource" href="http://blog.csdn.net/meteor1113/article/details/4407209#" style="color: rgb(160, 160, 160); text-decoration: none; background-image: url(http://static.blog.csdn.net/scripts/SyntaxHighlighter/styles/images/default/ico_plain.gif); background-color: inherit; border: none; padding: 1px; margin: 0px 10px 0px 0px; font-size: 9px; display: inline-block; width: 16px; height: 16px; text-indent: -2000px; background-position: 0% 0%; background-repeat: no-repeat no-repeat;" title="view plain">view plain</a><a class="CopyToClipboard" href="http://blog.csdn.net/meteor1113/article/details/4407209#" style="color: rgb(160, 160, 160); text-decoration: none; background-image: url(http://static.blog.csdn.net/scripts/SyntaxHighlighter/styles/images/default/ico_copy.gif); background-color: inherit; border: none; padding: 1px; margin: 0px 10px 0px 0px; font-size: 9px; display: inline-block; width: 16px; height: 16px; text-indent: -2000px; background-position: 0% 0%; background-repeat: no-repeat no-repeat;" title="copy">copy</a></div>
-</div>
-
-<ol start="1">
-	<li><span style="background-color:inherit; color:black"><span style="background-color:inherit">$&nbsp;git&nbsp;filter-branch&nbsp;--tree-filter&nbsp;</span><span style="background-color:inherit; color:blue">&#39;rm&nbsp;-f&nbsp;testme.txt&#39;</span><span style="background-color:inherit">&nbsp;HEAD&nbsp;&nbsp;</span></span></li>
-	<li><span style="background-color:inherit; color:black">Rewrite&nbsp;bb383961a2d13e12d92be5f5e5d37491a90dee66&nbsp;(<span style="background-color:inherit">2</span><span style="background-color:inherit">/</span><span style="background-color:inherit">2</span><span style="background-color:inherit">)&nbsp;&nbsp;</span></span></li>
-	<li><span style="background-color:inherit; color:black">Ref&nbsp;<span style="background-color:inherit; color:blue">&#39;refs/heads/master&#39;</span><span style="background-color:inherit">&nbsp;&nbsp;</span></span></li>
-	<li><span style="background-color:inherit; color:black">&nbsp;was&nbsp;rewritten&nbsp;&nbsp;</span></li>
-	<li><span style="background-color:inherit; color:black">$&nbsp;git&nbsp;ls-remote&nbsp;.&nbsp;&nbsp;</span></li>
-	<li><span style="background-color:inherit; color:black"><span style="background-color:inherit">230b8d53e2a6d5669165eed55579b64dccd78d11</span><span style="background-color:inherit">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;HEAD&nbsp;&nbsp;</span></span></li>
-	<li><span style="background-color:inherit; color:black"><span style="background-color:inherit">230b8d53e2a6d5669165eed55579b64dccd78d11</span><span style="background-color:inherit">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;refs/heads/master&nbsp;&nbsp;</span></span></li>
-	<li><span style="background-color:inherit; color:black">bb383961a2d13e12d92be5f5e5d37491a90dee66&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;refs/original/refs/heads/master&nbsp;&nbsp;</span></li>
-	<li><span style="background-color:inherit; color:black">$&nbsp;git&nbsp;update-ref&nbsp;-d&nbsp;refs/original/refs/heads/master&nbsp;[bb383961a2d13e12d92be5f5e5d37491a90dee66]&nbsp;&nbsp;</span></li>
-	<li><span style="background-color:inherit; color:black">$&nbsp;git&nbsp;ls-remote&nbsp;.&nbsp;&nbsp;</span></li>
-	<li><span style="background-color:inherit; color:black"><span style="background-color:inherit">230b8d53e2a6d5669165eed55579b64dccd78d11</span><span style="background-color:inherit">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;HEAD&nbsp;&nbsp;</span></span></li>
-	<li><span style="background-color:inherit; color:black"><span style="background-color:inherit">230b8d53e2a6d5669165eed55579b64dccd78d11</span><span style="background-color:inherit">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;refs/heads/master&nbsp;&nbsp;</span></span></li>
-	<li><span style="background-color:inherit; color:black">$&nbsp;rm&nbsp;-rf&nbsp;.git/logs&nbsp;&nbsp;</span></li>
-	<li><span style="background-color:inherit; color:black">$&nbsp;git&nbsp;reflog&nbsp;--all&nbsp;&nbsp;</span></li>
-	<li><span style="background-color:inherit; color:black">$&nbsp;git&nbsp;prune&nbsp;&nbsp;</span></li>
-	<li><span style="background-color:inherit; color:black">$&nbsp;git&nbsp;gc&nbsp;&nbsp;</span></li>
-	<li><span style="background-color:inherit; color:black">$&nbsp;du&nbsp;-hs&nbsp;&nbsp;</span></li>
-	<li><span style="background-color:inherit; color:black">&nbsp;<span style="background-color:inherit">84K</span><span style="background-color:inherit">&nbsp;&nbsp;&nbsp;&nbsp;. &nbsp;</span></span></li>
-</ol>
-</div>
+<pre><code>
+$ git filter-branch --tree-filter 'rm -f testme.txt' HEAD  
+Rewrite bb383961a2d13e12d92be5f5e5d37491a90dee66 (2/2)  
+Ref 'refs/heads/master'  
+ was rewritten  
+$ git ls-remote .  
+230b8d53e2a6d5669165eed55579b64dccd78d11        HEAD  
+230b8d53e2a6d5669165eed55579b64dccd78d11        refs/heads/master  
+bb383961a2d13e12d92be5f5e5d37491a90dee66        refs/original/refs/heads/master  
+$ git update-ref -d refs/original/refs/heads/master [bb383961a2d13e12d92be5f5e5d37491a90dee66]  
+$ git ls-remote .  
+230b8d53e2a6d5669165eed55579b64dccd78d11        HEAD  
+230b8d53e2a6d5669165eed55579b64dccd78d11        refs/heads/master  
+$ rm -rf .git/logs  
+$ git reflog --all  
+$ git prune  
+$ git gc  
+$ du -hs  
+ 84K    .  
+</code></pre>
 
 <p>OK，这个文件已经完完全全删掉了，版本库已经不再占用空间了。</p>
 
@@ -103,13 +85,13 @@ tag: git 删除文件
 <p>窘阿.每次编译都提示文件所需求的不存在或者不对&hellip;唉~把解决方案放在这吧~也段是学习<a href="http://blog.zzjin.net/tag/git/" style="color: rgb(51, 51, 51); text-decoration: none; outline: 0px; line-height: inherit; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: rgb(204, 204, 204);" target="_blank" title="查看 git 中的全部文章">git</a>的一个笔记.</p>
 
 <pre>
-$ git filter-branch --tree-filter 'rm -f moc_* and *.o and ui_*' HEAD		
+$ git filter-branch --tree-filter &#39;rm -f moc_* and *.o and ui_*&#39; HEAD		
 Rewrite e64c4ea53de2c6eaabf5fdb1082e247c1661f359 (17/26)Warning:		
 commit message does not conform to UTF-8.		
 You may want to amend it after fixing the message, or set the config		
 variable i18n.commitencoding to the encoding your project uses.			
 Rewrite f5b19c2172a923b89ee009f44bb2ee00d60f4808 (26/26)			
-Ref 'refs/heads/master' was rewritten		
+Ref &#39;refs/heads/master&#39; was rewritten		
 $ git update-ref -d refs/original/refs/heads/master		
   f5b19c2172a923b89ee009f44bb2ee00d60f4808		
 $ rm -rf .git/logs		
