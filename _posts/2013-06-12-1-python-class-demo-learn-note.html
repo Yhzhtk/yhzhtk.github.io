@@ -1,0 +1,203 @@
+---
+layout: post
+title: Python 实例分析 - 获取MP3歌曲的Tag信息
+tag: python 实例 mp3-tag
+---
+<p>下面利用一个python的实例程序，来学习python。这个程序的目的就是分析出所有MP3文件的Tag信息并输出。</p>
+
+<p>其中遇到一个问题，让我深切感受到<strong>python中依靠缩进来控制流程</strong>的缺点，不多说，看程序：</p>
+
+<pre>
+<code>
+<span style="color:#008000">"""Framework for getting filetype-specific metadata. Instantiate
+appropriate class with filename. Returned object acts like a
+dictionary, with key-value pairs for each piece of metadata. import
+fileinfo info = fileinfo.MP3FileInfo("/music/ap/mahadeva.mp3") print
+"\\n".join(["%s=%s" % (k, v) for k, v in info.items()]) Or use
+listDirectory function to get info on all files in a directory. for
+info in fileinfo.listDirectory("/music/ap/", [".mp3"]): ... Framework
+can be extended by adding classes for particular file types, e.g.
+HTMLFileInfo, MPGFileInfo, DOCFileInfo. Each class is completely
+responsible for parsing its files appropriately; see MP3FileInfo for
+example. """</span>
+import os
+import sys
+from UserDict import UserDict
+
+def stripnulls(data):
+    <span style="color:#008000">"strip whitespace and nulls"</span>
+    return data.replace("\00", "").strip()
+
+class FileInfo(UserDict):
+    <span style="color:#008000">"store file metadata"</span>
+    def __init__(self, filename=None):
+        UserDict.__init__(self)
+        self["name"] = filename
+
+class MP3FileInfo(FileInfo):
+    <span style="color:#008000">"store ID3v1.0 MP3 tags"</span>
+    tagDataMap = {"title" : ( 3, 33, stripnulls),
+    "artist" : ( 33, 63, stripnulls),
+    "album" : ( 63, 93, stripnulls),
+    "year" : ( 93, 97, stripnulls),
+    "comment" : ( 97, 126, stripnulls),
+    "genre" : (127, 128, ord)}
+    
+    def __parse(self, filename):
+        self.clear()
+        try:
+            fsock = open(filename, "rb", 0)
+            try:
+                fsock.seek(-128, 2)
+                tagdata = fsock.read(128)
+            finally:
+                fsock.close()
+            if tagdata[:3] == "TAG":
+                for tag, (start, end, parseFunc) in self.tagDataMap.items():
+                    self[tag] = parseFunc(tagdata[start:end])
+        except IOError:
+            pass
+        
+    def __setitem__(self, key, item):
+        if key == "name" and item:
+            self.__parse(item)
+            # problem here,should out of the if
+            <strong># FileInfo.__setitem__(self, key, item) 如果使用这个缩进就会出现错误</strong>
+        FileInfo.__setitem__(self, key, item)
+            
+def listDirectory(directory, fileExtList):
+    <span style="color:#008000">"get list of file info objects for files of particular extensions"</span>
+    fileList = [os.path.normcase(f)
+        for f in os.listdir(directory)]
+    fileList = [os.path.join(directory, f)
+        for f in fileList
+        if os.path.splitext(f)[1] in fileExtList]
+    def getFileInfoClass(filename, module=sys.modules[FileInfo.__module__]):
+        "get file info class from filename extension"
+        subclass = "%sFileInfo" % os.path.splitext(filename)[1].upper()[1:]
+        return hasattr(module, subclass) and getattr(module, subclass) or FileInfo
+    return [getFileInfoClass(f) (f) for f in fileList]
+
+if __name__ == "__main__":
+    for info in listDirectory("E:\\Music", [".mp3"]):
+        print "\n".join(["%s=%s" % (k, v) for k, v in info.items()])
+        print
+</code></pre>
+
+<p><strong>第一次（将FileInfo.__setitem__(self, key, item)放在了if逻辑内）错误运行结果为：</strong></p>
+
+<pre>
+name=E:\Music\chris medina - what_are_words.mp3
+name=E:\Music\two fathers.mp3
+name=E:\Music\不要气身体.mp3
+name=E:\Music\丙峰 - 简单程序员.mp3
+</pre>
+
+<p><strong>而正确的结果应该是下面：</strong></p>
+
+<pre>
+album=What Are Words - Single
+comment=
+name=E:\Music\chris medina - what_are_words.mp3
+title=What Are Words
+artist=Chris Medina
+year=2011
+genre=13
+
+album=After the Wedding
+comment=
+name=E:\Music\two fathers.mp3
+title=Two Fathers
+artist=Johan S鰀erqvist
+year=
+genre=255
+
+album=丁呱呱 EP
+comment=
+name=E:\Music\不要气身体.mp3
+title=不要气身体
+artist=丁呱呱
+year=2009
+genre=12
+
+album=
+comment=
+name=E:\Music\丙峰 - 简单程序员.mp3
+title=简单程序员
+artist=丙峰
+</pre>
+
+<p>具体原因很明显，就是因为key == &quot;name&quot;这个条件无论是否满足都应该运行FileInfo.__setitem__(self, key, item)，而一个缩进就使得只有当条件满足时才运行，这就导致出错，Tag信息没有被添加都集合中，结果只有name而没有tag信息。</p>
+
+<p>所以，python的缩进控制逻辑，很容易出错了，而且不容易检查，我在没调试的前提下，找了我很久，我都怀疑是不是我的python版本问题了，以后一定要注意缩进，避免低级错误。</p>
+
+<p>&nbsp;</p>
+
+<p>这是一个使用了python的类，继承，os模块，sys模块，列表综合等很多python的语法。初学者不容易搞懂整个程序，下面我一句句分析整个程序，为了方便，就直接使用注释来说明吧。</p>
+
+<pre><code>
+import os <span style="color:#A9A9A9"># 导入os模块，提供文件路径，列出文件等方法</span>
+import sys <span style="color:#A9A9A9"># 导入sys模块，使用sys.modules获取模块中的所有内容，类似反射的功能</span>
+from UserDict import UserDict <span style="color:#A9A9A9"># 这个表示从UserDict类中导入UserDict，类似于Java中的 import UserDict.UserDict</span>
+
+def stripnulls(data):
+   <span style="color:#008000"> &quot;一个空字符串的处理函数将所有00字节的内容替换为空字符，病将前后的空字符串去掉&quot;</span>
+    <span style="color:#A9A9A9"># Python中的strip用于去除字符串的首尾字符，同理，lstrip用于去除左边的字符，rstrip用于去除右边的字符。</span>
+    return data.replace(&quot;\00&quot;, &quot;&quot;).strip()
+
+class FileInfo(UserDict):
+    <span style="color:#008000">&quot;文件基类，存储文件的文件名，继承自UserDict（存储key-value的一个类，可以重写__setitem__，__getitem__方法，就可以使用[]）&quot;</span>
+    def __init__(self, filename=None): <span style="color:#A9A9A9"># self是定义时使用，使用时不需要，如果没有参数，则filename默认None，如果有一个参数的话，参数即为filename</span>
+        UserDict.__init__(self) <span style="color:#A9A9A9"># 初始化父类</span>
+        self[&quot;name&quot;] = filename <span style="color:#A9A9A9"># 设置name为 filaname</span>
+
+class MP3FileInfo(FileInfo):
+    <span style="color:#008000">&quot;MP3文件的信息类，用于分析MP3文件和存储信息&quot;</span>
+    <span style="color:#A9A9A9"># tagDataMap 用于存储MP3的Tag信息分别所在位置，（ key ： 开始位置，结束位置， 处理函数）， stripnulls表示最开始定义的函数</span>
+    tagDataMap = {&quot;title&quot; : ( 3, 33, stripnulls),
+    &quot;artist&quot; : ( 33, 63, stripnulls),
+    &quot;album&quot; : ( 63, 93, stripnulls),
+    &quot;year&quot; : ( 93, 97, stripnulls),
+    &quot;comment&quot; : ( 97, 126, stripnulls),
+    &quot;genre&quot; : (127, 128, ord)}
+    
+    def __parse(self, filename): <span style="color:#A9A9A9"># 解析MP3文件</span>
+        self.clear()
+        try:
+            fsock = open(filename, &quot;rb&quot;, 0) <span style="color:#A9A9A9"># 打开文件</span>
+            try:
+                fsock.seek(-128, 2) <span style="color:#A9A9A9"># 设置文件读取的指针位置， seek第二个参数，2表示从文件结尾作为参考点，-128表示还有128字节结尾的点，0表示文件开头做参考点，1表示当前位置做参考点</span>
+                tagdata = fsock.read(128) <span style="color:#A9A9A9"># 读取128字节的数据</span>
+            finally:
+                fsock.close() <span style="color:#A9A9A9"># 关闭文件，注意在finally中，出错也需要关闭文件句柄</span>
+            if tagdata[:3] == &quot;TAG&quot;: <span style="color:#A9A9A9"># 判断是否是有效的含Tag的MP3文件</span>
+                for tag, (start, end, parseFunc) in self.tagDataMap.items(): <span style="color:#A9A9A9"># 循环取出Tag信息位置信息， 如3, 33, stripnulls，并依次赋给start, end, parseFunc</span>
+                    self[tag] = parseFunc(tagdata[start:end]) <span style="color:#A9A9A9"># tagdata[start:end]读出start到end的字节，使用parseFunc处理这些内容</span>
+        except IOError: <span style="color:#A9A9A9"># 如果出现IOError，则跳过继续</span>
+            pass
+        
+    def __setitem__(self, key, item): <span style="color:#A9A9A9"># 重写__setitem__方法，上面的self[tag] = parseFunc(tagdata[start:end])就会使用这个方法， key为tag，itme为parseFunc(tagdata[start:end])</span>
+        if key == &quot;name&quot; and item: <span style="color:#A9A9A9"># 如果key是 name，并且 item不为空</span>
+            self.__parse(item) <span style="color:#A9A9A9"># 解析MP3文件</span>
+            # problem here,should out of the if
+            <strong># FileInfo.__setitem__(self, key, item) 如果使用这个缩进就会出现错误</strong> 
+        FileInfo.__setitem__(self, key, item) <span style="color:#A9A9A9"># 之前的错误点，注意这儿的缩进，无论如何都会存储key-value，使用FileInfo.__setitem__父类的方法来存储</span>
+            
+def listDirectory(directory, fileExtList):
+    <span style="color:#008000">&quot;获取directory目录下的所有fileExtList格式的文件，fileExtList是一个列表，可以有多种格式&quot;</span>
+    fileList = [os.path.normcase(f)
+        for f in os.listdir(directory)] <span style="color:#A9A9A9"># 列出所有 directory的文件</span>
+    fileList = [os.path.join(directory, f)
+        for f in fileList
+        if os.path.splitext(f)[1] in fileExtList] <span style="color:#A9A9A9"># 过滤文件，满足fileExtList内的一种格式。os.path.splitext将文件分成文件名和扩展名</span>
+    def getFileInfoClass(filename, module=sys.modules[FileInfo.__module__]): <span style="color:#A9A9A9"># sys.modules[FileInfo.__module__] 获取FileInfo.__module__模块，其中FileInfo.__module__在此会是 main，如果被别的模块调用的话就不是了，这是为什么不直接用&ldquo;main&rdquo;</span>
+        <span style="color:#008000">&quot;定义一个函数，获取文件的信息&quot;</span>
+        subclass = &quot;%sFileInfo&quot; % os.path.splitext(filename)[1].upper()[1:] <span style="color:#A9A9A9"># 获取需要用来解析的类，如果是mp3文件结果为MP3FileInfo,其他为FileInfo</span>
+        return hasattr(module, subclass) and getattr(module, subclass) or FileInfo <span style="color:#A9A9A9"># 返回一个类，注意，返回的是一个&ldquo;类&rdquo;。使用getattr获取moudle模块中的subclass类</span>
+    return [getFileInfoClass(f) (f) for f in fileList] <span style="color:#A9A9A9"># 注意，这句话可能比较难理解， getFileInfoClass(f) (f)为什么会有两个(f)呢，上面已经说过getFileInfoClass(f)根据文件名返回一个解析类，这儿是返回就是MP3FileInfo,而第二个(f)就表示对这个类以f初始化MP3FileInfo(f)</span>
+
+if __name__ == &quot;__main__&quot;: <span style="color:#A9A9A9"># main函数，在别的模块中不会允许这里面的代码了</span>
+    for info in listDirectory(&quot;E:\\Music&quot;, [&quot;.mp3&quot;]): <span style="color:#A9A9A9"># 循环获取E:\\Music文件夹中所有的mp3文件的信息</span>
+        print &quot;\n&quot;.join([&quot;%s=%s&quot; % (k, v) for k, v in info.items()]) <span style="color:#A9A9A9"># 由于MP3FileInfo继承自FileInfo,FileInfo继承自UserDict,这个的items()就是获取key-value集合。使用&quot;%s=%s&quot;格式化输出，使用&quot;\n&quot;.join将所有信息以换行连接。</span>
+        print <span style="color:#A9A9A9"># 每一个文件之后，输出一个空行</span>
+</code></pre>
