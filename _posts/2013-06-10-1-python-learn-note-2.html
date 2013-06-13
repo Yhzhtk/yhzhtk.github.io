@@ -3,6 +3,8 @@ layout: post
 title: Python 面向对象、异常等学习笔记
 tag: python 学习 异常 文件
 ---
+{% include syntax-python.html %}
+
 <p>昨天把python的基本用法看了一遍，今天继续，学习python的新的特性，面向对象、异常、文件操作等。</p>
 
 <p>1、在python中，一切都是对象，包括int，可以使用help(int)查看。</p>
@@ -18,7 +20,7 @@ tag: python 学习 异常 文件
 <p>只有一个例外：如果你使用的数据成员名称以 双下划线前缀 比如__privatevar，Python的名称管理体系会有效地把它作为私有变量。这样就有一个惯例，如果某个变量只想在类或对象中使用，就应该以单下划线前缀。而其他的名称都将作为公共的，可以被其他类/对象使用。记住这只是一个惯例，并不是Python所要求的（与双下划线前缀不同）。</p>
 
 <p>6、类的继承，在__init__中实现父类的__init__表示继承了父类。举例说明：</p>
-<pre>
+<pre class="brush: python;">
 #!/usr/bin/python
 # Filename: inherit.py
 
@@ -65,7 +67,7 @@ for member in members:
     member.tell() # works for both Teachers and Students
 </pre>
 <p>运行结果为：</p>
-<pre>
+<pre  class="brush: plain;">
 $ python inherit.py
 (Initialized SchoolMember: Mrs. Shrividya)
 (Initialized Teacher: Mrs. Shrividya)
