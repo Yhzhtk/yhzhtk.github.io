@@ -9,13 +9,17 @@ tag: github gravatar goagent 头像 翻墙
 
 <p>&nbsp;&nbsp; &nbsp;下面如何注册Gravatar并上传头像，这个问题搞了我好久。</p>
 
-<p>&nbsp; &nbsp; 浏览&nbsp;<a href="http://en.gravatar.com/">http://en.gravatar.com/</a>，发现gravatar本身没有注册功能，他使用的是WordPress的账号登陆，而 <a href="http://wordpress.com/">http://wordpress.com/</a> 在国内是被墙了的，根本就上不去，也就无法注册登陆。</p>
+<p>&nbsp; &nbsp; 浏览&nbsp;<a target="_blank" href="http://en.gravatar.com/">http://en.gravatar.com/</a>，发现gravatar本身没有注册功能，他使用的是WordPress的账号登陆，而 <a target="_blank" href="http://wordpress.com/">http://wordpress.com/</a> 在国内是被墙了的，根本就上不去，也就无法注册登陆。</p>
 
 <p>&nbsp;&nbsp; &nbsp;没办法，只有翻墙了，第一个想到的就是使用GAE（Google App Engine）搭起来的GoAgent，全免费，而且比较稳定的一个翻墙工具。</p>
 
 <p>&nbsp;&nbsp; &nbsp;使用GoAgent很简单就上去 http://wordpress.com/ 了，但是注册的时候，WordPress居然报错：&quot;Sorry, but this user-agent is banned from using the password retrieval tool.&quot;，fuck，居然屏蔽UA（User-Agent）。</p>
 
-<p>&nbsp;&nbsp; &nbsp;查看经过 GoAgent 的UA：&ldquo;Mozilla/5.0 (Windows NT 5.1; rv:19.0) Gecko/20100101 Firefox/19.0 AppEngine-Google; (+http://code.google.com/appengine; appid: s~##)&rdquo;。最后居然有AppEngine-Google和你的appid（##应该是你的appid<span style="line-height:1.6em">）</span><span style="line-height:1.6em">，看来WordPress是为了考虑注册安全，所以禁止GoAgent代理注册。</span></p>
+<p>&nbsp;&nbsp; &nbsp;查看经过 GoAgent 的UA：</p>
+
+<pre> Mozilla/5.0 (Windows NT 5.1; rv:19.0) Gecko/20100101 Firefox/19.0 AppEngine-Google; (+http://code.google.com/appengine; appid: s~##)</pre>
+
+<p>&nbsp;&nbsp; &nbsp;最后居然有AppEngine-Google和你的appid（##应该是你的appid<span style="line-height:1.6em">）</span><span style="line-height:1.6em">，看来WordPress是为了考虑注册安全，所以禁止GoAgent代理注册。</span></p>
 
 <p>&nbsp;&nbsp; &nbsp;没办法，GoAgent这个好用的代理居然不能注册，因为是屏蔽UA，我想到过该GoAgent的源码，将UA最后AppEngine的关键部分去掉，但是这也太费劲了，源码得看半天，还不一定是在源码能改，也许是谷歌服务器给加上的。</p>
 
@@ -25,6 +29,6 @@ tag: github gravatar goagent 头像 翻墙
 
 <p>&nbsp;&nbsp; &nbsp;大工搞成，最后，要想在GitHub上及时看到头像的话，一定要清除浏览器缓存，否则，可能一段时间还是使用老的那只猫。</p>
 
-<p>&nbsp; &nbsp;&nbsp;<a href="https://github.com/Yhzhtk">https://github.com/Yhzhtk</a>&nbsp;我的头像效果在这看。以后再任何地方想使用头像的话只需要根据自己的邮箱MD5得到ID拼接Gravatar的地址即可，这样就是全球可用啦。</p>
+<p>&nbsp; &nbsp;&nbsp;<a target="_blank" href="https://github.com/Yhzhtk">https://github.com/Yhzhtk</a>&nbsp;我的头像效果在这看。以后再任何地方想使用头像的话只需要根据自己的邮箱MD5得到ID拼接Gravatar的地址即可，这样就是全球可用啦。</p>
 
 <p>&nbsp;</p>
