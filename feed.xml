@@ -16,7 +16,7 @@ title : RSS Feed
                 <link>{{ site.url | xml_escape }}{{ post.url | xml_escape }}</link>
                 <guid>{{ site.url | xml_escape }}{{ post.url | xml_escape }}</guid>
                 <author>{{ site.email | xml_escape }} ({{ site.author | xml_escape }})</author>
-                <pubDate>{{ post.date | date: '%a, %d %b %Y %T %z' }}</pubDate>
+                <pubDate>{{ post.date | date: "%Y-%m-%d" }}</pubDate>
                 <description>{{ post.content | xml_escape }}</description>
             </item>
         {% endfor %}
