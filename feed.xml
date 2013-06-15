@@ -1,0 +1,24 @@
+---
+layout: nil
+title : RSS Feed
+---
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>{{ site.name | xml_escape }}</title>
+        <link>{{ site.url | xml_escape }}</link>
+        <atom:link href="{{ site.url | xml_escape }}/feed.xml" rel="self" type="application/rss+xml"/>
+        <description/>
+
+        {% for post in site.posts %}
+            <item>
+                <title>{{ post.title | xml_escape }}</title>
+                <link>{{ site.url | xml_escape }}{{ post.url | xml_escape }}</link>
+                <guid>{{ site.url | xml_escape }}{{ post.url | xml_escape }}</guid>
+                <author>{{ site.email | xml_escape }} ({{ site.author | xml_escape }})</author>
+                <pubDate>{{ post.date | date: '%a, %d %b %Y %T %z' }}</pubDate>
+                <description>{{ post.content | xml_escape }}</description>
+            </item>
+        {% endfor %}
+    </channel>
+</rss>
