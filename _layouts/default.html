@@ -4,7 +4,6 @@
 　　	<meta http-equiv="content-type" content="text/html; charset=utf-8">
 		<link href="{{ site.baseurl }}/bootstrap/css/bootstrap.css" rel="stylesheet">
 		<link href="{{ site.baseurl }}/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
-		{% include google-analytics.html %}
 　　　　<title>{{ page.title }}</title>
 　　</head>
     <body style="background-image : url({{ site.baseurl }}/images/bg.jpg);">
@@ -28,6 +27,7 @@
 					{{ content }}
 				   </div>
 				   <br/>
+				   	{% include google-analytics.html %}
 				   <div style="width:50%">
 					  <hr/>
 					  <a href="{{ site.baseurl }}/index.html">首页</a>&nbsp;&nbsp;<a href="https://github.com/Yhzhtk">我的GitHub</a>&nbsp;&nbsp;By&nbsp;<a href ="{{ site.baseurl }}/gh-pages-guide.html" title="翻译GitHub Pages">GitHub Pages</a>
