@@ -5,19 +5,60 @@ title: Yhzhtk Pages（技术博客）
 <div class="container-fluid">
 	<div class="row-fluid">
 		<div class="span12">
-			<h3>
-				博客列表
-			</h3>
-			<ul type="circle">
-			{% for post in site.posts %}
-				<li>{{ post.date | date: "%Y-%m-%d" }}&nbsp;&nbsp;&nbsp;&nbsp;
-				<a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a> 
-				<a href="{{ site.baseurl }}{{ post.url }}#disqus_thread" style="font-size: 12px;color:gray">查看评论</a> 
-				<br/></li>
-　　		{% endfor %}
-			</ul>
+			{% for post in paginator.posts %}
+				<h3><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h3>
+				<div style="font-size: 14px;">
+					<span class="date">{{ post.date | date: "%Y-%m-%d" }}</span>
+					<a href="{{ site.baseurl }}{{ post.url }}#disqus_thread" style="color:gray">查看评论</a> 
+				</div>
+				<div class="content">
+					{{ post.content | | split:'<!--break-->' | first }}
+					<p class="preadmore">
+						<a href="{{ site.baseurl }}{{ post.url }}" style="font-size: 16px;" >阅读全文</a>
+					</p>
+				</div>
+				<hr style="border:1 dashed #20B2AA"/>
+			{% endfor %}
+			
+			<div id="post-pagination" class="pagination">
+			  <ul class="pages">
+				<li>
+					{% if paginator.previous_page %}
+					  {% if paginator.previous_page == 1 %}
+						<a href="{{ site.baseurl }}/">上一页</a>
+					  {% else %}
+						<a href="{{ site.baseurl }}/{{ paginator.previous_page_path }}">上一页</a>
+					  {% endif %}
+				  {% else %}
+				  {% endif %}
+				</li>
+				<li class="page">
+				  {% if paginator.page == 1 %}
+					<span class="current-page">1</span>
+				  {% else %}
+					<a href="{{ site.baseurl }}/">1</a>
+				  {% endif %}
+				</li>
+
+				{% for count in (2..paginator.total_pages) %}
+				  <li class="page">
+					{% if count == paginator.page %}
+					  <span class="current-page">{{ count }}</span>
+					{% else %}
+					  <a href="{{ site.baseurl }}/page{{ count }}">{{ count }}</a>
+					{% endif %}
+				  </li>
+				{% endfor %}
+				
+				<li>
+				  {% if paginator.next_page %}
+					  <a href="{{ site.baseurl }}/{{ paginator.next_page_path }}">下一页</a>
+				  {% else %}
+				  {% endif %}
+				</li>
+			  </ul>
+			</div>
 		</div>
 	</div>
 </div>
-		
 {% include disqus-count.html %}	

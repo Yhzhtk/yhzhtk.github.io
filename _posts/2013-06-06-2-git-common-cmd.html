@@ -12,7 +12,7 @@ tag: git 命令 详解
 <p>1）git clone：这是一种较为简单的初始化方式，当你已经有一个远程的Git版本库，只需要在本地克隆一份</p>
 
 <p>例如：git &nbsp;clone &nbsp;git://github.com/someone/some_project.git &nbsp;&nbsp;<span style="color:rgb(255, 0, 0)">some_project</span>&nbsp;</p>
-
+<!--break-->
 <p>上面的命令就是将&#39;git://github.com/someone/some_project.git&#39;这个URL地址的远程版本库，完全克隆到本地some_project目录下</p>
 
 <p>2）git init 和 git remote：这种方式稍微复杂一些，当你本地创建了一个工作目录，你可以进入这个目录，使用&#39;git init&#39;命令进行初始化；Git以后就会对该目录下的文件进行版本控制，这时候如果你需要将它放到远程服务器上，可以在远程服务器上创建一个目录，并把可访问的URL记录下来，此时你就可以利用&#39;git remote add&#39;命令来增加一个远程服务器端，</p>
