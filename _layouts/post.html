@@ -8,7 +8,19 @@ layout: default
 <div id="post">
 {{ content }}
 </div>
-<br/>
+
+{% if page.previous %}
+    <div style="float:left"><a href="{{ site.baseurl }}{{ page.previous.url }}" title="{{ page.previous.title }}">&larr; 上一篇</a></div>
+{% else %}
+    <div style="float:left">&larr; 没有了</div>
+{% endif %}
+
+{% if page.next %}
+    <div style="float:right"><a href="{{ site.baseurl }}{{ page.next.url }}" title="{{ page.next.title }}">下一篇 &rarr;</a></div>
+{% else %}
+    <div style="float:right">没有了 &rarr;</div>
+{% endif %}
+<hr/>
 
 {% include disqus-embed.html %}
     

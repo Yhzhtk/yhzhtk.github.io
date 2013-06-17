@@ -8,7 +8,7 @@ tag: python 实例 mp3-tag
 <p>下面利用一个python的实例程序，来学习python。这个程序的目的就是分析出所有MP3文件的Tag信息并输出。</p>
 
 <p>其中遇到一个问题，让我深切感受到<strong>python中依靠缩进来控制流程</strong>的缺点，不多说，看程序：</p>
-
+<!--break-->
 <pre class="brush: python;">
 """Framework for getting filetype-specific metadata. Instantiate
 appropriate class with filename. Returned object acts like a
@@ -84,7 +84,7 @@ if __name__ == "__main__":
         print "\n".join(["%s=%s" % (k, v) for k, v in info.items()])
         print
 </pre>
-<!--break-->
+
 <p><strong>第一次（将FileInfo.__setitem__(self, key, item)放在了if逻辑内）错误运行结果为：</strong></p>
 
 <pre class="brush: plain;">
