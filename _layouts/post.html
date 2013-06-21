@@ -15,13 +15,13 @@ layout: default
 </div>
 
 {% if page.previous %}
-    <div style="float:left"><a href="{{ site.baseurl }}{{ page.previous.url }}" title="{{ page.previous.title }}">&larr; 上一篇</a></div>
+    <div style="float:left"><a href="{{ site.baseurl }}{{ page.previous.url }}" title="上一篇">&larr; {{ page.previous.title }}</a></div>
 {% else %}
     <div style="float:left">&larr; 没有了</div>
 {% endif %}
 
 {% if page.next %}
-    <div style="float:right"><a href="{{ site.baseurl }}{{ page.next.url }}" title="{{ page.next.title }}">下一篇 &rarr;</a></div>
+    <div style="float:right"><a href="{{ site.baseurl }}{{ page.next.url }}" title="下一篇">{{ page.next.title }} &rarr;</a></div>
 {% else %}
     <div style="float:right">没有了 &rarr;</div>
 {% endif %}
