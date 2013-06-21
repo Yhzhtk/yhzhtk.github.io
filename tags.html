@@ -7,7 +7,6 @@ title: 标签页
     <a href="#{{ tag[0] }}">{{ tag[0] }}</a>&nbsp;&nbsp;&nbsp;
 {% endfor %}
 <br/><br/>
-
 <ul>
 	{% for tag in site.tags %}
 	  <li>
@@ -26,4 +25,4 @@ title: 标签页
 	  </li>
 	{% endfor %}
 </ul>
-
+{% include disqus-count.html %}	
