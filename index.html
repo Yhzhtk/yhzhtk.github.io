@@ -9,7 +9,10 @@ title: Yhzhtk Pages（技术博客）
 				<h3><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h3>
 				<div style="font-size: 14px;">
 					<span class="date">{{ post.date | date: "%Y-%m-%d" }}</span>
-					<a href="{{ site.baseurl }}{{ post.url }}#disqus_thread" style="color:gray">查看评论</a> 
+					<a href="{{ site.baseurl }}{{ post.url }}#disqus_thread" style="color:gray" title="查看评论">查看评论</a> &nbsp;&nbsp;
+					{% for tag in post.tags %}
+						<a href="{{ site.baseurl }}/tags.html#{{ tag }}" title="标签 {{ tag }}">{{ tag }}</a>&nbsp;
+					{% endfor %}
 				</div>
 				<div class="content">
 					{{ post.content | | split:'<!--break-->' | first }}

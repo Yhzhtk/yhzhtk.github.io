@@ -1,0 +1,29 @@
+---
+layout: default
+title: 标签页
+---
+<h3>标签列表</h3>
+{% for tag in site.tags %}
+    <a href="#{{ tag[0] }}">{{ tag[0] }}</a>&nbsp;&nbsp;&nbsp;
+{% endfor %}
+<br/><br/>
+
+<ul>
+	{% for tag in site.tags %}
+	  <li>
+		<span id="{{ tag[0] }}">{{ tag[0] }}</span>
+		<span>
+		  <ul>
+		  {% for post in tag[1] %}
+			<li>
+				<a href="{{ site.baseurl }}{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>&nbsp;
+				<a href="{{ site.baseurl }}{{ post.url }}#disqus_thread" style="color:gray; font-size: 10px" title="查看评论">查看评论</a>
+			</li>
+		  {% endfor %}
+		  </ul>
+		</span>
+		<br/>
+	  </li>
+	{% endfor %}
+</ul>
+

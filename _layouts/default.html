@@ -1,25 +1,31 @@
 <html>
-　　<head>
+	<head>
 		<link href="{{ site.baseurl }}/favicon-16.ico" rel="shortcut icon">
-　　	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+		<meta name="author" content="yhzhtk">
+		<meta name="description" content="Yhzhtk's Blog，记录技术的点点滴滴。托管于github，使用jekyll生成博客，disqus评论，以及其他免费查询，感谢开源带来的方便和高效。">
+		<meta name="keywords" content="Yhzhtk, Blog, 博客, 技术">
 		<link href="{{ site.baseurl }}/bootstrap/css/bootstrap.css" rel="stylesheet">
 		<link href="{{ site.baseurl }}/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
-　　　　<title>{{ page.title }}</title>
+		<script type="text/javascript" src="{{ site.baseurl }}/javascripts/google-analytics.js"></script>
 		{% include search.html %}
-　　</head>
+		<title>{{ page.title }}</title>
+	</head>
     <body style="background-image : url({{ site.baseurl }}/images/bg.jpg);">
 		 <div class="container">
 			<div class="site">
 				<div style="width:80%;margin:0px auto;">
 				<div class="header">
+					<br/>
 				    <h1 class="title"><a href="{{ site.baseurl }}/index.html" title="首页">{{ site.name }}</a></h1>
 					
 					<div style="font-family:微软雅黑; font-size: 16px">
 						<div style="float:left;text-align:left" >(热爱技术，追求高效的code)</div>
 						<div style="float:right;text-align:right">
-							  <input type="text" id="j_search" class="j_search" style="height:27px" size="30" placeholder="站内搜索" required /> 
+							  <a href="{{ site.baseurl }}/tags.html" title="标签列表">标签列表</a>&nbsp;
+							  <input type="text" id="j_search" class="j_search" style="height:27px;size:30px;line-height:27px;margin:0px;padding;0px;vertical-align:center;" placeholder="站内搜索" required /> 
 							  <a target="_blank" href="http://feed.feedsky.com/YhzhtksBlog">
-								<img src="http://yhzhtk.info/images/rss.png" width="23px" height="23px">RSS订阅</img>
+								<img src="http://yhzhtk.info/images/rss.png" width="23px" height="23px" style="vertical-align:middle;">RSS订阅</img>
 							  </a>
 						</div>
 					</div>
@@ -31,7 +37,6 @@
 					{{ content }}
 				   </div>
 				   <br/>
-				   	{% include google-analytics.html %}
 				   <div style="width:50%">
 					  <hr/>
 					  <a href="{{ site.baseurl }}/index.html">首页</a>&nbsp;&nbsp;<a href="https://github.com/Yhzhtk">我的GitHub</a>&nbsp;&nbsp;By&nbsp;<a href ="{{ site.baseurl }}/gh-pages-guide.html" title="翻译GitHub Pages">GitHub Pages</a>

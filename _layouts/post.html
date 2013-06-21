@@ -2,7 +2,12 @@
 layout: default
 ---
 <h3><a href="{{ site.baseurl }}{{ page.url }}">{{ page.title }}</a></h3>
-<p class="meta">{{ page.date | date: "%Y-%m-%d" }}</p>
+<p class="meta">
+	{{ page.date | date: "%Y-%m-%d" }} &nbsp;&nbsp;
+	{% for tag in page.tags %}
+		<a href="{{ site.baseurl }}/tags.html#{{ tag }}" title="标签 {{ tag }}">{{ tag }}</a>&nbsp;
+	{% endfor %}
+</p>
 
 <br/>
 <div id="post">
