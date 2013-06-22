@@ -17,7 +17,10 @@ title: 标签
 		  {% for post in tag[1] %}
 			<li>
 				<a href="{{ site.baseurl }}{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>&nbsp;
-				<a href="{{ site.baseurl }}{{ post.url }}#disqus_thread" style="color:gray; font-size: 10px" title="查看评论">查看评论</a>
+				<div style="float: right; color:gray; font-size: 10px">
+					<span class="date">{{ post.date | date: "%Y-%m-%d" }}</span>&nbsp;&nbsp;
+					<a href="{{ site.baseurl }}{{ post.url }}#disqus_thread" title="查看评论">查看评论</a>
+				</div>
 			</li>
 		  {% endfor %}
 		  </ul>
