@@ -14,32 +14,36 @@
     <body style="background-image : url({{ site.baseurl }}/images/bg.jpg);">
 		 <div class="container">
 			<div class="site">
-				<div style="width:80%;margin:0px auto;">
+				<div style="width:70%;margin:0px auto;">
 				<div class="header">
 					<br/>
-				    <h1 class="title"><a href="{{ site.baseurl }}/index.html" title="首页">{{ site.name }}</a></h1>
-					
+				    <h1 class="title"><a href="{{ site.baseurl }}/" title="首页">{{ site.name }}</a></h1>
 					<div style="font-family:微软雅黑; font-size: 16px">
-						<div style="float:left;text-align:left" >(热爱技术，追求高效的code)</div>
+						<div style="float:left;text-align:left; vertical-align:center;" >
+							<span>(热爱技术，高效Code)</span>&nbsp;&nbsp;&nbsp;&nbsp;
+							<a href="{{ site.baseurl }}/" title="标签列表">博客</a>&nbsp;
+							<a href="{{ site.baseurl }}/tags.html" title="标签列表">标签</a>&nbsp;
+							<a href="{{ site.baseurl }}/about.html" title="About me">关于</a>&nbsp;
+						</div>
 						<div style="float:right;text-align:right">
-							  <a href="{{ site.baseurl }}/tags.html" title="标签列表">标签列表</a>&nbsp;
-							  <input type="text" id="j_search" class="j_search" style="height:27px;size:30px;line-height:27px;margin:0px;padding;0px;vertical-align:center;" placeholder="站内搜索" required /> 
-							  <a target="_blank" href="http://feed.feedsky.com/YhzhtksBlog">
+							<input type="text" id="j_search" class="j_search" style="height:27px;size:30px;line-height:27px;margin:0px;padding;0px;vertical-align:center;" placeholder="站内搜索" required /> 
+							<a target="_blank" href="http://feed.feedsky.com/YhzhtksBlog">
 								<img src="http://yhzhtk.info/images/rss.png" width="23px" height="23px" style="vertical-align:middle;">RSS订阅</img>
-							  </a>
+							</a>
 						</div>
 					</div>
 					<br>
 				</div>
-				
 				   <hr/>
 				   <div style="font-family:微软雅黑,tahoma,宋体,rockwell,verdana,sans-serif; font-size: 16px;line-height: 28px;">
 					{{ content }}
 				   </div>
-				   <br/>
-				   <div style="width:50%">
+				   <div style="width:80%; margin-left: auto; margin-right: auto;">
 					  <hr/>
-					  <a href="{{ site.baseurl }}/index.html">首页</a>&nbsp;&nbsp;<a href="https://github.com/Yhzhtk">我的GitHub</a>&nbsp;&nbsp;By&nbsp;<a href ="{{ site.baseurl }}/gh-pages-guide.html" title="翻译GitHub Pages">GitHub Pages</a>
+					  <span>©2013 <a href="{{ site.baseurl }}/">Yhzhtk</a>&nbsp;&nbsp;&nbsp;&nbsp;<a target="_blank" href="https://github.com/Yhzhtk">View me on GitHub</a></span>
+					  <span style="float:right"> 
+						Powered by&nbsp;<a target="_blank" href ="http://jekyllrb.com/" title="Jekyll">Jekyll</a> & <a target="_blank" href ="http://twitter.github.io/bootstrap/" title="Bootstrap">Bootstrap</a>
+					  </span>
 				   <br/><br/>
 				   </div>
 				 </div>

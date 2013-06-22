@@ -7,6 +7,7 @@ http://yhzhtk.info/
 
 http://yhzhtk.info/feed.xml
 http://yhzhtk.info/tags.html
+http://yhzhtk.info/about.html
 http://yhzhtk.info/sitemap.txt
 http://yhzhtk.info/404.html
 http://yhzhtk.info/gh-pages-guide.html
