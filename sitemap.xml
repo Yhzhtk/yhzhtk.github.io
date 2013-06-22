@@ -1,0 +1,63 @@
+---
+layout: nil
+title: sitemap
+---
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+	<url>
+		<loc>http://yhzhtk.info/</loc>
+		<priority>1</priority>
+		<lastmod>2013-06-22</lastmod>
+		<changefreq>always</changefreq>
+	</url>
+	<url>
+		<loc>http://yhzhtk.info/page2/</loc>
+		<priority>1</priority>
+		<lastmod>2013-06-22</lastmod>
+		<changefreq>always</changefreq>
+	</url>
+	<url>
+		<loc>http://yhzhtk.info/page3/</loc>
+		<priority>1</priority>
+		<lastmod>2013-06-22</lastmod>
+		<changefreq>always</changefreq>
+	</url>
+	<url>
+		<loc>http://yhzhtk.info/404.html</loc>
+		<priority>1</priority>
+		<lastmod>2013-06-22</lastmod>
+		<changefreq>always</changefreq>
+	</url>
+	<url>
+		<loc>http://yhzhtk.info/about.html</loc>
+		<priority>1</priority>
+		<lastmod>2013-06-22</lastmod>
+		<changefreq>always</changefreq>
+	</url>
+	<url>
+		<loc>http://yhzhtk.info/feed.xml</loc>
+		<priority>1</priority>
+		<lastmod>2013-06-22</lastmod>
+		<changefreq>always</changefreq>
+	</url>
+	<url>
+		<loc>http://yhzhtk.info/sitemap.txt</loc>
+		<priority>1</priority>
+		<lastmod>2013-06-22</lastmod>
+		<changefreq>always</changefreq>
+	</url>
+	<url>
+		<loc>http://yhzhtk.info/tags.html</loc>
+		<priority>1</priority>
+		<lastmod>2013-06-22</lastmod>
+		<changefreq>always</changefreq>
+	</url>
+
+	{% for post in site.posts %}
+	<url>
+		<loc>{{ site.url }}{{ post.url }}</loc>
+		<priority>1</priority>
+		<lastmod>{{ post.date | date: "%Y-%m-%d" }}</lastmod>
+		<changefreq>always</changefreq>
+	</url>
+	{% endfor %}
+</urlset>

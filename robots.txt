@@ -1,0 +1,7 @@
+# allow-all
+
+Sitemap: http://yhzhtk.info/sitemap.txt
+Sitemap: http://yhzhtk.info/sitemap.xml
+
+User-agent: *
+Allow: /
