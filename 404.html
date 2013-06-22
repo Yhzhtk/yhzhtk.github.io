@@ -1,46 +1,79 @@
 <html>
-　　<head>
-		<link href="/favicon-16.ico" rel="shortcut icon">
-　　	<meta http-equiv="content-type" content="text/html; charset=utf-8">
-		<link href="/bootstrap/css/bootstrap.css" rel="stylesheet">
-		<link href="/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
-		<script>
-		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-		  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-		
-		  ga('create', 'UA-41586919-1', 'yhzhtk.info');
-		  ga('send', 'pageview');
-		</script>
-　　　　<title>404 页面未找到</title>
-　　</head>
-    <body style="background-image : url(/images/bg.jpg);">
+	<head>
+		<link href="/blog/favicon.ico" rel="shortcut icon">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+		<meta name="author" content="yhzhtk">
+		<meta name="description" content="Yhzhtk's Blog，记录技术的点点滴滴。托管于github，使用jekyll生成博客，disqus评论，以及其他免费查询，感谢开源带来的方便和高效。">
+		<meta name="keywords" content="Yhzhtk, Blog, 博客, 技术">
+		<link href="/blog/bootstrap/css/bootstrap.css" rel="stylesheet">
+		<link href="/blog/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+		<script type="text/javascript" src="/blog/javascripts/google-analytics.js"></script>
+		<link rel="stylesheet" href="/blog/stylesheets/jquery-ui.css">
+<script type="text/javascript" src="/blog/javascripts/jquery.js"></script>
+<script type="text/javascript" src="/blog/javascripts/jquery-ui.js"></script>
+<script>
+$(function() {
+      $.ajax({
+          url: "/blog/search-data.xml",
+          dataType: "xml",
+          success: function( xmlResponse ) {
+             var data = $( "article", xmlResponse ).map(function() {
+                  return {
+                      value: $( "title", this ).text() + ", " +
+                          ( $.trim( $( "date", this ).text() ) ),
+                      desc: $("description", this).text(),
+                      url: $("url", this).text()
+                  };
+              }).get();
+
+              $( "#j_search" ).autocomplete({
+                  source: data,
+                  minLength: 0,
+                  select: function( event, ui ) {
+                    window.location.href = ui.item.url;
+                  }
+              });
+          }
+      });
+  });
+
+</script>
+		<title>404网页未找到 - Yhzhtk's Blog</title>
+	</head>
+    <body style="background-image : url(/blog/images/bg.jpg);">
 		 <div class="container">
 			<div class="site">
-				<div style="width:80%;margin:0px auto;">
+				<div style="width:70%;margin:0px auto;">
 				<div class="header">
-				    <h1 class="title"><a href="/index.html" title="首页">Yhzhtk's Blog</a></h1>
+					<br/>
+				    <h1 class="title"><a href="/blog/" title="首页">Yhzhtk's Blog</a></h1>
 					<div style="font-family:微软雅黑; font-size: 16px">
-						<div style="float:left;text-align:left" >(热爱技术，追求高效的code)</div>
+						<div style="float:left;text-align:left; vertical-align:center;" >
+							<span>(热爱技术，高效Code)</span>&nbsp;&nbsp;&nbsp;&nbsp;
+							<a href="/blog/" title="标签列表">博客</a>&nbsp;
+							<a href="/blog/tags.html" title="标签列表">标签</a>&nbsp;
+							<a href="/blog/about.html" title="About me">关于</a>&nbsp;
+						</div>
 						<div style="float:right;text-align:right">
-							<a target="_blank" href="/feed.xml">
-								<img src="/images/rss.png" width="23px" height="23px"> RSS订阅</img>
+							<input type="text" id="j_search" class="j_search" style="height:27px;size:30px;line-height:27px;margin:0px;padding;0px;vertical-align:center;" placeholder="站内搜索" required /> 
+							<a target="_blank" href="http://feed.feedsky.com/YhzhtksBlog">
+								<img src="http://yhzhtk.info/images/rss.png" width="23px" height="23px" style="vertical-align:middle;">RSS订阅</img>
 							</a>
 						</div>
 					</div>
 					<br>
 				</div>
 				   <hr/>
-				   <div style="font-family:微软雅黑,tahoma,宋体,rockwell,verdana,sans-serif; font-size: 18px;line-height: 32px;">
-					    <center><h3>对不起，你请求的页面未找到。<a href="/blog/index.html">返回首页</a></h3><center>
-	<script type="text/javascript" src="http://www.qq.com/404/search_children.js" charset="utf-8"></script>
-
+				   <div style="font-family:微软雅黑,tahoma,宋体,rockwell,verdana,sans-serif; font-size: 16px;line-height: 28px;">
+					<center><h3>对不起，你请求的页面未找到。<a href="/">返回首页</a></h3><center>
+<script type="text/javascript" src="http://www.qq.com/404/search_children.js" charset="utf-8"></script>
 				   </div>
-				   <br/>
-				   <div style="width:50%">
+				   <div style="width:80%; margin-left: auto; margin-right: auto;">
 					  <hr/>
-					  <a href="/index.html">首页</a>&nbsp;&nbsp;<a href="https://github.com/Yhzhtk">我的GitHub</a>&nbsp;&nbsp;By&nbsp;<a href ="/gh-pages-guide.html" title="翻译GitHub Pages">GitHub Pages</a>
+					  <span>©2013 <a href="/blog/">Yhzhtk</a>&nbsp;&nbsp;&nbsp;&nbsp;<a target="_blank" href="https://github.com/Yhzhtk">View me on GitHub</a></span>
+					  <span style="float:right"> 
+						Powered by&nbsp;<a target="_blank" href ="http://jekyllrb.com/" title="Jekyll">Jekyll</a> & <a target="_blank" href ="http://twitter.github.io/bootstrap/" title="Bootstrap">Bootstrap</a>
+					  </span>
 				   <br/><br/>
 				   </div>
 				 </div>
@@ -48,4 +81,3 @@
         </div>
     </body>
 </html>
-
