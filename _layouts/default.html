@@ -37,30 +37,44 @@
 				   <hr/>
 				   <div>
 					   <div class="leftdiv" style="width:70%;float:left;">
-						   <div style="font-family:微软雅黑,tahoma,宋体,rockwell,verdana,sans-serif; font-size: 16px;line-height: 28px;">
+						   <div style="font-family:微软雅黑,tahoma,宋体,rockwell,verdana,sans-serif; font-size: 16px;line-height: 32px;">
 							{{ content }}
 						   </div>
 					   </div>
-					   <div class="rightdiv" style="width:30%;float:left; ">
-							<br/>
+					   <div class="rightdiv" style="width:30%;float:left;font-family:微软雅黑,tahoma,宋体,rockwell,verdana,sans-serif; font-size: 15px;line-height: 30px; ">
 							<div style="width:90%; margin-left: auto; margin-right: auto;"> 
 								<section>
-									<h3>分类标签</h3>
+									<h4>分类标签</h4>
 									{% for tag in site.tags %}
-										<a href="#{{ tag[0] }}">{{ tag[0] }}<SUP> {{ tag[1].size }}</SUP></a>&nbsp;&nbsp;&nbsp;
+										<a href="{{ site.baseurl }}/tags.html#{{ tag[0] }}">{{ tag[0] }}</a><sup>{{ tag[1].size }}</sup>&nbsp;&nbsp;
 									{% endfor %}
 								</section>
 								<section>
-									<h3>最新博客</h3>
-									<ul class="posts">
-										{% for post in site.posts %}
+									<h4>最新博文</h4>
+									<ul type="circle">
+										{% for post in site.posts limit:10 %}
 										<li><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></li>
 										{% endfor %}
 									</ul>
 								</section>
 								<section>
-									<h3>最新评论</h3>
-									<script type="text/javascript" src="http://yhzhtk.disqus.com/recent_comments_widget.js?num_items=6&hide_avatars=0&avatar_size=32&excerpt_length=20"></script>
+									<h4>最新评论</h4>
+									<script type="text/javascript" src="http://yhzhtk.disqus.com/recent_comments_widget.js?num_items=5&hide_avatars=0&avatar_size=32&excerpt_length=20"></script>
+								</section>
+								<section>
+									<h4>Feed订阅</h4>
+									<center>
+									<div>
+										<a target="_blank" href="http://www.xianguo.com/subscribe.php?url=http://feed.feedsky.com/YhzhtksBlog"><img src="http://img.feedsky.com/images/icon_subshot02_xianguo.gif" border="0" alt="订阅到鲜果"></a>
+										<a target="_blank" href="http://www.zhuaxia.com/add_channel.php?url=http://feed.feedsky.com/YhzhtksBlog"><img src="http://img.feedsky.com/images/icon_subshot02_zhuaxia.gif" border="0" alt="订阅到抓虾"></a>
+										<a target="_blank" href="http://fusion.google.com/add?feedurl=http://feed.feedsky.com/YhzhtksBlog"><img src="http://img.feedsky.com/images/icon_subshot02_google.gif" border="0" alt="google reader"></a>
+										<a target="_blank" href="http://add.my.yahoo.com/rss?url=http://feed.feedsky.com/YhzhtksBlog"><img src="http://img.feedsky.com/images/icon_subshot02_yahoo.gif" border="0" alt="my yahoo"></a>
+										<a target="_blank" href="http://reader.youdao.com/b.do?keyfrom=feedsky&amp;url=http://feed.feedsky.com/YhzhtksBlog"><img src="http://img.feedsky.com/images/icon_subshot02_youdao.gif" border="0" alt="订阅到有道"></a>
+										<a target="_blank" href="http://mail.qq.com/cgi-bin/feed?u=http://feed.feedsky.com/YhzhtksBlog"><img src="http://img.feedsky.com/images/icon_subshot02_qq.gif" border="0" alt="订阅到QQ邮箱"></a>
+										<br/>
+										<a href="http://feed.feedsky.com/YhzhtksBlog" target="_blank"><img border="0" src="http://img.feedsky.com/images/icon_sub_c1s11.gif" alt="feedsky" vspace="2"  style="margin-bottom:3px" >更多订阅</a>
+									</div>
+									</center>
 								</section>
 							</div>
 					   </div>
