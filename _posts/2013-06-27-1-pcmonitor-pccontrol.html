@@ -9,7 +9,7 @@ tags: [电脑监控]
 
 <p style="margin-left:20px">&nbsp; &nbsp; &nbsp; &nbsp;运行在需要控制的电脑上，接受PCControl发送信号并处理。获取文件、查看桌面等几乎所有远程桌面的功能，更重要的是在可以在对方不知情的情况下操作。</p>
 
-<p style="margin-left:20px">&nbsp; &nbsp; &nbsp; &nbsp;被控端打开之后没有任何反应，但是打开任务管理器会发现多了一个进程PCMonitor.exe，他随时监听着PCControl发来的信号并处理。</p>
+<p style="margin-left:20px">&nbsp; &nbsp; &nbsp; &nbsp;被控端打开之后没有任何反应，但是打开任务管理器会发现多了一个进程PCMonitor.exe，他随时监听着PCControl发来的信号并处理。并且会每隔10秒在C:\PCMonitor中保存一次桌面截图和一次当前运行的进程信息（csv乱码可以文本形式打开）。</p>
 
 <p style="margin-left:20px">&nbsp; &nbsp; &nbsp; &nbsp;下载地址：<a href="https://github.com/Yhzhtk/PCMonitor/blob/master/PCMonitor/bin/Debug/PCMonitor.exe?raw=true">被控端</a></p>
 
@@ -18,7 +18,7 @@ tags: [电脑监控]
 
 <p><strong>PCControl&mdash;控制端</strong></p>
 
-<p style="margin-left:20px">&nbsp; &nbsp; &nbsp; &nbsp;电脑监控软件&mdash;控制端。 完全控制PCMonitor端的电脑。获取文件、查看桌面等几乎所有远程桌面的功能，更重要的是在可以在对方不知情的情况下操作。</p>
+<p style="margin-left:20px">&nbsp; &nbsp; &nbsp; &nbsp;电脑监控软件&mdash;控制端。 完全控制PCMonitor端的电脑。获取文件、查看桌面等几乎所有远程桌面的功能，更重要的是在可以在对方不知情的情况下操作，打开会在最前面显示，如需操作其他内容可以最小化，最小化后窗口在屏幕左下角。</p>
 
 <p style="margin-left:20px">&nbsp; &nbsp; &nbsp; &nbsp;下载地址：<a href="http://github.com/Yhzhtk/PCContorl/blob/master/PCContorl/bin/Debug/PCContorl.exe?raw=true">控制端</a></p>
 
@@ -44,4 +44,4 @@ tags: [电脑监控]
 
 <p>还有很多命令可以用，具体查看help，包括函数名和参数。使用命令的格式为： 命令（函数名）◇参数（如果有多个函数，用□区分）</p>
 
-<p style="font-size:10px">监控谨用于分享，勿用于非法用途，在使用中造成的损失或其他责任与作者无关。</p>
+<p style="font-size:10px; color:red">项目设计之初是为了远程控制自己的电脑，勿用于非法用途，在使用中造成的损失或其他责任与作者无关。</p>
