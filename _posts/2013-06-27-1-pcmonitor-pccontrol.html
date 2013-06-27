@@ -1,0 +1,47 @@
+---
+layout: post
+title: PCControl,PCMonitor - 电脑监控软件
+tags: [电脑监控]
+---
+<p>大三的时候写过一个电脑监控软件，包括两个项目，PCMonitor（被控端）和PCControl（控制端）。</p>
+
+<p><strong>PCMonitor&mdash;被控端</strong></p>
+
+<p style="margin-left:20px">&nbsp; &nbsp; &nbsp; &nbsp;运行在需要控制的电脑上，接受PCControl发送信号并处理。获取文件、查看桌面等几乎所有远程桌面的功能，更重要的是在可以在对方不知情的情况下操作。</p>
+
+<p style="margin-left:20px">&nbsp; &nbsp; &nbsp; &nbsp;被控端打开之后没有任何反应，但是打开任务管理器会发现多了一个进程PCMonitor.exe，他随时监听着PCControl发来的信号并处理。</p>
+
+<p style="margin-left:20px">&nbsp; &nbsp; &nbsp; &nbsp;下载地址：<a href="https://github.com/Yhzhtk/PCMonitor/blob/master/PCMonitor/bin/Debug/PCMonitor.exe?raw=true">被控端</a></p>
+
+<p style="margin-left:20px">&nbsp; &nbsp; &nbsp; &nbsp;源码地址：<a href="https://github.com/Yhzhtk/PCMonitor" target="_blank">https://github.com/Yhzhtk/PCMonitor</a></p>
+<!--break-->
+
+<p><strong>PCControl&mdash;控制端</strong></p>
+
+<p style="margin-left:20px">&nbsp; &nbsp; &nbsp; &nbsp;电脑监控软件&mdash;控制端。 完全控制PCMonitor端的电脑。获取文件、查看桌面等几乎所有远程桌面的功能，更重要的是在可以在对方不知情的情况下操作。</p>
+
+<p style="margin-left:20px">&nbsp; &nbsp; &nbsp; &nbsp;下载地址：<a href="http://github.com/Yhzhtk/PCContorl/blob/master/PCContorl/bin/Debug/PCContorl.exe?raw=true">控制端</a></p>
+
+<p style="margin-left:20px">&nbsp; &nbsp; &nbsp; &nbsp;源码地址：<a href="https://github.com/Yhzhtk/PCContorl" target="_blank">https://github.com/Yhzhtk/PCContorl</a></p>
+
+<p>示例图片:</p>
+
+<p>1、获取被控端的桌面</p>
+
+<p><img alt="" src="{{ site.baseurl }}\images\20130627\0.jpg" /></p>
+
+<p>2、查看被控端的磁盘文件</p>
+
+<p><img alt="" src="{{ site.baseurl }}\images\20130627\1.jpg" /></p>
+
+<p>3、下载被控端磁盘的文件</p>
+
+<p><img alt="" src="{{ site.baseurl }}\images\20130627\2.jpg" /></p>
+
+<p>4、给被控端发送消息</p>
+
+<p><img alt="" src="{{ site.baseurl }}\images\20130627\3.jpg" /></p>
+
+<p>还有很多命令可以用，具体查看help，包括函数名和参数。使用命令的格式为： 命令（函数名）◇参数（如果有多个函数，用□区分）</p>
+
+<p style="font-size:10px">监控谨用于分享，勿用于非法用途，在使用中造成的损失或其他责任与作者无关。</p>
