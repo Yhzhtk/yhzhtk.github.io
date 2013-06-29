@@ -1,0 +1,126 @@
+---
+layout: post
+title: Python 使用 turtle 绘图
+tags: [python]
+---
+{% include syntax-python.html %}
+<p>今天继续看Python，发现一个绘图的包turtle，非常简单和有趣。turtle（中文海龟的意思，可能因为默认的demo有一只乌龟），据说海龟绘图以“最适合教给孩子的编程语言”而闻名。</p>
+
+<p>从Python2.5开始，turtle被包含在Python库中，官网文档在：<a target="_blank" href="http://docs.python.org/2/library/turtle.html">turtle — Turtle graphics for Tk</a></p>
+
+<p>下面给出一个实例，这是一个画五角星的简单demo：</p>
+
+<center><img alt="绘图Demo" src="{{ site.baseurl }}/images/20130630/0.gif" /></center>
+
+<!--break-->
+
+<pre class="brush: python;">
+# -*- coding: utf-8 -*-
+import turtle
+import time
+
+turtle.forward(100)
+turtle.right(144)
+turtle.forward(100)
+turtle.right(144)
+turtle.forward(100)
+turtle.right(144)
+turtle.forward(100)
+turtle.right(144)
+turtle.forward(100)
+turtle.right(144)
+
+time.sleep(3)
+</pre>
+
+<p><span style="line-height:1.6em">在使用中发现一个问题：</span></p>
+
+<pre>
+错误框标题是Microsoft Visual C++ Runtime Library
+内容是：Runtime Error！
+Program c:\Python27\python.exe
+R6025
+-pure virtual function call
+</pre>
+
+<p>网上找了一下，比较靠谱的解释：<a target="_blank" href="http://www.crifan.com/python_3_2_2_runtime_error_r6025_pure_virtual_function_call/">Runtime Error! R6025 pure virtual function call</a></p>
+
+<p>下面再给出一个复杂的demo，画一个圆再画出多个正方形：</p>
+
+<pre class="brush: python;">
+# -*- coding: utf-8 -*-
+
+# the turtle module provides turtle graphics primitives, it uses a Tkinter canvas
+# turtle is part of the Tkinter library (lib-tk)
+# tested with Python24  vegaseat  30jun2005
+
+from turtle import *
+import time
+
+# pen/turtle starts at the center (x=0, y=0) of the turtle display area
+
+color("green")
+# pen up, don't draw
+up()
+# centers the circle
+goto(0,-50)
+# pen down, draw
+down()
+# radius=50  center is 50 radius units above the turtle
+circle(50)
+up()
+# center the turtle again
+goto(0,0)
+down()
+
+# draw blue 100x100 squares
+color("blue")
+for deg in range(0, 61, 6):
+    right(90 + deg)
+    forward(100)
+    right(90)
+    forward(100)
+    right(90)
+    forward(100)
+    right(90)
+    forward(100)
+    
+up()
+goto(-150,-120)
+color("red")
+write("Done!")
+
+time.sleep(5)  # wait 5 seconds
+</pre>
+
+<p>也可以在IDLE命令行中使用turtle，用命令的方式演示绘图：</p>
+
+<pre class="brush: python;">
+>>> from turtle import *
+>>> reset()
+>>> shape("square")
+>>> color("blue", "red")
+>>> resizemode("user")   #  at first no visual effect, but ...
+>>> turtlesize(2,3,5)
+>>> fd(100)
+>>> left(45)
+>>> pensize(8)
+>>> fd(100)
+>>> left(90)
+>>> pencolor("green")
+>>> fd(100)
+>>> turtlesize(1,5)
+>>> left(1080)
+>>> stamp()
+8
+>>> left(45)
+>>> ht()
+>>> fd(100)
+>>> stamp()
+9
+>>> left(45)
+>>> fd(100)
+>>> stamp()
+10
+>>>
+</pre>
