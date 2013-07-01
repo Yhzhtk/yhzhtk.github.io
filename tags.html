@@ -11,7 +11,7 @@ title: 标签
 <ul>
 	{% for tag in site.tags %}
 	  <li>
-		<span id="{{ tag[0] }}">{{ tag[0] }} ({{ tag[1].size }})</span>
+		<span class="label" id="{{ tag[0] }}">{{ tag[0] }} ({{ tag[1].size }})</span>
 		<span>
 		  <ul>
 		  {% for post in tag[1] %}

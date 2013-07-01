@@ -5,7 +5,7 @@ layout: postdefault
 <p class="meta">
 	{{ page.date | date: "%Y-%m-%d" }} &nbsp;&nbsp;
 	{% for tag in page.tags %}
-		<a href="{{ site.baseurl }}/tags.html#{{ tag }}" title="标签 {{ tag }}">{{ tag }}</a>&nbsp;
+		<a class="label" href="{{ site.baseurl }}/tags.html#{{ tag }}" title="标签 {{ tag }}">{{ tag }}</a>&nbsp;
 	{% endfor %}
 </p>
 
