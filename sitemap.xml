@@ -22,12 +22,6 @@ title: sitemap
 		<changefreq>always</changefreq>
 	</url>
 	<url>
-		<loc>http://yhzhtk.info/404.html</loc>
-		<priority>1</priority>
-		<lastmod>2013-06-22</lastmod>
-		<changefreq>always</changefreq>
-	</url>
-	<url>
 		<loc>http://yhzhtk.info/about.html</loc>
 		<priority>1</priority>
 		<lastmod>2013-06-22</lastmod>
@@ -35,12 +29,6 @@ title: sitemap
 	</url>
 	<url>
 		<loc>http://yhzhtk.info/feed.xml</loc>
-		<priority>1</priority>
-		<lastmod>2013-06-22</lastmod>
-		<changefreq>always</changefreq>
-	</url>
-	<url>
-		<loc>http://yhzhtk.info/sitemap.txt</loc>
 		<priority>1</priority>
 		<lastmod>2013-06-22</lastmod>
 		<changefreq>always</changefreq>
