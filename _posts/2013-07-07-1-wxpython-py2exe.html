@@ -1,0 +1,94 @@
+---
+layout: post
+title: Python使用wxPython、py2exe可视化编程
+tags: [wxPython, py2exe, python]
+---
+<p>&nbsp; &nbsp; 今天学了学Python的可视化编程。使用wxPython来做界面非常的简单，只是不能像C#一样拖动控件，需要自行写代码布局。在完成编写之后，由于直接的py文件不能再没有安装python的电脑上运行，能否有一个打包成在任意电脑都能运行的工具，网上找找发现了py2exe正好可以完成这个功能。wxPython和py2exe都是开源免费软件。</p>
+
+<p><strong>wxPython</strong>: <a target="_blank" href="http://wxpython.org/download.php#binaries">下载地址</a>，下载后双击安装即可，安装程序会自动安装到对应python\Scripts下。</p>
+
+<p><strong>py2exe</strong>:<a target="_blank" href="http://sourceforge.net/projects/py2exe/files/py2exe/">下载地址</a>，同样双击即可安装，注意下载要对应使用的Python版本。</p>
+
+<p>下面分别示例说明wxPython和py2exe的简单使用。</p>
+<!--break-->
+<p>文件名：wxTest.py：</p>
+
+{% include syntax-python.html %}
+<pre class="brush: python">
+# -*- coding: cp936 -*-
+'''MainWindow类完成最简单的编辑功能，添加一个主菜单，两个子菜单（about和exit）'''
+import wx
+
+class MainWindow(wx.Frame):
+  '''定义一个窗口类'''
+  def __init__(self, parent, title):
+    wx.Frame.__init__(self, parent, title=title, size=(300, 300))
+    self.control = wx.TextCtrl(self, style=wx.TE_MULTILINE)
+
+    self.setupMenuBar()
+    self.Show(True)
+
+  def setupMenuBar(self):
+    self.CreateStatusBar()
+
+    menubar = wx.MenuBar()
+    menufile = wx.Menu()
+
+    mnuabout = menufile.Append(wx.ID_ABOUT, '&About', 'about this shit')
+    mnuexit = menufile.Append(wx.ID_EXIT, 'E&xit', 'end program')
+
+    menubar.Append(menufile, '&File')
+
+    #事件绑定
+    self.Bind(wx.EVT_MENU, self.onAbout, mnuabout)
+    self.Bind(wx.EVT_MENU, self.onExit, mnuexit)
+	
+    self.SetMenuBar(menubar)
+
+  def onAbout(self, evt):
+      '''点击about的事件响应'''
+      dlg = wx.MessageDialog(self, 'This app is a simple text editor', 'About my app', wx.OK)
+      dlg.ShowModal()
+      dlg.Destroy()
+
+  def onExit(self, evt):
+      '''点击退出'''
+      self.Close(True)
+
+
+app = wx.App(False)
+frame = MainWindow(None, 'Small Editor')
+app.MainLoop() #循环监听事件
+</pre>
+
+<p>编辑好改文件后，使用py2exe将Python脚本编译成Windows可执行文件，这样就不需要Python解释器了。要使用py2exe，首先要编写一个编译脚本，然后通过Python运行编译脚本即可将其他的脚本编译成可执行文件。以下实例是将要编译成可执行文件的脚本，文件名：setup.py</p>
+
+<pre class="brush: python;">
+import distutils
+import py2exe
+
+distutils.core.setup(windows=['wxTest.py'])
+</pre>
+
+<p>在setup.py中除了导入必需的模块以外，只有一条语句：</p>
+
+<pre class="brush: python;">
+distutils.core.setup(windows=[&#39;wxTest.py&#39;])
+</pre>
+
+<p>方括号中就是要编译的脚本名，前边的windows 表示将其编译成GUI程序。如果要编译命令行界面的可执行文件，只要将windows改为console，如果需要将脚本编译成Windows服务，则可以使用service选项。</p>
+
+<p>都编辑好之后，将wxTest.py和setup.py放在同一个路径下，cmd进入该路径，输入：</p>
+
+<pre>setup.py&nbsp; py2exe</pre>
+
+<p>如果在运行时报以下错误：</p>
+
+<pre>error: MSVCP90.dll: No such file or directory</pre>
+
+<p>是因为没有找到MSVCP90.dll，在windows目录下搜索MSVCP90.dll这个文件，然后拷到python安装目录的DLLs下就可以了。</p>
+
+<p>运行结束之后，会在路径下生<span style="line-height:1.6em">成dist和 build两个目录。其中dist目录中就是编译生成的文件。如果要在其他未安装Python的机器上运行编译好的程序，只要将dist目录复制到其他机器上即可。双击运行wxTest.exe，如图:</span></p>
+
+<p><img alt="" src="{{ site.baseurl }}\images\20130707\0.jpg" /></p>
+
