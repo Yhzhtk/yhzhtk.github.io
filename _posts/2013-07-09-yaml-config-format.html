@@ -1,0 +1,123 @@
+---
+layout: post
+title: 直观全面的配置文件格式YAML
+tags: [yaml, python]
+---
+<p><span style="font-size:18px"><strong>1 概念</strong></span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; YAML是一种人们可以轻松阅读的数据序列化格式，并且它非常适合对动态编程语言中使用的数据类型进行编码。YAML是YAML Ain&#39;t Markup Language简写，和GNU(&quot;GNU&#39;s Not Unix!&quot;)一样，YAML是一个递归着说&ldquo;不&rdquo;的名字。不同的是，GNU对UNIX说不，YAML说不的对象是XML。YAML不是XML。它可以用作数据序列，配置文件，log文件，Internat信息和过滤。<br />
+<span style="font-size:18px"><strong>2 优点</strong></span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; YAML的可读性好。&nbsp;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; YAML和脚本语言的交互性好。&nbsp;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; YAML使用实现语言的数据类型。&nbsp;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; YAML有一个一致的信息模型。&nbsp;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; YAML易于实现。<br />
+<!--break-->
+<span style="font-size:18px"><strong>3 YAML的适用范围</strong></span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; 由于实现简单，解析成本很低，YAML特别适合在脚本语言中使用。列一下现有的语言实现：Ruby，Java，Perl，Python，PHP，OCaml，JavaScript。除了Java，其他都是脚本语言.&nbsp;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; YAML比较适合做序列化。因为它是宿主语言数据类型直转的。&nbsp;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; YAML做配置文件也不错。比如Ruby on Rails的配置就选用的YAML。对ROR而言，这很自然，也很省事.&nbsp;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; 由于兼容性问题，不同语言间的数据流转建议现在不要用YAML.&nbsp;<br />
+<span style="font-size:18px"><strong>4 YAML不足</strong></span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; YAML和XML不同，没有自己的数据类型的定义，而是使用实现语言的数据类型。这一点，有可能是出奇制胜的地方，也可能是一个败笔。如果兼容性保证的不好的话，YAML数据在不同语言间流转会有问题。<br />
+&nbsp; &nbsp; &nbsp; &nbsp; 假如兼容性没问题的话，YAML就太完美了。轻巧，敏捷，高效，简便，通用。<br />
+<span style="font-size:18px"><strong>5 JYaml简介</strong></span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; JYAML是YAML的Java实现。YAML使用实现语言的数据类型。我们看一下一些JYaml支持的Java数据类型：<br />
+&nbsp; &nbsp; &nbsp; &nbsp; 原始数据和封装类（比如int，java.lang.Integer）、JavaBean兼容对象（Structure支持）、Collection （sequence支持List 、Set）、Map （map支持）、Arrays （sequence支持） 、 &nbsp; &nbsp; &nbsp; &nbsp; BigInteger 和BigDecimal 、Date。<br />
+</p>
+
+<p>
+<small>
+参考文献：<br />
+1、《YAML 简介》&nbsp;<a target="_blank" href="http://www.ibm.com/developerworks/cn/xml/x-cn-yamlintro/index.html">http://www.ibm.com/developerworks/cn/xml/x-cn-yamlintro/index.html</a><br/>
+2、《YAML 对 XML 的改进》<a target="_blank" href="http://www.ibm.com/developerworks/cn/xml/x-matters/part23/">http://www.ibm.com/developerworks/cn/xml/x-matters/part23/</a><br/>
+3、<a target="_blank" href="http://jyaml.sourceforge.net/">http://jyaml.sourceforge.net/</a><br/>
+4、<a target="_blank" href="http://www.yaml.org/">http://www.yaml.org/</a><br/>
+以上转自：http://www.cnblogs.com/dbasys/archive/2007/06/11/2127620.html
+</small>
+</p>
+
+<p>看了YAML的概念和优缺点，我发现确实是用做配置文件的很不错的选择，结合工作中用到的配置文件来对比一下：</p>
+
+<p>
+<table border="1" width="100%">
+	<tbody>
+		<tr>
+			<td>properties</td>
+			<td>一行一条资源，很直观，配置很方便，但是功能很单一，不能有嵌套关系</td>
+		</tr>
+		<tr>
+			<td>xml</td>
+			<td>需要XML标签来标记，能表示任何数据结构，但是写配置文件会感觉很复杂，不直观</td>
+		</tr>
+		<tr>
+			<td>yaml</td>
+			<td>这个正好集成了以上二者的优点，很直观显示，又能表示全面配置属性关系</td>
+		</tr>
+	</tbody>
+</table>
+</p>
+
+<p>下面学习YAML的基本语法，拿Python示例吧，使用前需要安装<a target="_blank" href="http://pyyaml.org/wiki/PyYAML">PyYaml</a>：</p>
+
+{% include syntax-python.html %}
+<pre class="brush: python;">
+#coding: utf-8
+'''
+Created on 2013-6-8
+@author: yh
+'''
+
+import yaml
+
+y = {
+    'name': "The Cloak 'Colluin'",
+    'depth': 5,
+    'rarity': 45,
+    'weight': 10,
+    'cost': 50000,
+    'flags': [
+        'INT',
+        'WIS',
+        'SPEED',
+        'STEALTH'
+    ]
+}
+# 将对象序列化为字符串
+print yaml.dump(y)
+
+ystr = '''name: Tom Smith
+age: 37
+spouse:
+   name: Jane Smith0
+   age: 25
+   love: [red, yellow]
+children:
+ -  name: Jimmy Smith1
+    age: 15
+ -  name: Jenny Smith2
+    age: 12'''
+
+# 加载yaml字符串为对象，加载后默认是个Dict，直接用Dict的操作即可
+x = yaml.load(ystr)
+print x
+print x['spouse']['love'][0]
+print x['children'][1]['name']
+</pre>
+
+运行结果如下：
+<pre>
+cost: 50000
+depth: 5
+flags: [INT, WIS, SPEED, STEALTH]
+name: The Cloak 'Colluin'
+rarity: 45
+weight: 10
+
+{'age': 37, 'spouse': {'age': 25, 'love': ['red', 'yellow'], 'name': 'Jane Smith0'}, 'name': 'Tom Smith', 'children': [{'age': 15, 'name': 'Jimmy Smith1'}, {'age': 12, 'name': 'Jenny Smith2'}]}
+red
+Jenny Smith2
+</pre>
+
+<p>&nbsp; &nbsp; &nbsp; &nbsp; 由此可以看出，导入yaml包之后，使用yaml.dump就可以将对象序列化为字符串，使用yaml.load就可以加载文件或者字符串的yaml数据。加载yaml字符串为对象，加载后默认是个Dict，当成一个Dict使用就行啦。</p>
+
+<p>&nbsp; &nbsp; &nbsp; &nbsp; <strong>注意：缩进长度可以任意，但是一级内的缩进必须一致，在属性和值的冒号后面需要有空格，所有的字符串不能有引号，使用 - 与 - 对应 或者 [,]&nbsp;均可以表示List。</strong></p>
