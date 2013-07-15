@@ -1504,3 +1504,197 @@ git remote add origin git@github.com:daixu/WebApp.git 增加一个远程服务�
 <p>&nbsp;</p>
 
 <p>转自&nbsp;<a href="http://blog.csdn.net/sunboy_2050/article/details/7529841">http://blog.csdn.net/sunboy_2050/article/details/7529841</a></p>
+
+<p><strong>用户的git配置文件~/.gitconfig&nbsp;</strong></p>
+
+<div id="">
+<ol start="1">
+	<li>git&nbsp;config&nbsp;--global&nbsp;user.name&nbsp;&quot;Vito&nbsp;Zhou&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+	<li>git&nbsp;config&nbsp;--global&nbsp;user.email&nbsp;&quot;zhouwentao16@gmail.com&quot;&nbsp;&nbsp;</li>
+	<li>git&nbsp;config&nbsp;--global&nbsp;color.ui&nbsp;true&nbsp;&nbsp;</li>
+	<li>git&nbsp;config&nbsp;--global&nbsp;alias.co&nbsp;checkout&nbsp;&nbsp;</li>
+	<li>git&nbsp;config&nbsp;--global&nbsp;alias.ci&nbsp;commit&nbsp;&nbsp;</li>
+	<li>git&nbsp;config&nbsp;--global&nbsp;alias.st&nbsp;status&nbsp;&nbsp;</li>
+	<li>git&nbsp;config&nbsp;--global&nbsp;alias.br&nbsp;branch&nbsp;&nbsp;</li>
+	<li>git&nbsp;config&nbsp;--global&nbsp;core.editor&nbsp;&quot;mate&nbsp;-w&quot;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;设置Editor使用textmate &nbsp;</li>
+</ol>
+</div>
+
+<p><strong>查看、添加、提交、删除、找回，重置修改文件&nbsp;</strong></p>
+
+<div id="">
+<ol start="1">
+	<li>git&nbsp;help&nbsp;&lt;command&gt;&nbsp;&nbsp;#&nbsp;显示command的help&nbsp;&nbsp;</li>
+	<li>git&nbsp;show&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;显示某次提交的内容&nbsp;&nbsp;</li>
+	<li>git&nbsp;show&nbsp;$id&nbsp;&nbsp;</li>
+	<li>&nbsp;&nbsp;</li>
+	<li>git&nbsp;co&nbsp;&nbsp;--&nbsp;&lt;file&gt;&nbsp;&nbsp;&nbsp;#&nbsp;抛弃工作区修改&nbsp;&nbsp;</li>
+	<li>git&nbsp;co&nbsp;&nbsp;.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;抛弃工作区修改&nbsp;&nbsp;</li>
+	<li>&nbsp;&nbsp;</li>
+	<li>git&nbsp;add&nbsp;&lt;file&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;将工作文件修改提交到本地暂存区&nbsp;&nbsp;</li>
+	<li>git&nbsp;add&nbsp;.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;将所有修改过的工作文件提交暂存区&nbsp;&nbsp;</li>
+	<li>&nbsp;&nbsp;</li>
+	<li>git&nbsp;rm&nbsp;&lt;file&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;从版本库中删除文件&nbsp;&nbsp;</li>
+	<li>git&nbsp;rm&nbsp;&lt;file&gt;&nbsp;--cached&nbsp;&nbsp;#&nbsp;从版本库中删除文件，但不删除文件&nbsp;&nbsp;</li>
+	<li>&nbsp;&nbsp;</li>
+	<li>git&nbsp;reset&nbsp;&lt;file&gt;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;从暂存区恢复到工作文件&nbsp;&nbsp;</li>
+	<li>git&nbsp;reset&nbsp;--&nbsp;.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;从暂存区恢复到工作文件&nbsp;&nbsp;</li>
+	<li>git&nbsp;reset&nbsp;--hard&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;恢复最近一次提交过的状态，即放弃上次提交后的所有本次修改&nbsp;&nbsp;</li>
+	<li>&nbsp;&nbsp;</li>
+	<li>git&nbsp;ci&nbsp;&lt;file&gt;&nbsp;&nbsp;</li>
+	<li>git&nbsp;ci&nbsp;.&nbsp;&nbsp;</li>
+	<li>git&nbsp;ci&nbsp;-a&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;将git&nbsp;add,&nbsp;git&nbsp;rm和git&nbsp;ci等操作都合并在一起做&nbsp;&nbsp;</li>
+	<li>git&nbsp;ci&nbsp;-am&nbsp;&quot;some&nbsp;comments&quot;&nbsp;&nbsp;</li>
+	<li>git&nbsp;ci&nbsp;--amend&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;修改最后一次提交记录&nbsp;&nbsp;</li>
+	<li>&nbsp;&nbsp;</li>
+	<li>git&nbsp;revert&nbsp;&lt;$id&gt;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;恢复某次提交的状态，恢复动作本身也创建了一次提交对象&nbsp;&nbsp;</li>
+	<li>git&nbsp;revert&nbsp;HEAD&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;恢复最后一次提交的状态 &nbsp;</li>
+</ol>
+</div>
+
+<p><strong>查看文件diff&nbsp;</strong></p>
+
+<div id="">
+<ol start="1">
+	<li>git&nbsp;diff&nbsp;&lt;file&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;比较当前文件和暂存区文件差异&nbsp;&nbsp;</li>
+	<li>git&nbsp;diff&nbsp;&nbsp;</li>
+	<li>git&nbsp;diff&nbsp;&lt;$id1&gt;&nbsp;&lt;$id2&gt;&nbsp;&nbsp;&nbsp;#&nbsp;比较两次提交之间的差异&nbsp;&nbsp;</li>
+	<li>git&nbsp;diff&nbsp;&lt;branch1&gt;..&lt;branch2&gt;&nbsp;#&nbsp;在两个分支之间比较&nbsp;&nbsp;&nbsp;</li>
+	<li>git&nbsp;diff&nbsp;--staged&nbsp;&nbsp;&nbsp;#&nbsp;比较暂存区和版本库差异&nbsp;&nbsp;</li>
+	<li>git&nbsp;diff&nbsp;--cached&nbsp;&nbsp;&nbsp;#&nbsp;比较暂存区和版本库差异&nbsp;&nbsp;</li>
+	<li>git&nbsp;diff&nbsp;--stat&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;仅仅比较统计信息 &nbsp;</li>
+</ol>
+</div>
+
+<p><strong>查看提交记录&nbsp;</strong></p>
+
+<div id="">
+<ol start="1">
+	<li>git&nbsp;log&nbsp;&nbsp;</li>
+	<li>git&nbsp;log&nbsp;&lt;file&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;查看该文件每次提交记录&nbsp;&nbsp;</li>
+	<li>git&nbsp;log&nbsp;-p&nbsp;&lt;file&gt;&nbsp;&nbsp;&nbsp;#&nbsp;查看每次详细修改内容的diff&nbsp;&nbsp;</li>
+	<li>git&nbsp;log&nbsp;-p&nbsp;-2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;查看最近两次详细修改 &nbsp;</li>
+</ol>
+</div>
+
+<p><strong>Mac上可以使用tig代替diff和log，使用Homebrew安装：&nbsp;</strong></p>
+
+<div id="">
+<ol start="1">
+	<li>brew&nbsp;install&nbsp;tig &nbsp;</li>
+</ol>
+</div>
+
+<p><strong>Git 本地分支管理&nbsp;<br />
+查看、切换、创建和删除分支&nbsp;</strong></p>
+
+<div id="">
+<ol start="1">
+	<li>git&nbsp;br&nbsp;-r&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;查看远程分支&nbsp;&nbsp;</li>
+	<li>git&nbsp;br&nbsp;&lt;new_branch&gt;&nbsp;#&nbsp;创建新的分支&nbsp;&nbsp;</li>
+	<li>git&nbsp;br&nbsp;-v&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;查看各个分支最后提交信息&nbsp;&nbsp;</li>
+	<li>git&nbsp;br&nbsp;--merged&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;查看已经被合并到当前分支的分支&nbsp;&nbsp;</li>
+	<li>git&nbsp;br&nbsp;--no-merged&nbsp;&nbsp;#&nbsp;查看尚未被合并到当前分支的分支&nbsp;&nbsp;</li>
+	<li>&nbsp;&nbsp;</li>
+	<li>git&nbsp;co&nbsp;&lt;branch&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;切换到某个分支&nbsp;&nbsp;</li>
+	<li>git&nbsp;co&nbsp;-b&nbsp;&lt;new_branch&gt;&nbsp;#&nbsp;创建新的分支，并且切换过去&nbsp;&nbsp;</li>
+	<li>git&nbsp;co&nbsp;-b&nbsp;&lt;new_branch&gt;&nbsp;&lt;branch&gt;&nbsp;&nbsp;#&nbsp;基于branch创建新的new_branch&nbsp;&nbsp;</li>
+	<li>&nbsp;&nbsp;</li>
+	<li>git&nbsp;co&nbsp;$id&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;把某次历史提交记录checkout出来，但无分支信息，切换到其他分支会自动删除&nbsp;&nbsp;</li>
+	<li>git&nbsp;co&nbsp;$id&nbsp;-b&nbsp;&lt;new_branch&gt;&nbsp;&nbsp;#&nbsp;把某次历史提交记录checkout出来，创建成一个分支&nbsp;&nbsp;</li>
+	<li>&nbsp;&nbsp;</li>
+	<li>git&nbsp;br&nbsp;-d&nbsp;&lt;branch&gt;&nbsp;&nbsp;#&nbsp;删除某个分支&nbsp;&nbsp;</li>
+	<li>git&nbsp;br&nbsp;-D&nbsp;&lt;branch&gt;&nbsp;&nbsp;#&nbsp;强制删除某个分支&nbsp;(未被合并的分支被删除的时候需要强制)&nbsp;</li>
+</ol>
+</div>
+
+<p><strong>分支合并和rebase&nbsp;</strong></p>
+
+<div id="">
+<ol start="1">
+	<li>git&nbsp;merge&nbsp;&lt;branch&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;将branch分支合并到当前分支&nbsp;&nbsp;</li>
+	<li>git&nbsp;merge&nbsp;origin/master&nbsp;--no-ff&nbsp;&nbsp;#&nbsp;不要Fast-Foward合并，这样可以生成merge提交&nbsp;&nbsp;</li>
+	<li>&nbsp;&nbsp;</li>
+	<li>git&nbsp;rebase&nbsp;master&nbsp;&lt;branch&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;将master&nbsp;rebase到branch，相当于：&nbsp;&nbsp;</li>
+	<li>git&nbsp;co&nbsp;&lt;branch&gt;&nbsp;&amp;&amp;&nbsp;git&nbsp;rebase&nbsp;master&nbsp;&amp;&amp;&nbsp;git&nbsp;co&nbsp;master&nbsp;&amp;&amp;&nbsp;git&nbsp;merge&nbsp;&lt;branch&gt; &nbsp;</li>
+</ol>
+</div>
+
+<p><strong>Git补丁管理(方便在多台机器上开发同步时用)&nbsp;</strong></p>
+
+<div id="">
+<ol start="1">
+	<li>git&nbsp;diff&nbsp;&gt;&nbsp;../sync.patch&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;生成补丁&nbsp;&nbsp;</li>
+	<li>git&nbsp;apply&nbsp;../sync.patch&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;打补丁&nbsp;&nbsp;</li>
+	<li>git&nbsp;apply&nbsp;--check&nbsp;../sync.patch&nbsp;&nbsp;#&nbsp;测试补丁能否成功 &nbsp;</li>
+</ol>
+</div>
+
+<p><strong>Git暂存管理&nbsp;</strong></p>
+
+<div id="">
+<ol start="1">
+	<li>git&nbsp;stash&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;暂存&nbsp;&nbsp;</li>
+	<li>git&nbsp;stash&nbsp;list&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;列所有stash&nbsp;&nbsp;</li>
+	<li>git&nbsp;stash&nbsp;apply&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;恢复暂存的内容&nbsp;&nbsp;</li>
+	<li>git&nbsp;stash&nbsp;drop&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;删除暂存区 &nbsp;</li>
+</ol>
+</div>
+
+<p><strong>Git远程分支管理&nbsp;</strong></p>
+
+<div id="">
+<ol start="1">
+	<li>git&nbsp;pull&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;抓取远程仓库所有分支更新并合并到本地&nbsp;&nbsp;</li>
+	<li>git&nbsp;pull&nbsp;--no-ff&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;抓取远程仓库所有分支更新并合并到本地，不要快进合并&nbsp;&nbsp;</li>
+	<li>git&nbsp;fetch&nbsp;origin&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;抓取远程仓库更新&nbsp;&nbsp;</li>
+	<li>git&nbsp;merge&nbsp;origin/master&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;将远程主分支合并到本地当前分支&nbsp;&nbsp;</li>
+	<li>git&nbsp;co&nbsp;--track&nbsp;origin/branch&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;跟踪某个远程分支创建相应的本地分支&nbsp;&nbsp;</li>
+	<li>git&nbsp;co&nbsp;-b&nbsp;&lt;local_branch&gt;&nbsp;origin/&lt;remote_branch&gt;&nbsp;&nbsp;#&nbsp;基于远程分支创建本地分支，功能同上&nbsp;&nbsp;</li>
+	<li>&nbsp;&nbsp;</li>
+	<li>git&nbsp;push&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;push所有分支&nbsp;&nbsp;</li>
+	<li>git&nbsp;push&nbsp;origin&nbsp;master&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;将本地主分支推到远程主分支&nbsp;&nbsp;</li>
+	<li>git&nbsp;push&nbsp;-u&nbsp;origin&nbsp;master&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;将本地主分支推到远程(如无远程主分支则创建，用于初始化远程仓库)&nbsp;&nbsp;</li>
+	<li>git&nbsp;push&nbsp;origin&nbsp;&lt;local_branch&gt;&nbsp;&nbsp;&nbsp;#&nbsp;创建远程分支，&nbsp;origin是远程仓库名&nbsp;&nbsp;</li>
+	<li>git&nbsp;push&nbsp;origin&nbsp;&lt;local_branch&gt;:&lt;remote_branch&gt;&nbsp;&nbsp;#&nbsp;创建远程分支&nbsp;&nbsp;</li>
+	<li>git&nbsp;push&nbsp;origin&nbsp;:&lt;remote_branch&gt;&nbsp;&nbsp;#先删除本地分支(git&nbsp;br&nbsp;-d&nbsp;&lt;branch&gt;)，然后再push删除远程分支 &nbsp;</li>
+</ol>
+</div>
+
+<p><strong>Git远程仓库管理&nbsp;</strong></p>
+
+<div id="">
+<ol start="1">
+	<li>git&nbsp;remote&nbsp;-v&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;查看远程服务器地址和仓库名称&nbsp;&nbsp;</li>
+	<li>git&nbsp;remote&nbsp;show&nbsp;origin&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;查看远程服务器仓库状态&nbsp;&nbsp;</li>
+	<li>git&nbsp;remote&nbsp;add&nbsp;origin&nbsp;git@github:robbin/robbin_site.git&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;添加远程仓库地址&nbsp;&nbsp;</li>
+	<li>git&nbsp;remote&nbsp;set-url&nbsp;origin&nbsp;git@github.com:robbin/robbin &nbsp;</li>
+</ol>
+</div>
+
+<p><strong>创建远程仓库&nbsp;</strong></p>
+
+<div id="">
+<ol start="1">
+	<li>git&nbsp;clone&nbsp;--bare&nbsp;robbin_site&nbsp;robbin_site.git&nbsp;&nbsp;#&nbsp;用带版本的项目创建纯版本仓库&nbsp;&nbsp;</li>
+	<li>scp&nbsp;-r&nbsp;my_project.git&nbsp;git@git.csdn.net:~&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;将纯仓库上传到服务器上&nbsp;&nbsp;</li>
+	<li>&nbsp;&nbsp;</li>
+	<li>mkdir&nbsp;robbin_site.git&nbsp;&amp;&amp;&nbsp;cd&nbsp;robbin_site.git&nbsp;&amp;&amp;&nbsp;git&nbsp;--bare&nbsp;init&nbsp;#&nbsp;在服务器创建纯仓库&nbsp;&nbsp;</li>
+	<li>git&nbsp;remote&nbsp;add&nbsp;origin&nbsp;git@github.com:robbin/robbin_site.git&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;设置远程仓库地址&nbsp;&nbsp;</li>
+	<li>git&nbsp;push&nbsp;-u&nbsp;origin&nbsp;master&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;客户端首次提交&nbsp;&nbsp;</li>
+	<li>git&nbsp;push&nbsp;-u&nbsp;origin&nbsp;develop&nbsp;&nbsp;#&nbsp;首次将本地develop分支提交到远程develop分支，并且track&nbsp;&nbsp;</li>
+	<li>&nbsp;&nbsp;</li>
+	<li>git&nbsp;remote&nbsp;set-head&nbsp;origin&nbsp;master&nbsp;&nbsp;&nbsp;#&nbsp;设置远程仓库的HEAD指向master分支 &nbsp;</li>
+</ol>
+</div>
+
+<p><strong>也可以命令设置跟踪远程库和本地库&nbsp;</strong></p>
+
+<div id="">
+<ol start="1">
+	<li>git&nbsp;branch&nbsp;--set-upstream&nbsp;master&nbsp;origin/master&nbsp;&nbsp;</li>
+	<li>git&nbsp;branch&nbsp;--set-upstream&nbsp;develop&nbsp;origin/develop</li>
+</ol>
+</div>
+
+<p>来自Robbin，原文链接：<a href="http://robbinfan.com/blog/34/git-common-command" target="_blank">http://robbinfan.com/blog/34/git-common-command</a></p>
