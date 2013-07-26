@@ -1,0 +1,59 @@
+---
+layout: post
+title: Python+Eric+PyQt 可视化编程的问题集
+tags: [Eric, PyQt, python]
+---
+<p>&nbsp; Python+Eric+PyQt 非常不错的可视化布局编写Python界面程序的套件，安装教程和使用方法Google很多，这里就不说了。</p>
+
+<p>&nbsp; 下面列举在使用中遇到的一些概念和问题，有点查了好久才发现原因：</p>
+
+<p>&nbsp; 1、注册事件和响应时间，在PyQt中叫做<strong>信号(singal)与槽(slot)</strong>，信号：当某个对象的某个事件发生时，触发一个信号，槽：响应指定信号的所做的反应，其实信号槽类似于.NET里面的委托、事件，比如Repeater控件类，当行数据绑定后，触发一个ItemDataBound事件，不管使用者使用会监听该事件并做额外处理，其控件类内部都会触发该事件，这种机制很多程度提高了类的封装性和完整性。</p>
+
+<p>&nbsp; 2、布局和事件分离，Eric对指定ui选择右键，<strong>Compile form</strong>编译ui文件，生成对应的布局py文件（默认以UI_开头），这是布局界面，直接运行就可以看到在PyQt中的布局效果。如果要添加响应事件，需要右键ui文件，<strong>Generate Dialog code</strong>用于生成事件处理的py文件，点击后会弹出对话框，添加类名，选择需要处理的控件及其响应的事件，回车则生成了对应的方法。之后只需要在对应的方法写逻辑即可。</p>
+<!--break-->
+<p>&nbsp; 3、事件响应有两种方式，一种是使用指定的名称（运行时会自动执行到此），一种在__init__中绑定事件。如（两种都用会先执行on_btn_clicked再执行add）：</p>
+
+{% include syntax-python.html %}
+<pre class="brush: python;">
+    def __init__(self, parent = None):
+        """
+        Constructor
+        """
+        QDialog.__init__(self, parent)
+        self.setupUi(self)
+        QtCore.QObject.connect(self.btn, QtCore.SIGNAL(_fromUtf8("clicked()")), self.add)
+    
+    def add(self):
+        self.line.setText("sss")
+    
+    @pyqtSignature("")
+    def on_btn_clicked(self):
+        """
+        Slot documentation goes here.
+        """
+        self.line.setText("mms")
+</pre>
+
+<p>&nbsp; 4、事件的py文件是继承自原始UI文件的，设置事件后需要在事件类中运行，而Eric默认没有__main__块，于是我从原来UI文件中把__main__拷贝过来，修改了类名称。运行，发现，所有的时间根本不响应，以为是setText方法写错了，怎么改也不对。最后再网上找到一个demo，发现在新的文件中去掉两行代码即可，如：</p>
+
+<pre class="brush: python;">
+if __name__ == "__main__":
+    import sys
+    app = QtGui.QApplication(sys.argv)
+    Dialog = QtGui.QDialog() #在继承中这一行不要
+    ui = Ui_Dialog()
+    ui.setupUi(Dialog) #在继承中这一行不要
+    Dialog.show() #直接使用ui.show()
+    sys.exit(app.exec_())
+
+#以下是正确代码
+if __name__ == "__main__":
+
+    import sys
+    app = QtGui.QApplication(sys.argv)
+    ui = Dial() # 继承的类名
+    ui.show()
+    sys.exit(app.exec_())
+</pre>
+
+<p>5、后续问题遇到再写。</p>
