@@ -56,4 +56,21 @@ if __name__ == "__main__":
     sys.exit(app.exec_())
 </pre>
 
-<p>5、后续问题遇到再写。</p>
+<p>5、关于QListView如何添加Item的问题，Google一上午都没找到答案，大部分关于Qt的使用都是C++，而PyQt是Qt的一个Python版本，网上资料比较少。最后发现:
+<pre>
+QListView是基于Model，而QListWidget是基于Item。这是它们的本质区别。
+往QListView中添加条目需借助QAbstractListModel
+QListWidget 继承自 QListView
+listview是一种常见的view模型，用于QT中的mv模式，但这样有时候不方便，所以有了qlistwidget，这样的话，用起来方便些。
+</pre>
+用下列方式使用：
+<pre>
+        item = QtGui.QListWidgetItem(self.listView)
+        item.setText(self.lineEdit.text())
+</pre>
+QListViewItem也搜到过，但是使用总是有问题，后来改成Widget就ok了。
+</p>
+
+<p>6、还有一个问题就是，使用Eric写Python代码时，发现很多方法都不提示，使用PyDev就可以，不知道是不是没设置好。</p>
+
+<p>7、后续问题遇到再写。</p>
