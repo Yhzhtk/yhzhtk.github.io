@@ -73,4 +73,12 @@ QListViewItem也搜到过，但是使用总是有问题，后来改成Widget就o
 
 <p>6、还有一个问题就是，使用Eric写Python代码时，发现很多方法都不提示，使用PyDev就可以，不知道是不是没设置好。</p>
 
-<p>7、后续问题遇到再写。</p>
+<p>7、显示最大化最小化：
+<pre>
+self.setWindowFlags(self.windowFlags() & Qt.WindowMinMaxButtonsHint)
+</pre>
+</p>
+
+<p>8、找问题找很久，还不如查查文档，虽然是英文的，效率也比瞎找高，PyQt似乎没有什么完整的文档，Qt的文档很全，由于PyQt是Qt的Python移植版本，就参考Qt文档来看吧：<a target="_blank" href="http://qt-project.org/doc/qt-4.8/">文档</a><p>
+
+<p>后续问题遇到再写。</p>
