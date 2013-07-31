@@ -81,4 +81,8 @@ self.setWindowFlags(self.windowFlags() & Qt.WindowMinMaxButtonsHint)
 
 <p>8、找问题找很久，还不如查查文档，虽然是英文的，效率也比瞎找高，PyQt似乎没有什么完整的文档，Qt的文档很全，由于PyQt是Qt的Python移植版本，就参考Qt文档来看吧：<a target="_blank" href="http://qt-project.org/doc/qt-4.8/">文档</a><p>
 
+<p>9、设置Spliter（分割器），如果想拖动窗口内的控件修改大小，只需要设置QSpliter。设置方法：选中两个以上控件，右键，布局->垂直|水平分割器。</p>
+
+<p>10、添加状态栏，状态栏和分割器一样，不能再控件区内找到。直接右键主窗口->添加状态栏即可，最后再代码里面创建QLabel，使用statusBar.addWidget(label)就添加上了。注意，只有MainWindow才可以用这种方法添加状态栏。</p>
+
 <p>后续问题遇到再写。</p>
