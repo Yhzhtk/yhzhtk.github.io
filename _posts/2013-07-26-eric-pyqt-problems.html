@@ -7,10 +7,13 @@ tags: [Eric, PyQt, python]
 
 <p>&nbsp; 下面记录在使用中遇到的一些概念和问题，有的问题查了好久：</p>
 
-<p>&nbsp; 1、注册事件和响应事件，在PyQt中叫做<strong>信号(singal)与槽(slot)</strong>，信号：当某个对象的某个事件发生时，触发一个信号，槽：响应指定信号的所做的反应，其实信号槽类似于.NET里面的委托、事件，比如Repeater控件类，当行数据绑定后，触发一个ItemDataBound事件，不管使用者使用会监听该事件并做额外处理，其控件类内部都会触发该事件，这种机制很多程度提高了类的封装性和完整性。</p>
+<section>
+<h4>2013-07-26 记录</h4>
 
-<p>&nbsp; 2、布局和事件分离，Eric对指定ui选择右键，<strong>Compile form</strong>编译ui文件，生成对应的布局py文件（默认以UI_开头），这是布局界面，直接运行就可以看到在PyQt中的布局效果。如果要添加响应事件，需要右键ui文件，<strong>Generate Dialog code</strong>用于生成事件处理的py文件，点击后会弹出对话框，添加类名，选择需要处理的控件及其响应的事件，回车则生成了对应的方法。之后只需要在对应的方法写逻辑即可。</p>
+<p>&nbsp; 1、注册事件和响应事件，在PyQt中叫做<strong>信号(singal)</strong>与<strong>槽(slot)</strong>，信号：当某个对象的某个事件发生时，触发一个信号，槽：响应指定信号的所做的反应，其实信号槽类似于.NET里面的委托、事件，比如Repeater控件类，当行数据绑定后，触发一个ItemDataBound事件，不管使用者使用会监听该事件并做额外处理，其控件类内部都会触发该事件，这种机制很多程度提高了类的封装性和完整性。</p>
 <!--break-->
+<p>&nbsp; 2、布局和事件分离，Eric对指定ui选择右键，<strong>Compile form</strong>编译ui文件，生成对应的布局py文件（默认以UI_开头），这是布局界面，直接运行就可以看到在PyQt中的布局效果。如果要添加响应事件，需要右键ui文件，<strong>Generate Dialog code</strong>用于生成事件处理的py文件，点击后会弹出对话框，添加类名，选择需要处理的控件及其响应的事件，回车则生成了对应的方法。之后只需要在对应的方法写逻辑即可。</p>
+
 <p>&nbsp; 3、事件响应有两种方式，一种是使用指定的名称（运行时会自动执行到此），一种在__init__中绑定事件。如（两种都用会先执行on_btn_clicked再执行add）：</p>
 
 {% include syntax-python.html %}
@@ -56,6 +59,11 @@ if __name__ == "__main__":
     sys.exit(app.exec_())
 </pre>
 
+</section>
+
+<section>
+<h4>2013-07-28 记录</h4>
+
 <p>5、关于QListView如何添加Item的问题，Google一上午都没找到答案，大部分关于Qt的使用都是C++，而PyQt是Qt的一个Python版本，网上资料比较少。最后发现:
 <pre>
 QListView是基于Model，而QListWidget是基于Item。这是它们的本质区别。
@@ -73,6 +81,11 @@ QListViewItem也搜到过，但是使用总是有问题，后来改成Widget就o
 
 <p>6、还有一个问题就是，使用Eric写Python代码时，发现很多方法都不提示，使用PyDev就可以，不知道是不是没设置好。</p>
 
+</section>
+
+<section>
+<h4>2013-07-29 记录</h4>
+
 <p>7、显示最大化最小化：
 <pre>
 self.setWindowFlags(self.windowFlags() & Qt.WindowMinMaxButtonsHint)
@@ -81,8 +94,88 @@ self.setWindowFlags(self.windowFlags() & Qt.WindowMinMaxButtonsHint)
 
 <p>8、找问题找很久，还不如查查文档，虽然是英文的，效率也比瞎找高，PyQt似乎没有什么完整的文档，Qt的文档很全，由于PyQt是Qt的Python移植版本，就参考Qt文档来看吧：<a target="_blank" href="http://qt-project.org/doc/qt-4.8/">文档</a><p>
 
+</section>
+
+<section>
+<h4>2013-07-30 记录</h4>
+
 <p>9、设置Spliter（分割器），如果想拖动窗口内的控件修改大小，只需要设置QSpliter。设置方法：选中两个以上控件，右键，布局->垂直|水平分割器。</p>
 
 <p>10、添加状态栏，状态栏和分割器一样，不能再控件区内找到。直接右键主窗口->添加状态栏即可，最后再代码里面创建QLabel，使用statusBar.addWidget(label)就添加上了。注意，只有MainWindow才可以用这种方法添加状态栏。</p>
 
-<p>后续问题遇到再写。</p>
+</section>
+
+<section>
+<h4>2013-08-20 记录</h4>
+最近都在完善项目，没时间记录，现在项目基本结束了，就抽空把用到的一些点再写一写吧。很多小的操作控件的问题，在Qt文档中都可以找到答案，这儿就简单挑几个说吧。<br/>
+
+<p>11、QListWidget删除一条Item使用takeItem(index)，而不是remove。</p>
+
+<p>
+12、QTableWidget设置某Item的宽高使用setColumnWidth(ci,wid)和setRowHeight(ri,hei)。如果要在item显示图片，使用item.setData(1, QPixmap(path))，第一个参数表示要设置的类型，第二个是设置的数据。参数一描述如下：
+<table border="1" cellpadding="1" cellspacing="1">
+	<tbody>
+		<tr>
+			<th>Constant</th>
+			<th>Value</th>
+			<th>Description</th>
+		</tr>
+		<tr>
+			<td>Qt::DisplayRole</td>
+			<td>0</td>
+			<td>普通文本(<a href="http://qt-project.org/doc/qt-4.8/qstring.html">QString</a>)</td>
+		</tr>
+		<tr>
+			<td>Qt::DecorationRole</td>
+			<td>1</td>
+			<td>图片数据 (<a href="http://qt-project.org/doc/qt-4.8/qcolor.html">QColor</a>,<a href="http://qt-project.org/doc/qt-4.8/qicon.html">QIcon</a>&nbsp;or&nbsp;<a href="http://qt-project.org/doc/qt-4.8/qpixmap.html">QPixmap</a>)</td>
+		</tr>
+		<tr>
+			<td>Qt::EditRole</td>
+			<td>2</td>
+			<td>编辑文本 (<a href="http://qt-project.org/doc/qt-4.8/qstring.html">QString</a>)</td>
+		</tr>
+		<tr>
+			<td>Qt::ToolTipRole</td>
+			<td>3</td>
+			<td>工具栏提示文本 (<a href="http://qt-project.org/doc/qt-4.8/qstring.html">QString</a>)</td>
+		</tr>
+		<tr>
+			<td>Qt::StatusTipRole</td>
+			<td>4</td>
+			<td>状态栏显示数据 (<a href="http://qt-project.org/doc/qt-4.8/qstring.html">QString</a>)</td>
+		</tr>
+		<tr>
+			<td>Qt::WhatsThisRole</td>
+			<td>5</td>
+			<td>“这是什么？” 模式 (<a href="http://qt-project.org/doc/qt-4.8/qstring.html">QString</a>)</td>
+		</tr>
+	</tbody>
+</table>
+另外还有Value为6到14的用法，详细见<a target="blank" href="http://qt-project.org/doc/qt-4.8/qt.html#ItemDataRole-enum">Qt::ItemDataRole</a>。
+</p>
+
+<p>13、获取滚动条并移动滚动条的位置，调用方法verticalScrollBar()和horizontalScrollBar()能获取垂直和水平滚动条，再使用setValue(value)设置当前值，使用setMaximum(value)设置最大值。</p>
+
+<p>14、中文编码在任何编程语言中，都是个非常大的问题，根源就是从内存到外存过程中，存储编码的不一致。Qt从界面获取text，设置text的过程中，如果没有考虑好，很容易出现乱码。下面是我使用的简单解决办法，可能有更好的：
+<pre  class="brush: python;">
+	def decode_file(self, string):
+        '''编码py文件中的汉字'''
+        return string.decode("utf-8")
+    
+    def decode_text(self, string):
+        '''编码从空间中读取的text'''
+        return unicode(string)
+	
+	# 使用方法，在类里面定义的方法，所有有self
+	
+	# 1、将label显示为“正在加载，请稍后。”
+	self.label.setText(self.decode_file("正在加载，请稍后。"))
+	或
+	self.label.setText(u"正在加载，请稍后。")
+	
+	# 2、获取contentEdit的文本
+	content = self.decode_text(self.contentEdit.text())
+</pre>
+</p>
+</section>
