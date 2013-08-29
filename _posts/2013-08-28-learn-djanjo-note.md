@@ -1,9 +1,12 @@
 ---
 layout: post
 title: Django 学习笔记
-description: Django学习笔记，Django是一个高效的Python Web框架，开发小型Web应用使用Django是个非常不错的选择，其核心有：用于创建模型的对象关系映射、为最终用户设计的完美管理界面、一流的 URL 设计、设计者友好的模板语言、缓存系统
+description: Django是一个高效的Python Web框架，开发小型Web应用使用Django是个非常不错的选择，其核心有：用于创建模型的对象关系映射、为最终用户设计的完美管理界面、一流的 URL 设计、设计者友好的模板语言、缓存系统
 tags: [Django, python]
 ---
+
+#### Django介绍和安装
+
 [Django](https://www.djangoproject.com/) 是一个高效开发实用设计的Python Web框架，是一个开放源码项目，源码托管在[Github](https://github.com/django/django)。使用Django可以很快速的开发Web项目，对于一些小的应用是相当不错的选择。其核心有：
 
 	· 用于创建模型的对象关系映射
@@ -25,7 +28,11 @@ tags: [Django, python]
 
 	python -c "import django; print(django.get_version())"
 
-如果提示当前安装的版本号则说明安装成功了。接下来创建一个Django项目，将当前路径移动到你想要建立项目的地方，使用命令：
+如果提示当前安装的版本号则说明安装成功了。
+
+#### 创建第一个Django项目并启动运行
+
+接下来创建一个Django项目，将当前路径移动到你想要建立项目的地方，使用命令：
 
 	python D:\Python27\Lib\site-packages\django\bin\django-admin.py startproject mysite
 
@@ -51,6 +58,8 @@ tags: [Django, python]
 </pre>
 
 便启动了项目，默认端口是8000，在浏览器输入地址： http://localhost:8000/ 就可以看到 `“It worked!”`，项目就运行了。
+
+#### 创建一个APP并使用Models，数据库关系对象映射
 
 这就是最基本的创建一个Django项目的流程。下面创建一个app，也就是网站的一个应用：
 
@@ -273,6 +282,40 @@ Django能够完成创建数据库和完成数据库访问的功能，在使用�
 	&gt;&gt;&gt; c.delete()
 
 </pre>
+
+#### 系统自带的Admin管理
+
+启用Django自带的管理系统，只需要做以下三个操作：
+
+1. setting.py 文件中对`INSTALLED_APPS`项取消注释 `"django.contrib.admin"`
+1. 运行 `python manage.py syncdb`更新数据库
+1. 编辑`mysite/urls.py`文件，取消以下两个注释：
+
+<pre class="brush: python;">
+
+from django.contrib import admin
+admin.autodiscover()
+
+url(r'^admin/', include(admin.site.urls)),
+
+</pre>
+
+运行`python manage.py runserver`启动后，输入地址 [http://127.0.0.1:8000/admin/](http://127.0.0.1:8000/admin/)即可登录管理。
+
+登录后发现并有没有poll表和choice表，这只是系统用户的管理，要设置数据表的管理也很简单，只需要在polls下面创建一个文件`admin.py`,输入以下内容：
+
+<pre class="brush: python;">
+
+	from django.contrib import admin
+	from polls.models import Poll， Choice
+	
+	admin.site.register(Poll)
+	admin.site.register(Choice)
+
+</pre>
+
+重新启动，就可以看到Poll和Choice的管理界面了。管理可以完成增删改查的一些列数据库操作，方便简单。
+
 
 
 
