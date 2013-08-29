@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Django 学习笔记
+description: Django学习笔记，Django是一个高效的Python Web框架，开发小型Web应用使用Django是个非常不错的选择，其核心有：用于创建模型的对象关系映射、为最终用户设计的完美管理界面、一流的 URL 设计、设计者友好的模板语言、缓存系统
 tags: [Django, python]
 ---
 [Django](https://www.djangoproject.com/) 是一个高效开发实用设计的Python Web框架，是一个开放源码项目，源码托管在[Github](https://github.com/django/django)。使用Django可以很快速的开发Web项目，对于一些小的应用是相当不错的选择。其核心有：
@@ -272,4 +273,6 @@ Django能够完成创建数据库和完成数据库访问的功能，在使用�
 	&gt;&gt;&gt; c.delete()
 
 </pre>
+
+
 

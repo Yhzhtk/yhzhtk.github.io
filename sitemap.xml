@@ -6,37 +6,37 @@ title: sitemap
 	<url>
 		<loc>http://yhzhtk.info/</loc>
 		<priority>1</priority>
-		<lastmod>2013-06-22</lastmod>
+		<lastmod>2013-08-29</lastmod>
 		<changefreq>always</changefreq>
 	</url>
 	<url>
 		<loc>http://yhzhtk.info/page2/</loc>
 		<priority>1</priority>
-		<lastmod>2013-06-22</lastmod>
+		<lastmod>2013-08-29</lastmod>
 		<changefreq>always</changefreq>
 	</url>
 	<url>
 		<loc>http://yhzhtk.info/page3/</loc>
 		<priority>1</priority>
-		<lastmod>2013-06-22</lastmod>
+		<lastmod>2013-08-29</lastmod>
 		<changefreq>always</changefreq>
 	</url>
 	<url>
 		<loc>http://yhzhtk.info/about.html</loc>
 		<priority>1</priority>
-		<lastmod>2013-06-22</lastmod>
+		<lastmod>2013-08-29</lastmod>
 		<changefreq>always</changefreq>
 	</url>
 	<url>
 		<loc>http://yhzhtk.info/feed.xml</loc>
 		<priority>1</priority>
-		<lastmod>2013-06-22</lastmod>
+		<lastmod>2013-08-29</lastmod>
 		<changefreq>always</changefreq>
 	</url>
 	<url>
 		<loc>http://yhzhtk.info/tags.html</loc>
 		<priority>1</priority>
-		<lastmod>2013-06-22</lastmod>
+		<lastmod>2013-08-29</lastmod>
 		<changefreq>always</changefreq>
 	</url>
 
