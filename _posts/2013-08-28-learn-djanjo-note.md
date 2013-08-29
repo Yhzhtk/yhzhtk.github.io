@@ -5,11 +5,13 @@ tags: [Django, python]
 ---
 [Django](https://www.djangoproject.com/) 是一个高效开发实用设计的Python Web框架，是一个开放源码项目，源码托管在[Github](https://github.com/django/django)。其核心有：
 
-1. 用于创建模型的对象关系映射
-1. 为最终用户设计的完美管理界面
-1. 一流的 URL 设计
-1. 设计者友好的模板语言
-1. 缓存系统
+
+* 用于创建模型的对象关系映射
+* 为最终用户设计的完美管理界面
+* 一流的 URL 设计
+* 设计者友好的模板语言
+* 缓存系统
+
 
 <!--break-->
 我学习是在Windows上，如果在Linux上类似，首先是安装，[下载Django](https://www.djangoproject.com/download/)压缩包并解压，使用以下命令安装。
