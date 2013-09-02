@@ -5,6 +5,7 @@ description: Django是一个高效的Python Web框架，开发小型Web应用使
 tags: [Django, python]
 ---
 
+
 #### 一、Django介绍和安装
 
 [Django](https://www.djangoproject.com/) 是一个高效开发实用设计的Python Web框架，是一个开放源码项目，源码托管在[Github](https://github.com/django/django)。使用Django可以很快速的开发Web项目，对于一些小的应用是相当不错的选择。其核心有：
@@ -350,11 +351,11 @@ url(r'^admin/', include(admin.site.urls)),
 	    # ex: /polls/
 	    url(r'^$', views.index, name='index'),
 	    # ex: /polls/5/
-	    url(r'^(?P<poll_id>\d+)/$', views.detail, name='detail'),
+	    url(r'^(?P&lt;poll_id&gt;\d+)/$', views.detail, name='detail'),
 	    # ex: /polls/5/results/
-	    url(r'^(?P<poll_id>\d+)/results/$', views.results, name='results'),
+	    url(r'^(?P&lt;poll_id&gt;\d+)/results/$', views.results, name='results'),
 	    # ex: /polls/5/vote/
-	    url(r'^(?P<poll_id>\d+)/vote/$', views.vote, name='vote'),
+	    url(r'^(?P&lt;poll_id&gt;\d+)/vote/$', views.vote, name='vote'),
 	)
 
 </pre>
@@ -385,21 +386,21 @@ url(r'^admin/', include(admin.site.urls)),
 
 其中参数poll_id就是匹配URL正则时匹配到的poll_id,request就是请求的request。运行项目， 输入http://localhost:8000/polls/ 就可以看到列出的所有Poll信息。输入 http://localhost/polls/34/就可以查看id为34的数据（功能还未实现，URL映射已经把功能都加进去了，具体实现在对应的方法内实现即可）。
 
-#### 五、使用模板快速开发应用
+#### 六、使用模板快速开发应用
 
 Django支持模板，这大大提供了灵活性和开发效率。模板文件默认放在App的templates下，如`polls/templates/polls/index.html`，这样调用时使用相对路径`polls/index.html`。
 
 下面示例写一个模板文件，放在`polls/templates/polls/index.html`
 
-	{% if latest_poll_list %}
+	{{ "{%" }} if latest_poll_list %}
 	    <ul>
-	    {% for poll in latest_poll_list %}
-	        <li><a href="/polls/{{ poll.id }}/">{{ poll.question }}</a></li>
-	    {% endfor %}
+	    {{ "{%" }} for poll in latest_poll_list %}
+	        <li><a href="/polls/{{ "{{" }} poll.id }}/">{{ "{{" }} poll.question }}</a></li>
+	    {{ "{%" }} endfor %}
 	    </ul>
-	{% else %}
+	{{ "{%" }} else %}
 	    <p>No polls are available.</p>
-	{% endif %}
+	{{ "{%" }} endif %}
 
 修改`polls/view.py`中的index方法，import模板支持：
 
@@ -463,13 +464,13 @@ Django支持模板，这大大提供了灵活性和开发效率。模板文件�
 
 Django模板也很强大，现在列出部分使用情况，后续再学习：
 
-	<h1>{{ poll.question }}</h1>
+	<h1>{{ "{{" }} poll.question }}</h1>
 	<ul>
-	{% for choice in poll.choice_set.all %}
-	    <li>{{ choice.choice_text }}</li>
-	{% endfor %}
+	{{ "{%" }} for choice in poll.choice_set.all %}
+	    <li>{{ "{{" }} choice.choice_text }}</li>
+	{{ "{%" }} endfor %}
 	</ul>
 	
-	<li><a href="{% url 'detail' poll.id %}">{{ poll.question }}</a></li>
+	<li><a href="{{ "{%" }} url 'detail' poll.id %}">{{ "{{" }} poll.question }}</a></li>
 	
-	{% load url from future %}
+	{{ "{%" }} load url from future %}
