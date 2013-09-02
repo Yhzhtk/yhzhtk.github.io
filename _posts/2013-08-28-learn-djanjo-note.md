@@ -5,7 +5,7 @@ description: Django是一个高效的Python Web框架，开发小型Web应用使
 tags: [Django, python]
 ---
 
-#### Django介绍和安装
+#### 一、Django介绍和安装
 
 [Django](https://www.djangoproject.com/) 是一个高效开发实用设计的Python Web框架，是一个开放源码项目，源码托管在[Github](https://github.com/django/django)。使用Django可以很快速的开发Web项目，对于一些小的应用是相当不错的选择。其核心有：
 
@@ -30,7 +30,7 @@ tags: [Django, python]
 
 如果提示当前安装的版本号则说明安装成功了。
 
-#### 创建第一个Django项目并启动运行
+#### 二、创建第一个Django项目并启动运行
 
 接下来创建一个Django项目，将当前路径移动到你想要建立项目的地方，使用命令：
 
@@ -59,7 +59,7 @@ tags: [Django, python]
 
 便启动了项目，默认端口是8000，在浏览器输入地址： http://localhost:8000/ 就可以看到 `“It worked!”`，项目就运行了。
 
-#### 创建一个APP并使用Models，数据库关系对象映射
+#### 三、创建一个APP并使用Models，数据库关系对象映射
 
 这就是最基本的创建一个Django项目的流程。下面创建一个app，也就是网站的一个应用：
 
@@ -283,7 +283,7 @@ Django能够完成创建数据库和完成数据库访问的功能，在使用�
 
 </pre>
 
-#### 系统自带的Admin管理
+#### 四、系统自带的Admin管理
 
 启用Django自带的管理系统，只需要做以下三个操作：
 
@@ -316,6 +316,162 @@ url(r'^admin/', include(admin.site.urls)),
 
 重新启动，就可以看到Poll和Choice的管理界面了。管理可以完成增删改查的一些列数据库操作，方便简单。
 
+#### 五、URL映射，建立项目框架
 
+修改`mysite/urls.py`，添加一行Url映射，则urlpatterns为：
 
+<pre class="brush: python;">
 
+urlpatterns = patterns('',
+    url(r'^polls/', include('polls.urls')),
+    url(r'^admin/', include(admin.site.urls)),
+)
+
+</pre>
+
+`url(r'^polls/', include('polls.urls')),`表示将所有polls开头的url地址都转发给`polls.urls.py`来处理。
+
+	url(regex, view, kwargs=None, name=None, prefix='')
+	参数：
+	regex: 匹配URL的正则
+	view: 传递匹配的URL到一个指定的view方法，并将HttpRequest作为第一个参数，正则匹配的其他参数（如果有的话）传给这个view
+	kwargs: 传递额外的参数（dict）
+	name: 命名URL，让你清楚的区别其他的模板，允许你全局改变url匹配
+
+下面新建文件 `polls/urls.py`:
+
+<pre class="brush: python;">
+
+from django.conf.urls import patterns, url
+
+from polls import views
+
+urlpatterns = patterns('',
+    # ex: /polls/
+    url(r'^$', views.index, name='index'),
+    # ex: /polls/5/
+    url(r'^(?P<poll_id>\d+)/$', views.detail, name='detail'),
+    # ex: /polls/5/results/
+    url(r'^(?P<poll_id>\d+)/results/$', views.results, name='results'),
+    # ex: /polls/5/vote/
+    url(r'^(?P<poll_id>\d+)/vote/$', views.vote, name='vote'),
+)
+
+</pre>
+
+最后，在`polls/views.py`中实现方法：
+
+<pre class="brush: python;">
+
+from django.http import HttpResponse
+from polls.models import Poll
+
+def index(request):
+    latest_poll_list = Poll.objects.order_by('-pub_date')[:5]
+    output = ', '.join([p.question for p in latest_poll_list])
+    return HttpResponse(output)
+
+def detail(request, poll_id):
+	
+    return HttpResponse("You're looking at poll %s." % poll_id)
+
+def results(request, poll_id):
+    return HttpResponse("You're looking at the results of poll %s." % poll_id)
+
+def vote(request, poll_id):
+    return HttpResponse("You're voting on poll %s." % poll_id)
+
+</pre>
+
+其中参数poll_id就是匹配URL正则时匹配到的poll_id,request就是请求的request。运行项目， 输入http://localhost:8000/polls/ 就可以看到列出的所有Poll信息。输入 http://localhost/polls/34/就可以查看id为34的数据（功能还未实现，URL映射已经把功能都加进去了，具体实现在对应的方法内实现即可）。
+
+#### 五、使用模板快速开发应用
+
+Django支持模板，这大大提供了灵活性和开发效率。模板文件默认放在App的templates下，如`polls/templates/polls/index.html`，这样调用时使用相对路径`polls/index.html`。
+
+下面示例写一个模板文件，放在`polls/templates/polls/index.html`
+
+	{% if latest_poll_list %}
+	    <ul>
+	    {% for poll in latest_poll_list %}
+	        <li><a href="/polls/{{ poll.id }}/">{{ poll.question }}</a></li>
+	    {% endfor %}
+	    </ul>
+	{% else %}
+	    <p>No polls are available.</p>
+	{% endif %}
+
+修改`polls/view.py`中的index方法，import模板支持：
+
+<pre class="brush: python;">
+
+from django.template import RequestContext, loader
+
+def index(request):
+    latest_poll_list = Poll.objects.order_by('-pub_date')[:5]
+    template = loader.get_template('polls/index.html')
+    context = RequestContext(request, {
+        'latest_poll_list': latest_poll_list,
+    })
+    return HttpResponse(template.render(context))
+
+</pre>
+
+这样就使用模板传参数的方式显示网页，同一个模板可以在多个地方复用。由于使用模板的情况非常常见，而以上方法有点繁琐，Django提供一个简便的方式使用模板`django.shortcuts.render`，以上代码可修改如下：
+
+<pre class="brush: python;">
+
+from django.shortcuts import render
+
+from polls.models import Poll
+
+def index(request):
+    latest_poll_list = Poll.objects.all().order_by('-pub_date')[:5]
+    context = {'latest_poll_list': latest_poll_list}
+    return render(request, 'polls/index.html', context)
+
+</pre>
+
+下面是查看详细的代码：
+
+<pre class="brush: python;">
+
+from django.http import Http404
+# ...
+def detail(request, poll_id):
+    try:
+        poll = Poll.objects.get(pk=poll_id)
+    except Poll.DoesNotExist:
+        raise Http404
+    return render(request, 'polls/detail.html', {'poll': poll})
+
+</pre>
+
+以上等同于以下简易写法：
+
+<pre class="brush: python;">
+
+from django.shortcuts import render, get_object_or_404
+# ...
+def detail(request, poll_id):
+    poll = get_object_or_404(Poll, pk=poll_id)
+    return render(request, 'polls/detail.html', {'poll': poll})
+
+</pre>
+
+`get_object_or_404()`，使用get方法时，如果不存在对象，则抛出404异常。
+
+系统出现404或500时，如果想指定错误页面，可以在templates文件夹下建立文件404.html、500.html，并设定DEBUG为False，也就是非调试模式，当出现指定code时，会自动显示该页面。
+
+Django模板也很强大，现在列出部分使用情况，后续再学习：
+
+	<h1>{{ poll.question }}</h1>
+	<ul>
+	{% for choice in poll.choice_set.all %}
+	    <li>{{ choice.choice_text }}</li>
+	{% endfor %}
+	</ul>
+	
+	<li><a href="{% url 'detail' poll.id %}">{{ poll.question }}</a></li>
+	
+	{% load url from future %}
