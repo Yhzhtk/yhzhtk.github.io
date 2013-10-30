@@ -5,8 +5,8 @@ description: 单例模式在Java中最常用的模式之一。它能阻止外部
 tags: [设计模式, 翻译, 单例]
 ---
 
-翻译自 
-<a href="http://www.programcreek.com/2011/07/java-design-pattern-singleton/" rel="bookmark">Java Design Pattern: Singleton</a>
+<em>翻译自 
+<a href="http://www.programcreek.com/2011/07/java-design-pattern-singleton/" rel="bookmark">Java Design Pattern: Singleton</a></em>
 
 **Java设计模式：单例模式**
 
@@ -28,7 +28,7 @@ tags: [设计模式, 翻译, 单例]
 
 **Java 代码**
 
-{% include syntax-python.html %}
+{% include syntax-java.html %}
 <pre class="brush: java;">
 package com.programcreek.designpatterns.singleton;
  
