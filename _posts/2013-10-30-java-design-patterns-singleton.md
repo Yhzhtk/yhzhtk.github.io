@@ -21,9 +21,11 @@ tags: [设计模式, 翻译, 单例]
 下面是一个简单的使用情况。一个国家只能有一个总统（这是正常的情况）。所以每当我们要引用总统对象，只需要通过AmericaPresident返回，其中的getPresident（）方法将确保始终只有一个总统创建。否则，它就不会符合正常情况。
 
 **类图**
+
 <img src="http://www.programcreek.com/wp-content/uploads/2011/07/singleton.jpg"/>
 
 **Java 代码**
+
 <pre>
 package com.programcreek.designpatterns.singleton;
  
@@ -42,8 +44,7 @@ public class AmericaPresident {
 
 **单例模式在Java标准类库中的使用**
 
-java.lang.Runtime#getRuntime()是Java标准库中的一种常用方法。 getRunTime()返回与当前Java应用程序的运行时对象。
-下面是一个简单的使用getRunTime()的例子，在Windows系统上读取网页。
+java.lang.Runtime#getRuntime()是Java标准库中的一种常用方法。 getRunTime()返回与当前Java应用程序的运行时对象。下面是一个简单的使用getRunTime()的例子，在Windows系统上读取网页。
 
 <pre>
 Process p = Runtime.getRuntime().exec(
@@ -72,3 +73,4 @@ Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),
 Approximate round trip times in milli-seconds:
 Minimum = 52ms, Maximum = 53ms, Average = 52ms
 </pre>
+
