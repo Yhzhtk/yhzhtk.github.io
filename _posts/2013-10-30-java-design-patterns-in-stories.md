@@ -18,7 +18,7 @@ tags: [设计模式, 翻译]
 
 **创造型模式**
 
-· &nbsp;&nbsp;[单例模式 - 美国只有一个总统]() <small>原文 <a href="http://www.programcreek.com/2011/07/java-design-pattern-singleton/" target="_blank">Singleton – Only one president in America</a></small>
+· &nbsp;&nbsp;[单例模式 - 美国只有一个总统](http://yhzhtk.info/2013/10/30/java-design-patterns-singleton.html) <small>原文 <a href="http://www.programcreek.com/2011/07/java-design-pattern-singleton/" target="_blank">Singleton – Only one president in America</a></small>
 
 · &nbsp;&nbsp;[工厂模式 - 一个生产人类的工厂]() <small>原文 <a href="http://www.programcreek.com/2013/02/java-design-patterns-factory/" target="_blank">Factory – A factory that produces human</a></small>
 

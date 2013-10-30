@@ -7,6 +7,8 @@ tags: [设计模式, 翻译, 单例]
 
 <em>翻译自 <a href="http://www.programcreek.com/2011/07/java-design-pattern-singleton/" rel="bookmark">Java Design Pattern: Singleton</a></em>
 
+**由于博主水平有限，抱着锻炼为主的目的而翻译，若有不准确之处，请包涵，欢迎批评指正。**
+
 **Java设计模式：单例模式**
 
 单例模式在Java中最常用的模式之一。它能阻止外部的实例化和修改，从而控制创建的对象的数量。这个概念可以应用到只允许一个对象存在时的操作，或者限制在一定数量的对象的操作，如：
