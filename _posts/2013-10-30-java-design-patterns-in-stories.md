@@ -26,7 +26,7 @@ tags: [设计模式, 翻译]
 
 · &nbsp;&nbsp;[生成器模式 - 生成一杯饮料](http://yhzhtk.info/2013/11/01/java-design-pattern-builder.html) <small>原文 <a href="http://www.programcreek.com/2013/02/java-design-pattern-builder/" target="_blank">Builder – Build a drink</a></small>
 
-· &nbsp;&nbsp;[原型模式 - 创建很多相似的对象]() <small>原文 <a href="http://www.programcreek.com/2013/02/java-design-pattern-prototype/" target="_blank">Prototype – Create a lot of similar objects</a></small>
+· &nbsp;&nbsp;[原型模式 - 创建很多相似的对象](http://yhzhtk.info/2013/11/01/java-design-pattern-prototype.html) <small>原文 <a href="http://www.programcreek.com/2013/02/java-design-pattern-prototype/" target="_blank">Prototype – Create a lot of similar objects</a></small>
 
 **结构型模式**
 

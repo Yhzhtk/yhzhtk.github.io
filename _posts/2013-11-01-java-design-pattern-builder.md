@@ -5,7 +5,7 @@ description: 生成器模式的主要特征是，通过一步一步的方式生�
 tags: [设计模式, 翻译, 生成器模式]
 ---
 
-<em>翻译自 <a href="http://www.programcreek.com/2013/02/java-design-pattern-builder/" rel="bookmark">Java Design Pattern: Builder</a></em>
+<em>翻译自 <a href="http://www.programcreek.com/2013/02/java-design-pattern-builder/" target="_blank">Java Design Pattern: Builder</a></em>
 
 **Java设计模式：生成器模式**
 

@@ -5,7 +5,7 @@ description: 抽象工厂模式在工厂模式的基础上又增加了一层抽�
 tags: [设计模式, 翻译, 抽象工厂]
 ---
 
-<em>翻译自 <a href="http://www.programcreek.com/2013/02/java-design-pattern-abstract-factory/" rel="bookmark">Java Design Pattern: Abstract Factory</a></em>
+<em>翻译自 <a href="http://www.programcreek.com/2013/02/java-design-pattern-abstract-factory/" target="_blank">Java Design Pattern: Abstract Factory</a></em>
 
 **Java设计模式：抽象工厂**
 

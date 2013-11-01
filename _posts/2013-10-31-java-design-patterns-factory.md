@@ -5,7 +5,7 @@ description: 工厂模式用来根据不同的参数创建对象。下面的例�
 tags: [设计模式, 翻译, 工厂]
 ---
 
-<em>翻译自 <a href="http://www.programcreek.com/2013/02/java-design-pattern-factory/" rel="bookmark">Java Design Pattern: Factory</a></em>
+<em>翻译自 <a href="http://www.programcreek.com/2013/02/java-design-pattern-factory/" target="_blank">Java Design Pattern: Factory</a></em>
 
 **Java设计模式：工厂模式**
 
