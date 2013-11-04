@@ -30,21 +30,21 @@ tags: [设计模式, 翻译]
 
 **结构型模式**
 
-· &nbsp;&nbsp;[适配器模式 - 将橘子适配到苹果]() <small>原文 <a href="http://www.programcreek.com/2011/09/java-design-pattern-adapter/" target="_blank">Adapter – Adapt an orange to an apple</a></small>
+· &nbsp;&nbsp;[适配器模式 - 将橘子适配到苹果](http://yhzhtk.info/2013/11/04/design-patterns-structural.html#adapter) <small>原文 <a href="http://www.programcreek.com/2011/09/java-design-pattern-adapter/" target="_blank">Adapter – Adapt an orange to an apple</a></small>
 
-· &nbsp;&nbsp;[桥接模式 - 通过桥远程控制你的电视]() <small>原文 <a href="http://www.programcreek.com/2011/10/java-design-pattern-bridge/" target="_blank">Bridge – Bridge your remote control to a TV</a></small>
+· &nbsp;&nbsp;[桥接模式 - 通过桥远程控制你的电视](http://yhzhtk.info/2013/11/04/design-patterns-structural.html#bridge) <small>原文 <a href="http://www.programcreek.com/2011/10/java-design-pattern-bridge/" target="_blank">Bridge – Bridge your remote control to a TV</a></small>
 
-· &nbsp;&nbsp;[组合模式 - 构建一棵树]() <small>原文 <a href="http://www.programcreek.com/2013/02/java-design-patterns-composite/" target="_blank">Composite -Build a tree</a></small>
+· &nbsp;&nbsp;[组合模式 - 构建一棵树](http://yhzhtk.info/2013/11/04/design-patterns-structural.html#composite) <small>原文 <a href="http://www.programcreek.com/2013/02/java-design-patterns-composite/" target="_blank">Composite -Build a tree</a></small>
 
-· &nbsp;&nbsp;[装饰模式 - 装扮你的女朋友]() <small>原文 <a href="http://www.programcreek.com/2012/05/java-design-pattern-decorator-decorate-your-girlfriend/" target="_blank">Decorator – Decorate your girlfriend</a></small>
+· &nbsp;&nbsp;[装饰模式 - 装扮你的女朋友](http://yhzhtk.info/2013/11/04/design-patterns-structural.html#decorator) <small>原文 <a href="http://www.programcreek.com/2012/05/java-design-pattern-decorator-decorate-your-girlfriend/" target="_blank">Decorator – Decorate your girlfriend</a></small>
 
-· &nbsp;&nbsp;[外观模式 - 使用简单的接口解决复杂的问题]() <small>原文 <a href="http://www.programcreek.com/2013/02/java-design-patterns-facade/" target="_blank">Facade – Perform a complex task using simple interface</a></small>
+· &nbsp;&nbsp;[外观模式 - 使用简单的接口解决复杂的问题](http://yhzhtk.info/2013/11/04/design-patterns-structural.html#facade) <small>原文 <a href="http://www.programcreek.com/2013/02/java-design-patterns-facade/" target="_blank">Facade – Perform a complex task using simple interface</a></small>
 
-· &nbsp;&nbsp;[享元模式 - 以更少的创建满足更多的服务]() <small>原文 <a href="http://www.programcreek.com/2013/02/java-design-pattern-flyweight/" target="_blank">Flyweight – Create less and serve more</a></small>
+· &nbsp;&nbsp;[享元模式 - 以更少的创建满足更多的服务](http://yhzhtk.info/2013/11/04/design-patterns-structural.html#flyweight) <small>原文 <a href="http://www.programcreek.com/2013/02/java-design-pattern-flyweight/" target="_blank">Flyweight – Create less and serve more</a></small>
 
-· &nbsp;&nbsp;[代理模式 - 使用代理去完成糟糕的事情]() <small>原文 <a href="http://www.programcreek.com/2009/10/proxy-design-pattern-in-a-funny-story/" target="_blank">Proxy – Use proxy to get do bad things</a></small>
+· &nbsp;&nbsp;[代理模式 - 使用代理去完成糟糕的事情](http://yhzhtk.info/2013/11/04/design-patterns-structural.html#proxy) <small>原文 <a href="http://www.programcreek.com/2009/10/proxy-design-pattern-in-a-funny-story/" target="_blank">Proxy – Use proxy to get do bad things</a></small>
 
-· &nbsp;&nbsp;[MVC模式 - Strut2中的模式、视图、控制器]() <small>原文 <a href="http://www.programcreek.com/2011/08/struts-2-tutorials-mvc-design-pattern/" target="_blank">MVC – Module, View and Controller in Strut 2</a></small>
+· &nbsp;&nbsp;[MVC模式 - Strut2中的模式、视图、控制器](http://yhzhtk.info/2013/11/04/design-patterns-structural.html#mvc) <small>原文 <a href="http://www.programcreek.com/2011/08/struts-2-tutorials-mvc-design-pattern/" target="_blank">MVC – Module, View and Controller in Strut 2</a></small>
 
 **行为型模式**
 

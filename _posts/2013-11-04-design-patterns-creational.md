@@ -96,8 +96,6 @@ Minimum = 52ms, Maximum = 53ms, Average = 52ms
 
 3、工厂模式的Java代码
 
-{% include syntax-java.html %}
-
 <pre class="brush: java;">
 interface Human {
 	public void Talk();
@@ -173,8 +171,6 @@ java.text.NumberFormat – getInstance(Locale inLocale)
 <!--break-->
 
 **抽象工厂的Java代码**
-
-{% include syntax-java.html %}
 
 <pre class="brush: java;">
 interface CPU {
@@ -255,8 +251,6 @@ public class Client {
 <!--break-->
 
 **2、Builder设计模式的Java代码示例**
-
-{% include syntax-java.html %}
 
 <pre class="brush: java;">
 package designpatterns.builder;
@@ -392,8 +386,6 @@ append()方法就像是我们的星巴克的例子中的一个步骤，toString(
 <!--break-->
 
 **2、原型模式的Java示例**
-
-{% include syntax-java.html %}
 
 <pre class="brush: java;">
 package designpatterns.prototype;
