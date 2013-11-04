@@ -5,7 +5,7 @@ description: 设计模式中的创造型模式，包括单例模式、工厂模�
 tags: [设计模式, 翻译, 单例, 工厂, 抽象工厂, 生成器, 原型]
 ---
 
-###Java设计模式：单例模式###
+<h4><a id="singleton">Java设计模式：单例模式</a></h4>
 
 <em>翻译自 <a href="http://www.programcreek.com/2011/07/java-design-pattern-singleton/" target="_blank">Java Design Pattern: Singleton</a></em>
 
@@ -80,7 +80,7 @@ Minimum = 52ms, Maximum = 53ms, Average = 52ms
 
 ---
 
-###Java设计模式：工厂模式###
+<h4><a id="factory">Java设计模式：工厂模式</a></h4>
 
 <em>翻译自 <a href="http://www.programcreek.com/2013/02/java-design-pattern-factory/" target="_blank">Java Design Pattern: Factory</a></em>
 
@@ -160,7 +160,7 @@ java.text.NumberFormat – getInstance(Locale inLocale)
 
 ---
 
-###Java设计模式：抽象工厂###
+<h4><a id="abstract-factory">Java设计模式：抽象工厂</a></h4>
 
 <em>翻译自 <a href="http://www.programcreek.com/2013/02/java-design-pattern-abstract-factory/" target="_blank">Java Design Pattern: Abstract Factory</a></em>
 
@@ -240,7 +240,7 @@ public class Client {
 
 ---
 
-###Java设计模式：生成器模式###
+<h4><a id="builder">Java设计模式：生成器模式</a></h4>
 
 <em>翻译自 <a href="http://www.programcreek.com/2013/02/java-design-pattern-builder/" target="_blank">Java Design Pattern: Builder</a></em>
 
@@ -379,7 +379,7 @@ append()方法就像是我们的星巴克的例子中的一个步骤，toString(
 
 ---
 
-###Java设计模式：原型模式###
+<h4><a id="prototype">Java设计模式：原型模式</a></h4>
 
 <em>翻译自 <a href="http://www.programcreek.com/2013/02/java-design-pattern-prototype/" target="_blank">Java Design Pattern: Prototype</a></em>
 

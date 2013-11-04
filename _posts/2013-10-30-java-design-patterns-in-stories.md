@@ -18,15 +18,15 @@ tags: [设计模式, 翻译]
 
 **创造型模式**
 
-· &nbsp;&nbsp;[单例模式 - 美国只有一个总统](http://yhzhtk.info/2013/10/30/java-design-patterns-singleton.html) <small>原文 <a href="http://www.programcreek.com/2011/07/java-design-pattern-singleton/" target="_blank">Singleton – Only one president in America</a></small>
+· &nbsp;&nbsp;[单例模式 - 美国只有一个总统](http://yhzhtk.info/2013/11/04/design-patterns-creational.html#singleton) <small>原文 <a href="http://www.programcreek.com/2011/07/java-design-pattern-singleton/" target="_blank">Singleton – Only one president in America</a></small>
 
-· &nbsp;&nbsp;[工厂模式 - 一个生产人类的工厂](http://yhzhtk.info/2013/10/31/java-design-patterns-factory.html) <small>原文 <a href="http://www.programcreek.com/2013/02/java-design-patterns-factory/" target="_blank">Factory – A factory that produces human</a></small>
+· &nbsp;&nbsp;[工厂模式 - 一个生产人类的工厂](http://yhzhtk.info/2013/11/04/design-patterns-creational.html#factory) <small>原文 <a href="http://www.programcreek.com/2013/02/java-design-patterns-factory/" target="_blank">Factory – A factory that produces human</a></small>
 
-· &nbsp;&nbsp;[抽象工厂模式 - 一个生产CPU的抽象工厂](http://yhzhtk.info/2013/10/31/java-design-patterns-of-abstract-factory.html) <small>原文 <a href="http://www.programcreek.com/2013/02/java-design-patterns-abstract-factory/" target="_blank">Abstract Factory – An abstract factory to produce CPUs</a></small>
+· &nbsp;&nbsp;[抽象工厂模式 - 一个生产CPU的抽象工厂](http://yhzhtk.info/2013/11/04/design-patterns-creational.html#abstract-factory) <small>原文 <a href="http://www.programcreek.com/2013/02/java-design-patterns-abstract-factory/" target="_blank">Abstract Factory – An abstract factory to produce CPUs</a></small>
 
-· &nbsp;&nbsp;[生成器模式 - 生成一杯饮料](http://yhzhtk.info/2013/11/01/java-design-pattern-builder.html) <small>原文 <a href="http://www.programcreek.com/2013/02/java-design-pattern-builder/" target="_blank">Builder – Build a drink</a></small>
+· &nbsp;&nbsp;[生成器模式 - 生成一杯饮料](http://yhzhtk.info/2013/11/04/design-patterns-creational.html#builder) <small>原文 <a href="http://www.programcreek.com/2013/02/java-design-pattern-builder/" target="_blank">Builder – Build a drink</a></small>
 
-· &nbsp;&nbsp;[原型模式 - 创建很多相似的对象](http://yhzhtk.info/2013/11/01/java-design-pattern-prototype.html) <small>原文 <a href="http://www.programcreek.com/2013/02/java-design-pattern-prototype/" target="_blank">Prototype – Create a lot of similar objects</a></small>
+· &nbsp;&nbsp;[原型模式 - 创建很多相似的对象](http://yhzhtk.info/2013/11/04/design-patterns-creational.html#prototype) <small>原文 <a href="http://www.programcreek.com/2013/02/java-design-pattern-prototype/" target="_blank">Prototype – Create a lot of similar objects</a></small>
 
 **结构型模式**
 
