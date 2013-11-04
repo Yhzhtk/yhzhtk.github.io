@@ -5,6 +5,26 @@ description: 设计模式中的结构型模式，包括适配器模式、桥接�
 tags: [设计模式, 翻译, 适配器, 桥接, 组合, 装饰, 外观, 享元, 代理, MVC]
 ---
 
+设计模式中的结构型模式，包括适配器模式、桥接模式、组合模式、装饰模式、外观模式、享元模式、代理模式、MVC模式，本文主要用简单的实例介绍这几种设计模式。
+
+· &nbsp;&nbsp;[适配器模式 - 将橘子适配到苹果](http://yhzhtk.info/2013/11/04/design-patterns-structural.html#adapter) <small>原文 <a href="http://www.programcreek.com/2011/09/java-design-pattern-adapter/" target="_blank">Adapter – Adapt an orange to an apple</a></small>
+
+· &nbsp;&nbsp;[桥接模式 - 通过桥远程控制你的电视](http://yhzhtk.info/2013/11/04/design-patterns-structural.html#bridge) <small>原文 <a href="http://www.programcreek.com/2011/10/java-design-pattern-bridge/" target="_blank">Bridge – Bridge your remote control to a TV</a></small>
+
+· &nbsp;&nbsp;[组合模式 - 构建一棵树](http://yhzhtk.info/2013/11/04/design-patterns-structural.html#composite) <small>原文 <a href="http://www.programcreek.com/2013/02/java-design-patterns-composite/" target="_blank">Composite -Build a tree</a></small>
+
+· &nbsp;&nbsp;[装饰模式 - 装扮你的女朋友](http://yhzhtk.info/2013/11/04/design-patterns-structural.html#decorator) <small>原文 <a href="http://www.programcreek.com/2012/05/java-design-pattern-decorator-decorate-your-girlfriend/" target="_blank">Decorator – Decorate your girlfriend</a></small>
+
+· &nbsp;&nbsp;[外观模式 - 使用简单的接口解决复杂的问题](http://yhzhtk.info/2013/11/04/design-patterns-structural.html#facade) <small>原文 <a href="http://www.programcreek.com/2013/02/java-design-patterns-facade/" target="_blank">Facade – Perform a complex task using simple interface</a></small>
+
+· &nbsp;&nbsp;[享元模式 - 以更少的创建满足更多的服务](http://yhzhtk.info/2013/11/04/design-patterns-structural.html#flyweight) <small>原文 <a href="http://www.programcreek.com/2013/02/java-design-pattern-flyweight/" target="_blank">Flyweight – Create less and serve more</a></small>
+
+· &nbsp;&nbsp;[代理模式 - 使用代理去完成糟糕的事情](http://yhzhtk.info/2013/11/04/design-patterns-structural.html#proxy) <small>原文 <a href="http://www.programcreek.com/2009/10/proxy-design-pattern-in-a-funny-story/" target="_blank">Proxy – Use proxy to get do bad things</a></small>
+
+· &nbsp;&nbsp;[MVC模式 - Strut2中的模式、视图、控制器](http://yhzhtk.info/2013/11/04/design-patterns-structural.html#mvc) <small>原文 <a href="http://www.programcreek.com/2011/08/struts-2-tutorials-mvc-design-pattern/" target="_blank">MVC – Module, View and Controller in Strut 2</a></small>
+
+---
+
 <h3><span id="adapter">Java设计模式：适配器模式</span></h3>
 
 <em>翻译自 <a href="http://www.programcreek.com/2011/09/java-design-pattern-adapter/" target="_blank">Java Design Pattern: Adapter</a></em>
@@ -15,13 +35,13 @@ tags: [设计模式, 翻译, 适配器, 桥接, 组合, 装饰, 外观, 享元, 
 
 **1、适配器模式的故事**
 
+<!--break-->
+
 适配器的想法，可以用下面简单的例子证明。这个问题，是为了适配一个桔子到一个苹果上。
 
 <img src="http://www.programcreek.com/wp-content/uploads/2011/09/SimpleAdapter.jpg"/>
 
 从下面的图中看出，该适配器包含一个Orange的实例，并扩展了Apple。一个Orange对象通过一个适配器，它现在表现得就像一个Apple的对象。
-
-<!--break-->
 
 **2、适配器类图**
 
@@ -657,10 +677,10 @@ Total Coffee objects made: 2
 
 **4、Java代码**
 
-1、定义被欺骗妻子的类型
-2、定义一个欺骗妻子，No 1
-3、定义坏代理
-4、让坏人做坏事
+1. 定义被欺骗妻子的类型
+2. 定义一个欺骗妻子，No 1
+3. 定义坏代理
+4. 让坏人做坏事
 
 <pre class="brush: java;">
 interface CheatingWife {

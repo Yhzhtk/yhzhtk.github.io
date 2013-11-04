@@ -5,6 +5,20 @@ description: 设计模式中的创造型模式，包括单例模式、工厂模�
 tags: [设计模式, 翻译, 单例, 工厂, 抽象工厂, 生成器, 原型]
 ---
 
+设计模式中的创造型模式，包括单例模式、工厂模式、抽象工厂模式、生成器模式、原型模式，本文主要用简单的实例介绍这几种设计模式。
+
+· &nbsp;&nbsp;[单例模式 - 美国只有一个总统](http://yhzhtk.info/2013/11/04/design-patterns-creational.html#singleton) <small>原文 <a href="http://www.programcreek.com/2011/07/java-design-pattern-singleton/" target="_blank">Singleton – Only one president in America</a></small>
+
+· &nbsp;&nbsp;[工厂模式 - 一个生产人类的工厂](http://yhzhtk.info/2013/11/04/design-patterns-creational.html#factory) <small>原文 <a href="http://www.programcreek.com/2013/02/java-design-patterns-factory/" target="_blank">Factory – A factory that produces human</a></small>
+
+· &nbsp;&nbsp;[抽象工厂模式 - 一个生产CPU的抽象工厂](http://yhzhtk.info/2013/11/04/design-patterns-creational.html#abstract-factory) <small>原文 <a href="http://www.programcreek.com/2013/02/java-design-patterns-abstract-factory/" target="_blank">Abstract Factory – An abstract factory to produce CPUs</a></small>
+
+· &nbsp;&nbsp;[生成器模式 - 生成一杯饮料](http://yhzhtk.info/2013/11/04/design-patterns-creational.html#builder) <small>原文 <a href="http://www.programcreek.com/2013/02/java-design-pattern-builder/" target="_blank">Builder – Build a drink</a></small>
+
+· &nbsp;&nbsp;[原型模式 - 创建很多相似的对象](http://yhzhtk.info/2013/11/04/design-patterns-creational.html#prototype) <small>原文 <a href="http://www.programcreek.com/2013/02/java-design-pattern-prototype/" target="_blank">Prototype – Create a lot of similar objects</a></small>
+
+---
+
 <h3><span id="singleton">Java设计模式：单例模式</span></h3>
 
 <em>翻译自 <a href="http://www.programcreek.com/2011/07/java-design-pattern-singleton/" target="_blank">Java Design Pattern: Singleton</a></em>
@@ -17,13 +31,13 @@ tags: [设计模式, 翻译, 单例, 工厂, 抽象工厂, 生成器, 原型]
 
 **单例模式的故事**
 
+<!--break-->
+
 下面是一个简单的使用情况。一个国家只能有一个总统（这是正常的情况）。所以每当我们要引用总统对象，只需要通过AmericaPresident返回，其中的getPresident（）方法将确保始终只有一个总统创建。否则，它就不会符合正常情况。
 
 **类图**
 
 <img src="http://www.programcreek.com/wp-content/uploads/2011/07/singleton.jpg"/>
-
-<!--break-->
 
 **Java 代码**
 
@@ -91,8 +105,6 @@ Minimum = 52ms, Maximum = 53ms, Average = 52ms
 2、工厂模式的类图
 
 <img src="http://www.programcreek.com/wp-content/uploads/2013/02/factory-design-pattern.png"/>
-
-<!--break-->
 
 3、工厂模式的Java代码
 
@@ -167,8 +179,6 @@ java.text.NumberFormat – getInstance(Locale inLocale)
 **抽象工厂类图**
 
 <img src="http://www.programcreek.com/wp-content/uploads/2013/02/abstract-factory-design-pattern.png"/>
-
-<!--break-->
 
 **抽象工厂的Java代码**
 
@@ -247,8 +257,6 @@ public class Client {
 **1、Builder设计模式的类图**
 
 <img src="http://www.programcreek.com/wp-content/uploads/2013/02/builder-design-pattern.png"/>
-
-<!--break-->
 
 **2、Builder设计模式的Java代码示例**
 
@@ -382,8 +390,6 @@ append()方法就像是我们的星巴克的例子中的一个步骤，toString(
 **1、原型模式类图**
 
 <img src="http://www.programcreek.com/wp-content/uploads/2013/02/prototype-pattern-class-diagram.png"/>
-
-<!--break-->
 
 **2、原型模式的Java示例**
 
