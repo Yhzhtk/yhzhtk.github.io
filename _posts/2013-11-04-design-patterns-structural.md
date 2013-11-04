@@ -5,7 +5,7 @@ description: 设计模式中的结构型模式，包括适配器模式、桥接�
 tags: [设计模式, 翻译, 适配器, 桥接, 组合, 装饰, 外观, 享元, 代理, MVC]
 ---
 
-<h3><span id="adapter">Java设计模式：适配器模式</a></h3>
+<h3><span id="adapter">Java设计模式：适配器模式</span></h3>
 
 <em>翻译自 <a href="http://www.programcreek.com/2011/09/java-design-pattern-adapter/" target="_blank">Java Design Pattern: Adapter</a></em>
 
@@ -238,7 +238,7 @@ interface Component {
 //Composite
 class Composite implements Component {
  
-    private List<Component> childComponents = new ArrayList<Component>();
+    private List&lt;Component&gt; childComponents = new ArrayList&lt;Component&gt;();
  
     public void add(Component component) {
     	childComponents.add(component);
@@ -294,7 +294,7 @@ public class CompositeTest {
 
 ---
 
-<h3><span id="decorator">Java设计模式：装饰模式</a></h3>
+<h3><span id="decorator">Java设计模式：装饰模式</span></h3>
 
 <em>翻译自 <a href="http://www.programcreek.com/2012/05/java-design-pattern-decorator-decorate-your-girlfriend/" target="_blank">Java Design Pattern: Decorator – Decorate your girlfriend</a></em>
 
@@ -435,7 +435,7 @@ BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
 
 ---
 
-<h3><span id="facade">Java设计模式：外观模式</a></h3>
+<h3><span id="facade">Java设计模式：外观模式</span></h3>
 
 <em>翻译自 <a href="http://www.programcreek.com/2013/02/java-design-pattern-facade/" target="_blank">Java Design Pattern: Facade</a></em>
 
@@ -498,7 +498,7 @@ class User {
 
 ---
 
-<h3><span id="flyweight">Java设计模式：享元模式</a></h3>
+<h3><span id="flyweight">Java设计模式：享元模式</span></h3>
 
 <em>翻译自 <a href="http://www.programcreek.com/2013/02/java-design-pattern-flyweight/" target="_blank">Java Design Pattern: Flyweight</a></em>
 
@@ -549,7 +549,7 @@ CoffeeFactory: it only create a new coffee when necessary.
 //The FlyweightFactory!
 class CoffeeFactory {
  
-    private HashMap<String, Coffee> flavors = new HashMap<String, Coffee>();
+    private HashMap&lt;String, Coffee&gt; flavors = new HashMap&lt;String, Coffee&gt;();
  
     public Coffee getCoffeeFlavor(String flavorName) {
         Coffee flavor = flavors.get(flavorName);
@@ -595,7 +595,7 @@ public class Waitress {
        takeOrder("Regular Coffee", 3);
        takeOrder("Cappuccino", 3);
  
-       for (int i = 0; i < ordersCount; ++i) {
+       for (int i = 0; i &lt; ordersCount; ++i) {
     	   coffees[i].serveCoffee(tables[i]);
        }
  
@@ -626,7 +626,7 @@ Total Coffee objects made: 2
 
 ---
 
-<h3><span id="proxy">Java设计模式 - 代理模式</a></h3>
+<h3><span id="proxy">Java设计模式 - 代理模式</span></h3>
 
 <em>翻译自 <a href="http://www.programcreek.com/2009/10/proxy-design-pattern-in-a-funny-story/" target="_blank">Java Design Pattern Story for Proxy – A Slutty Lady</a></em>
 
@@ -717,7 +717,7 @@ public class Mike {
 
 ---
 
-<h3><span id="mvc">Struts 2的教程：MVC设计模式</a></h3>
+<h3><span id="mvc">Struts 2的教程：MVC设计模式</span></h3>
 
 <em>翻译自 <a href="http://www.programcreek.com/2011/08/struts-2-tutorials-mvc-design-pattern/" target="_blank">Struts 2 Tutorials Series: MVC Design Pattern (Diagram)</a></em>
 
