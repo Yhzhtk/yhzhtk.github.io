@@ -48,29 +48,29 @@ tags: [设计模式, 翻译]
 
 **行为型模式**
 
-· &nbsp;&nbsp;[观察者模式 - 找工作或观察工作]() <small>原文 <a href="http://www.programcreek.com/2011/01/an-java-example-of-observer-pattern/" target="_blank">Observer – Look for a job or observe a job?</a></small>
+· &nbsp;&nbsp;[观察者模式 - 找工作或观察工作](http://yhzhtk.info/2013/11/05/design-patterns-behavioral.html#observer) <small>原文 <a href="http://www.programcreek.com/2011/01/an-java-example-of-observer-pattern/" target="_blank">Observer – Look for a job or observe a job?</a></small>
 
-· &nbsp;&nbsp;[观察者模式 - 一个简单的Swing GUI例子]() <small>原文 <a href="http://www.programcreek.com/2009/01/the-steps-involved-in-building-a-swing-gui-application/" target="_blank">Observer – A simple Swing GUI example</a></small>
+· &nbsp;&nbsp;[观察者模式 - 一个简单的Swing GUI例子](http://yhzhtk.info/2013/11/05/design-patterns-behavioral.html#observer-swing) <small>原文 <a href="http://www.programcreek.com/2009/01/the-steps-involved-in-building-a-swing-gui-application/" target="_blank">Observer – A simple Swing GUI example</a></small>
 
-· &nbsp;&nbsp;[状态模式 - 当生活困难时要努力工作]() <small>原文 <a href="http://www.programcreek.com/2011/07/java-design-pattern-state/" target="_blank">State – Work hard when life is hard</a></small>
+· &nbsp;&nbsp;[状态模式 - 当生活困难时要努力工作](http://yhzhtk.info/2013/11/05/design-patterns-behavioral.html#state) <small>原文 <a href="http://www.programcreek.com/2011/07/java-design-pattern-state/" target="_blank">State – Work hard when life is hard</a></small>
 
-· &nbsp;&nbsp;[策略模式 - 如果加速你会得到票吗]() <small>原文 <a href="http://www.programcreek.com/2011/01/a-java-example-of-strategy-design-pattern/" target="_blank">Strategy – Will you get a ticket if speeding</a></small>
+· &nbsp;&nbsp;[策略模式 - 如果加速你会得到票吗](http://yhzhtk.info/2013/11/05/design-patterns-behavioral.html#strategy) <small>原文 <a href="http://www.programcreek.com/2011/01/a-java-example-of-strategy-design-pattern/" target="_blank">Strategy – Will you get a ticket if speeding</a></small>
 
-· &nbsp;&nbsp;[模板模式 - 测试车辆]() <small>原文 <a href="http://www.programcreek.com/2012/08/java-design-pattern-template-method/" target="_blank">Template – Test a vehicle</a></small>
+· &nbsp;&nbsp;[模板模式 - 测试车辆](http://yhzhtk.info/2013/11/05/design-patterns-behavioral.html#template) <small>原文 <a href="http://www.programcreek.com/2012/08/java-design-pattern-template-method/" target="_blank">Template – Test a vehicle</a></small>
 
-· &nbsp;&nbsp;[访问者模式 - 访问纽约]() <small>原文 <a href="http://www.programcreek.com/2011/05/visitor-design-pattern-example/" target="_blank">Visitor – Visit New York City</a></small>
+· &nbsp;&nbsp;[访问者模式 - 访问纽约](http://yhzhtk.info/2013/11/05/design-patterns-behavioral.html#visitor) <small>原文 <a href="http://www.programcreek.com/2011/05/visitor-design-pattern-example/" target="_blank">Visitor – Visit New York City</a></small>
 
-· &nbsp;&nbsp;[职责链模式 - 职责链]() <small>原文 <a href="http://www.programcreek.com/2013/02/java-design-pattern-chain-of-responsibility/" target="_blank">Chain of responsibility – The responsibility chain</a></small>
+· &nbsp;&nbsp;[职责链模式 - 职责链](http://yhzhtk.info/2013/11/05/design-patterns-behavioral.html#chain-of-responsibility) <small>原文 <a href="http://www.programcreek.com/2013/02/java-design-pattern-chain-of-responsibility/" target="_blank">Chain of responsibility – The responsibility chain</a></small>
 
-· &nbsp;&nbsp;[命令模式 - 使用不同的命令控制电脑]() <small>原文 <a href="http://www.programcreek.com/2013/02/java-design-pattern-command/" target="_blank">Command – Use different command to control computer</a></small>
+· &nbsp;&nbsp;[命令模式 - 使用不同的命令控制电脑](http://yhzhtk.info/2013/11/05/design-patterns-behavioral.html#command) <small>原文 <a href="http://www.programcreek.com/2013/02/java-design-pattern-command/" target="_blank">Command – Use different command to control computer</a></small>
 
-· &nbsp;&nbsp;[解释器模式 - 解释一些内容]() <small>原文 <a href="http://www.programcreek.com/2013/02/java-design-pattern-interprete/" target="_blank">Interpreter – Interpret some context</a></small>
+· &nbsp;&nbsp;[解释器模式 - 解释一些内容](http://yhzhtk.info/2013/11/05/design-patterns-behavioral.html#interpreter) <small>原文 <a href="http://www.programcreek.com/2013/02/java-design-pattern-interpreter/" target="_blank">Interpreter – Interpret some context</a></small>
 
-· &nbsp;&nbsp;[迭代器模式 - 迭代一个对象集合]() <small>原文 <a href="http://www.programcreek.com/2013/02/java-design-pattern-iterator/" target="_blank">Iterator – Iterate a collection of objects</a></small>
+· &nbsp;&nbsp;[迭代器模式 - 迭代一个对象集合](http://yhzhtk.info/2013/11/05/design-patterns-behavioral.html#iterator) <small>原文 <a href="http://www.programcreek.com/2013/02/java-design-pattern-iterator/" target="_blank">Iterator – Iterate a collection of objects</a></small>
 
-· &nbsp;&nbsp;[中介者模式 - 两个同事的交流]() <small>原文 <a href="http://www.programcreek.com/2013/02/java-design-pattern-mediator/" target="_blank">Mediator – Mediate two colleagues</a></small>
+· &nbsp;&nbsp;[中介者模式 - 两个同事的交流](http://yhzhtk.info/2013/11/05/design-patterns-behavioral.html#mediator) <small>原文 <a href="http://www.programcreek.com/2013/02/java-design-pattern-mediator/" target="_blank">Mediator – Mediate two colleagues</a></small>
 
-· &nbsp;&nbsp;[备忘录模式 - 使用备忘录记录时间旅行]() <small>原文 <a href="http://www.programcreek.com/2013/02/java-design-pattern-memento/" target="_blank">Memento – Use memento to time travel</a></small>
+· &nbsp;&nbsp;[备忘录模式 - 使用备忘录记录时间旅行](http://yhzhtk.info/2013/11/05/design-patterns-behavioral.html#memento) <small>原文 <a href="http://www.programcreek.com/2013/02/java-design-pattern-memento/" target="_blank">Memento – Use memento to time travel</a></small>
 
 **真实框架中的设计模式**
 

@@ -19,13 +19,13 @@ tags: [设计模式, 翻译, 观察者, 状态, 策略, 模板, 访问者, 职�
 
 · &nbsp;&nbsp;[访问者模式 - 访问纽约](http://yhzhtk.info/2013/11/05/design-patterns-behavioral.html#visitor) <small>原文 <a href="http://www.programcreek.com/2011/05/visitor-design-pattern-example/" target="_blank">Visitor – Visit New York City</a></small>
 
-· &nbsp;&nbsp;[职责链模式 - 职责链](http://yhzhtk.info/2013/11/05/design-patterns-behavioral.html#chain-of=responsibility) <small>原文 <a href="http://www.programcreek.com/2013/02/java-design-pattern-chain-of-responsibility/" target="_blank">Chain of responsibility – The responsibility chain</a></small>
+· &nbsp;&nbsp;[职责链模式 - 职责链](http://yhzhtk.info/2013/11/05/design-patterns-behavioral.html#chain-of-responsibility) <small>原文 <a href="http://www.programcreek.com/2013/02/java-design-pattern-chain-of-responsibility/" target="_blank">Chain of responsibility – The responsibility chain</a></small>
 
 · &nbsp;&nbsp;[命令模式 - 使用不同的命令控制电脑](http://yhzhtk.info/2013/11/05/design-patterns-behavioral.html#command) <small>原文 <a href="http://www.programcreek.com/2013/02/java-design-pattern-command/" target="_blank">Command – Use different command to control computer</a></small>
 
-· &nbsp;&nbsp;[解释器模式 - 解释一些内容](http://yhzhtk.info/2013/11/05/design-patterns-behavioral.html#interprete) <small>原文 <a href="http://www.programcreek.com/2013/02/java-design-pattern-interprete/" target="_blank">Interpreter – Interpret some context</a></small>
+· &nbsp;&nbsp;[解释器模式 - 解释一些内容](http://yhzhtk.info/2013/11/05/design-patterns-behavioral.html#interpreter) <small>原文 <a href="http://www.programcreek.com/2013/02/java-design-pattern-interpreter/" target="_blank">Interpreter – Interpret some context</a></small>
 
-· &nbsp;&nbsp;[迭代器模式 - 迭代一个对象集合](http://yhzhtk.info/2013/11/05/design-patterns-behavioral.html#interator) <small>原文 <a href="http://www.programcreek.com/2013/02/java-design-pattern-iterator/" target="_blank">Iterator – Iterate a collection of objects</a></small>
+· &nbsp;&nbsp;[迭代器模式 - 迭代一个对象集合](http://yhzhtk.info/2013/11/05/design-patterns-behavioral.html#iterator) <small>原文 <a href="http://www.programcreek.com/2013/02/java-design-pattern-iterator/" target="_blank">Iterator – Iterate a collection of objects</a></small>
 
 · &nbsp;&nbsp;[中介者模式 - 两个同事的交流](http://yhzhtk.info/2013/11/05/design-patterns-behavioral.html#mediator) <small>原文 <a href="http://www.programcreek.com/2013/02/java-design-pattern-mediator/" target="_blank">Mediator – Mediate two colleagues</a></small>
 
