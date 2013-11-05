@@ -7,13 +7,13 @@ tags: [设计模式, 翻译, 观察者, 状态, 策略, 模板, 访问者, 职�
 
 设计模式中的行为型模式，包括观察者模式、状态模式、策略模式、模板模式、访问者模式、职责链模式、命令模式、解释器模式、迭代器模式、中介者模式、备忘录模式，本文主要用简单的实例介绍这几种设计模式。
 
-· &nbsp;&nbsp;[观察者模式 - 找工作或观察工作](http://yhzhtk.info/2013/11/04/design-patterns-behavioral.html#observer) <small>原文 <a href="http://www.programcreek.com/2011/01/an-java-example-of-observer-pattern/" target="_blank">Observer – Look for a job or observe a job?</a></small>
+· &nbsp;&nbsp;[观察者模式 - 找工作或观察工作](http://yhzhtk.info/2013/11/05/design-patterns-behavioral.html#observer) <small>原文 <a href="http://www.programcreek.com/2011/01/an-java-example-of-observer-pattern/" target="_blank">Observer – Look for a job or observe a job?</a></small>
 
-· &nbsp;&nbsp;[观察者模式 - 一个简单的Swing GUI例子](http://yhzhtk.info/2013/11/04/design-patterns-behavioral.html#observer-swing) <small>原文 <a href="http://www.programcreek.com/2009/01/the-steps-involved-in-building-a-swing-gui-application/" target="_blank">Observer – A simple Swing GUI example</a></small>
+· &nbsp;&nbsp;[观察者模式 - 一个简单的Swing GUI例子](http://yhzhtk.info/2013/11/05/design-patterns-behavioral.html#observer-swing) <small>原文 <a href="http://www.programcreek.com/2009/01/the-steps-involved-in-building-a-swing-gui-application/" target="_blank">Observer – A simple Swing GUI example</a></small>
 
-· &nbsp;&nbsp;[状态模式 - 当生活困难时要努力工作](http://yhzhtk.info/2013/11/04/design-patterns-behavioral.html#state) <small>原文 <a href="http://www.programcreek.com/2011/07/java-design-pattern-state/" target="_blank">State – Work hard when life is hard</a></small>
+· &nbsp;&nbsp;[状态模式 - 当生活困难时要努力工作](http://yhzhtk.info/2013/11/05/design-patterns-behavioral.html#state) <small>原文 <a href="http://www.programcreek.com/2011/07/java-design-pattern-state/" target="_blank">State – Work hard when life is hard</a></small>
 
-· &nbsp;&nbsp;[策略模式 - 如果加速你会得到票吗](http://yhzhtk.info/2013/11/04/design-patterns-behavioral.html#strategy) <small>原文 <a href="http://www.programcreek.com/2011/01/a-java-example-of-strategy-design-pattern/" target="_blank">Strategy – Will you get a ticket if speeding</a></small>
+· &nbsp;&nbsp;[策略模式 - 如果加速你会得到票吗](http://yhzhtk.info/2013/11/05/design-patterns-behavioral.html#strategy) <small>原文 <a href="http://www.programcreek.com/2011/01/a-java-example-of-strategy-design-pattern/" target="_blank">Strategy – Will you get a ticket if speeding</a></small>
 
 · &nbsp;&nbsp;[模板模式 - 测试车辆]() <small>原文 <a href="http://www.programcreek.com/2012/08/java-design-pattern-template-method/" target="_blank">Template – Test a vehicle</a></small>
 
@@ -149,7 +149,7 @@ java.util.EventListener
 
 ---
 
-<h3><span id="adapter-swing">一个简单的观察者设计模式例子 - Swing GUI</span></h3>
+<h3><span id="observer-swing">一个简单的观察者设计模式例子 - Swing GUI</span></h3>
 
 <em>翻译自 <a href="http://www.programcreek.com/2009/01/the-steps-involved-in-building-a-swing-gui-application/" target="_blank">A simple Swing GUI example for Observer Design Pattern</a></em>
 
@@ -401,7 +401,7 @@ public class Main {
  This is your first time, be sure don’t do it again! 
 </pre>
 
-你可以比较策略模式和[状态模式](http://yhzhtk.info/2013/11/04/design-patterns-behavioral.html#state)，他们非常相似。主要的区别是，状态模式是当对象的状态变化时改变对象的行为，而策略模式主要是在不同情况下使用不同的算法。
+你可以比较策略模式和[状态模式](http://yhzhtk.info/2013/11/05/design-patterns-behavioral.html#state)，他们非常相似。主要的区别是，状态模式是当对象的状态变化时改变对象的行为，而策略模式主要是在不同情况下使用不同的算法。
 
 **JDK中的策略模式**
 
