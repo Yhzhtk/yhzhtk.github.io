@@ -70,12 +70,12 @@ import java.util.ArrayList;
 public class HeadHunter implements Subject{
  
 	//define a list of users, such as Mike, Bill, etc.
-	private ArrayList<Observer> userList;
-	private ArrayList<String> jobs;
+	private ArrayList&lt;Observer&gt; userList;
+	private ArrayList&lt;String&gt; jobs;
  
 	public HeadHunter(){
-		userList = new ArrayList<Observer>();
-		jobs = new ArrayList<String>();
+		userList = new ArrayList&lt;Observer&gt;();
+		jobs = new ArrayList&lt;String&gt;();
 	}
  
 	@Override
@@ -98,7 +98,7 @@ public class HeadHunter implements Subject{
 		notifyAllObservers();
 	}
  
-	public ArrayList<String> getJobs() {
+	public ArrayList&lt;String&gt; getJobs() {
 		return jobs;
 	}
  
