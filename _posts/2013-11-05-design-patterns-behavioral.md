@@ -33,9 +33,9 @@ tags: [设计模式, 翻译, 观察者, 状态, 策略, 模板, 访问者, 职�
 
 <!--break-->
 
----
+<hr style="border:2 dashed #7E7E7E"/>
 
-<h3><span id="observer">Java设计模式：观察者模式</span></h3>
+<h4><a href="http://yhzhtk.info/2013/11/05/design-patterns-behavioral.html#observer" id="observer">1、Java设计模式：观察者模式</a></h4>
 
 <em>翻译自 <a href="http://www.programcreek.com/2011/01/an-java-example-of-observer-pattern/" target="_blank">Java Design Pattern: Observer</a></em>
 
@@ -149,9 +149,9 @@ java.util.EventListener
 
 [Swing GUI example](#observer-swing)
 
----
+<hr style="border:2 dashed #7E7E7E"/>
 
-<h3><span id="observer-swing">一个简单的观察者设计模式例子 - Swing GUI</span></h3>
+<h4><a href="http://yhzhtk.info/2013/11/05/design-patterns-behavioral.html#observer-swing" id="observer-swing">2、一个简单的观察者设计模式例子 - Swing GUI</a></h4>
 
 <em>翻译自 <a href="http://www.programcreek.com/2009/01/the-steps-involved-in-building-a-swing-gui-application/" target="_blank">A simple Swing GUI example for Observer Design Pattern</a></em>
 
@@ -240,9 +240,9 @@ frame.setSize(width, height);
 frame.setVisible(true);
 </pre>
 
----
+<hr style="border:2 dashed #7E7E7E"/>
 
-<h3><span id="state">Java设计模式：状态模式</span></h3>
+<h4><a href="http://yhzhtk.info/2013/11/05/design-patterns-behavioral.html#state" id="state">3、Java设计模式：状态模式</a></h4>
 
 <em>翻译自 <a href="http://www.programcreek.com/2011/07/java-design-pattern-state/" target="_blank">Java Design Pattern: State</a></em>
 
@@ -328,9 +328,9 @@ sc.saySomething();
  I’m rick currently, and play a lot. 
 </pre>
 
----
+<hr style="border:2 dashed #7E7E7E"/>
 
-<h3><span id="strategy">Java设计模式：策略模式</span></h3>
+<h4><a href="http://yhzhtk.info/2013/11/05/design-patterns-behavioral.html#strategy" id="strategy">4、Java设计模式：策略模式</a></h4>
 
 <em>翻译自 <a href="http://www.programcreek.com/2011/01/a-java-example-of-strategy-design-pattern/" target="_blank">Java Design Pattern: Strategy</a></em>
 
@@ -413,9 +413,9 @@ Java.util.Collections#sort(List list, Comparator c)
 
 Sort 方法在不同情况下使用不同的Comparator。要知道更多关于Comparator的内容，查看[compare Comparator with Comparable](http://www.programcreek.com/2011/12/examples-to-demonstrate-comparable-vs-comparator-in-java/)。
 
----
+<hr style="border:2 dashed #7E7E7E"/>
 
-<h3><span id="template">Java设计模式：模板方法</span></h3>
+<h4><a href="http://yhzhtk.info/2013/11/05/design-patterns-behavioral.html#template" id="template">5、Java设计模式：模板方法</a></h4>
 
 <em>翻译自 <a href="http://www.programcreek.com/2012/08/java-design-pattern-template-method/" target="_blank">Java Design Pattern: Template Method</a></em>
 
@@ -523,9 +523,9 @@ public class Main {
 
 Spring框架的数据访问对象（DAO）就是采用这种模式 org.springframework.jdbc.core。JdbcTemplate 类有所有常见的与JDBC的工作流程相关的重复代码块，如更新​​，查询，执行等。
 
----
+<hr style="border:2 dashed #7E7E7E"/>
 
-<h3><span id="visitor">Java设计模式：访问者模式</span></h3>
+<h4><a href="http://yhzhtk.info/2013/11/05/design-patterns-behavioral.html#visitor" id="visitor">6、Java设计模式：访问者模式</a></h4>
 
 <em>翻译自 <a href="http://www.programcreek.com/2011/05/visitor-design-pattern-example/" target="_blank">Java Design Pattern: Visitor</a></em>
 
@@ -648,9 +648,9 @@ I’m visiting the Park!
 
 `javax.lang.model.element.AnnotationValue` 明显使用访问者模式，但它在常规项目中不是很常用。
 
----
+<hr style="border:2 dashed #7E7E7E"/>
 
-<h3><span id="chain-of-responsibility">Java设计模式：责任链模式</span></h3>
+<h4><a href="http://yhzhtk.info/2013/11/05/design-patterns-behavioral.html#chain-of-responsibility" id="chain-of-responsibility">7、Java设计模式：责任链模式</a></h4>
 
 <em>翻译自 <a href="http://www.programcreek.com/2013/02/java-design-pattern-chain-of-responsibility/" target="_blank">Java Design Pattern: Chain of Responsibility</a></em>
 
@@ -766,9 +766,9 @@ C: level 1
 
 这是来自维基百科的一个简单例子 - [http://en.wikipedia.org/wiki/Chain-of-responsibility_pattern](http://en.wikipedia.org/wiki/Chain-of-responsibility_pattern)
 
----
+<hr style="border:2 dashed #7E7E7E"/>
 
-<h3><span id="command">Java设计模式：命令模式</span></h3>
+<h4><a href="http://yhzhtk.info/2013/11/05/design-patterns-behavioral.html#command" id="command">8、Java设计模式：命令模式</a></h4>
 
 <em>翻译自 <a href="http://www.programcreek.com/2013/02/java-design-pattern-command/" target="_blank">Java Design Pattern: Command</a></em>
 
@@ -878,9 +878,9 @@ public class TestCommand {
 }
 </pre>
 
----
+<hr style="border:2 dashed #7E7E7E"/>
 
-<h3><span id="interpreter">Java设计模式：解释器模式</span></h3>
+<h4><a href="http://yhzhtk.info/2013/11/05/design-patterns-behavioral.html#interpreter" id="interpreter">9、Java设计模式：解释器模式</a></h4>
 
 <em>翻译自 <a href="http://www.programcreek.com/2013/02/java-design-pattern-interprete/" target="_blank">Java Design Pattern: Interpreter</a></em>
 
@@ -967,9 +967,9 @@ public class TestInterpreter {
 
 `java.util.Pattern`
 
----
+<hr style="border:2 dashed #7E7E7E"/>
 
-<h3><span id="iterator">Java设计模式：迭代器模式</span></h3>
+<h4><a href="http://yhzhtk.info/2013/11/05/design-patterns-behavioral.html#iterator" id="iterator">10、Java设计模式：迭代器模式</a></h4>
 
 <em>翻译自 <a href="http://www.programcreek.com/2013/02/java-design-pattern-iterator/" target="_blank">Java Design Pattern: Iterator</a></em>
 
@@ -1044,9 +1044,9 @@ public interface Iterator&lt;E&gt; {
 
 还有就是可以创建一个迭代器的类，如，TreeSet中的iterator()，HashSet的iterator()等。
 
----
+<hr style="border:2 dashed #7E7E7E"/>
 
-<h3><span id="mediator">Java设计模式：中介者模式</span></h3>
+<h4><a href="http://yhzhtk.info/2013/11/05/design-patterns-behavioral.html#mediator" id="mediator">11、Java设计模式：中介者模式</a></h4>
 
 <em>翻译自 <a href="http://www.programcreek.com/2013/02/java-design-pattern-mediator/" target="_blank">Java Design Pattern: Mediator</a></em>
 
@@ -1142,9 +1142,9 @@ public class MediatorTest {
 
 与其他的行为模式比较，观察者模式与中介者模式最相似。您可以阅读观察者模式来比较他们的差异。
 
----
+<hr style="border:2 dashed #7E7E7E"/>
 
-<h3><span id="memento">Java设计模式：备忘录模式</span></h3>
+<h4><a href="http://yhzhtk.info/2013/11/05/design-patterns-behavioral.html#memento" id="memento">12、Java设计模式：备忘录模式</a></h4>
 
 <em>翻译自 <a href="http://www.programcreek.com/2013/02/java-design-pattern-memento/" target="_blank">Java Design Pattern: Memento</a></em>
 

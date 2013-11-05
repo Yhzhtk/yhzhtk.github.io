@@ -25,9 +25,9 @@ tags: [设计模式, 翻译, 适配器, 桥接, 组合, 装饰, 外观, 享元, 
 
 <!--break-->
 
----
+<hr style="border:2 dashed #7E7E7E"/>
 
-<h3><span id="adapter">Java设计模式：适配器模式</span></h3>
+<h4><a href="http://yhzhtk.info/2013/11/04/design-patterns-structural.html#adapter" id="adapter">1、Java设计模式：适配器模式</a></h4>
 
 <em>翻译自 <a href="http://www.programcreek.com/2011/09/java-design-pattern-adapter/" target="_blank">Java Design Pattern: Adapter</a></em>
 
@@ -99,9 +99,9 @@ java.io.的OutputStreamWriter（OutputStream中）（返回一个作家）
 
 一个真正的大框架，这个想法可能不是很明显。例如在Eclipse中如何使用适配器不是那么简单。[Decipher Eclipse Architecture](http://www.programcreek.com/2011/09/adapters-in-eclipse/)是一篇文章介绍适配器模式是如何在Eclipse运行时中使用的。
 
----
+<hr style="border:2 dashed #7E7E7E"/>
 
-<h3><span id="bridge">Java设计模式：桥接模式</span></h3>
+<h4><a href="http://yhzhtk.info/2013/11/04/design-patterns-structural.html#bridge" id="bridge">2、Java设计模式：桥接模式</a></h4>
 
 <em>翻译自 <a href="http://www.programcreek.com/2011/10/java-design-pattern-bridge/" target="_blank">Java Design Pattern: Bridge</a></em>
 
@@ -228,9 +228,9 @@ Logitech use keyword to set channel.
 
 2、[维基-桥接模式](http://en.wikipedia.org/wiki/Bridge_pattern)
 
----
+<hr style="border:2 dashed #7E7E7E"/>
 
-<h3><span id="composite">Java设计模式：组合模式</span></h3>
+<h4><a href="http://yhzhtk.info/2013/11/04/design-patterns-structural.html#composite" id="composite">3、Java设计模式：组合模式</a></h4>
 
 <em>翻译自 <a href="http://www.programcreek.com/2013/02/java-design-pattern-composite/" target="_blank">Java Design Pattern: Composite</a></em>
 
@@ -312,9 +312,9 @@ public class CompositeTest {
 }
 </pre>
 
----
+<hr style="border:2 dashed #7E7E7E"/>
 
-<h3><span id="decorator">Java设计模式：装饰模式</span></h3>
+<h4><a href="http://yhzhtk.info/2013/11/04/design-patterns-structural.html#decorator" id="decorator">4、Java设计模式：装饰模式</a></h4>
 
 <em>翻译自 <a href="http://www.programcreek.com/2012/05/java-design-pattern-decorator-decorate-your-girlfriend/" target="_blank">Java Design Pattern: Decorator – Decorate your girlfriend</a></em>
 
@@ -453,9 +453,9 @@ BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
 
 `BufferedReader(Reader in)` - 从字符流和缓冲字符区读取字符，以提供高效的阅读方法（例如，使用readLine()）。
 
----
+<hr style="border:2 dashed #7E7E7E"/>
 
-<h3><span id="facade">Java设计模式：外观模式</span></h3>
+<h4><a href="http://yhzhtk.info/2013/11/04/design-patterns-structural.html#facade" id="facade">5、Java设计模式：外观模式</a></h4>
 
 <em>翻译自 <a href="http://www.programcreek.com/2013/02/java-design-pattern-facade/" target="_blank">Java Design Pattern: Facade</a></em>
 
@@ -516,9 +516,9 @@ class User {
 
 [http://en.wikipedia.org/wiki/Facade_pattern](http://en.wikipedia.org/wiki/Facade_pattern)
 
----
+<hr style="border:2 dashed #7E7E7E"/>
 
-<h3><span id="flyweight">Java设计模式：享元模式</span></h3>
+<h4><a href="http://yhzhtk.info/2013/11/04/design-patterns-structural.html#flyweight" id="flyweight">6、Java设计模式：享元模式</a></h4>
 
 <em>翻译自 <a href="http://www.programcreek.com/2013/02/java-design-pattern-flyweight/" target="_blank">Java Design Pattern: Flyweight</a></em>
 
@@ -644,9 +644,9 @@ Total Coffee objects made: 2
 
 这个例子是改变基于维基享元模式，有一点改善，更容易理解。http://en.wikipedia.org/wiki/Flyweight_pattern
 
----
+<hr style="border:2 dashed #7E7E7E"/>
 
-<h3><span id="proxy">Java设计模式 - 代理模式</span></h3>
+<h4><a href="http://yhzhtk.info/2013/11/04/design-patterns-structural.html#proxy" id="proxy">7、Java设计模式 - 代理模式</a></h4>
 
 <em>翻译自 <a href="http://www.programcreek.com/2009/10/proxy-design-pattern-in-a-funny-story/" target="_blank">Java Design Pattern Story for Proxy – A Slutty Lady</a></em>
 
@@ -735,9 +735,9 @@ public class Mike {
 }
 </pre>
 
----
+<hr style="border:2 dashed #7E7E7E"/>
 
-<h3><span id="mvc">Struts 2的教程：MVC设计模式</span></h3>
+<h4><a href="http://yhzhtk.info/2013/11/04/design-patterns-structural.html#mvc" id="mvc">8、Struts 2的教程：MVC设计模式</a></h4>
 
 <em>翻译自 <a href="http://www.programcreek.com/2011/08/struts-2-tutorials-mvc-design-pattern/" target="_blank">Struts 2 Tutorials Series: MVC Design Pattern (Diagram)</a></em>
 

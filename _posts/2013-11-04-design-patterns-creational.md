@@ -19,9 +19,9 @@ tags: [设计模式, 翻译, 单例, 工厂, 抽象工厂, 生成器, 原型]
 
 <!--break-->
 
----
+<hr style="border:2 dashed #7E7E7E"/>
 
-<h3><span id="singleton">Java设计模式：单例模式</span></h3>
+<h4><a href="http://yhzhtk.info/2013/11/04/design-patterns-creational.html#singleton" id="singleton">1、Java设计模式：单例模式</a></h4>
 
 <em>翻译自 <a href="http://www.programcreek.com/2011/07/java-design-pattern-singleton/" target="_blank">Java Design Pattern: Singleton</a></em>
 
@@ -92,9 +92,9 @@ Approximate round trip times in milli-seconds:
 Minimum = 52ms, Maximum = 53ms, Average = 52ms
 </pre>
 
----
+<hr style="border:2 dashed #7E7E7E"/>
 
-<h3><span id="factory">Java设计模式：工厂模式</span></h3>
+<h4><a href="http://yhzhtk.info/2013/11/04/design-patterns-creational.html#factory" id="factory">2、Java设计模式：工厂模式</a></h4>
 
 <em>翻译自 <a href="http://www.programcreek.com/2013/02/java-design-pattern-factory/" target="_blank">Java Design Pattern: Factory</a></em>
 
@@ -168,9 +168,9 @@ java.text.NumberFormat – getInstance()
 java.text.NumberFormat – getInstance(Locale inLocale)
 </pre>
 
----
+<hr style="border:2 dashed #7E7E7E"/>
 
-<h3><span id="abstract-factory">Java设计模式：抽象工厂</span></h3>
+<h4><a href="http://yhzhtk.info/2013/11/04/design-patterns-creational.html#abstract-factory" id="abstract-factory">3、Java设计模式：抽象工厂</a></h4>
 
 <em>翻译自 <a href="http://www.programcreek.com/2013/02/java-design-pattern-abstract-factory/" target="_blank">Java Design Pattern: Abstract Factory</a></em>
 
@@ -244,9 +244,9 @@ public class Client {
 事实上，现代的框架，抽象是一个非常重要的概念。
 <a href="http://stackoverflow.com/questions/1993397/abstract-factory-pattern-on-top-of-ioc/1994455#1994455" target="_blank">“Abstract factory pattern on top of IoC?”</a>是stackoverflow上的一个关于抽象工厂的问题。
 
----
+<hr style="border:2 dashed #7E7E7E"/>
 
-<h3><span id="builder">Java设计模式：生成器模式</span></h3>
+<h4><a href="http://yhzhtk.info/2013/11/04/design-patterns-creational.html#builder" id="builder">4、Java设计模式：生成器模式</a></h4>
 
 <em>翻译自 <a href="http://www.programcreek.com/2013/02/java-design-pattern-builder/" target="_blank">Java Design Pattern: Builder</a></em>
 
@@ -379,9 +379,9 @@ append()方法就像是我们的星巴克的例子中的一个步骤，toString(
 
 当需要多个步骤来创建一个对象的时候，使用生成器模式。当需要通过调用一个方法就很容易就创建了整个对象的时候，使用工厂模式。
 
----
+<hr style="border:2 dashed #7E7E7E"/>
 
-<h3><span id="prototype">Java设计模式：原型模式</span></h3>
+<h4><a href="http://yhzhtk.info/2013/11/04/design-patterns-creational.html#prototype" id="prototype">5、Java设计模式：原型模式</a></h4>
 
 <em>翻译自 <a href="http://www.programcreek.com/2013/02/java-design-pattern-prototype/" target="_blank">Java Design Pattern: Prototype</a></em>
 
