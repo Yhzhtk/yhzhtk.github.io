@@ -23,6 +23,8 @@ tags: [设计模式, 翻译, 适配器, 桥接, 组合, 装饰, 外观, 享元, 
 
 · &nbsp;&nbsp;[MVC模式 - Strut2中的模式、视图、控制器](http://yhzhtk.info/2013/11/04/design-patterns-structural.html#mvc) <small>原文 <a href="http://www.programcreek.com/2011/08/struts-2-tutorials-mvc-design-pattern/" target="_blank">MVC – Module, View and Controller in Strut 2</a></small>
 
+<!--break-->
+
 ---
 
 <h3><span id="adapter">Java设计模式：适配器模式</span></h3>
@@ -34,8 +36,6 @@ tags: [设计模式, 翻译, 适配器, 桥接, 组合, 装饰, 外观, 享元, 
 当你想使用一个现有的类，但是它的接口不匹配你的接口，或者说你想创建一个可重用的类，用来与不相关类中不兼容的接口适配时，适配器模式就派上用场了。
 
 **1、适配器模式的故事**
-
-<!--break-->
 
 适配器的想法，可以用下面简单的例子证明。这个问题，是为了适配一个桔子到一个苹果上。
 

@@ -17,6 +17,8 @@ tags: [设计模式, 翻译, 单例, 工厂, 抽象工厂, 生成器, 原型]
 
 · &nbsp;&nbsp;[原型模式 - 创建很多相似的对象](http://yhzhtk.info/2013/11/04/design-patterns-creational.html#prototype) <small>原文 <a href="http://www.programcreek.com/2013/02/java-design-pattern-prototype/" target="_blank">Prototype – Create a lot of similar objects</a></small>
 
+<!--break-->
+
 ---
 
 <h3><span id="singleton">Java设计模式：单例模式</span></h3>
@@ -30,8 +32,6 @@ tags: [设计模式, 翻译, 单例, 工厂, 抽象工厂, 生成器, 原型]
 	3. 公共静态方法是唯一可以得到对象引用的地方。
 
 **单例模式的故事**
-
-<!--break-->
 
 下面是一个简单的使用情况。一个国家只能有一个总统（这是正常的情况）。所以每当我们要引用总统对象，只需要通过AmericaPresident返回，其中的getPresident（）方法将确保始终只有一个总统创建。否则，它就不会符合正常情况。
 
