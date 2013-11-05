@@ -4,14 +4,10 @@ title: sitemap
 ---
 
 http://yhzhtk.info/
-
-http://yhzhtk.info/feed.xml
-http://yhzhtk.info/tags.html
 http://yhzhtk.info/about.html
-http://yhzhtk.info/gh-pages-guide.html
 
-http://yhzhtk.info/page2/
-http://yhzhtk.info/page3/
+http://yhzhtk.info/tags.html
+http://yhzhtk.info/gh-pages-guide.html
 
 {% for post in site.posts %}
 {{ site.url }}{{ post.url }}
