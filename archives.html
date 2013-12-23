@@ -1,0 +1,20 @@
+---
+layout: default
+title: 归档
+---
+<h3>博客归档</h3>
+<br/>
+<ul>
+	{% for post in site.posts %}
+	  <li>
+		<span class="date">{{ post.date | date: "%Y-%m-%d" }}</span>
+		&nbsp;&nbsp;
+		<span>
+			<a href="{{ site.baseurl }}{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>&nbsp;&nbsp;
+			<a style="color:gray; font-size: 10px" href="{{ site.baseurl }}{{ post.url }}#disqus_thread" title="查看评论">查看评论</a>
+		</span>
+		<br/>
+	  </li>
+	{% endfor %}
+</ul>
+{% include disqus-count.html %}	
