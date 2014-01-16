@@ -1,0 +1,129 @@
+---
+layout: post
+title: JS 实现 ResizeBar，可拖动改变两个区域(带iframe)大小
+description: 将网页化成两个区域，左边区域是一个树结构，右边区域是一个iframe，点击左边区域时，右边区域加载页面。在两个区域间加一个可拖动条，拖动时改变左右两个区域的大小。但当鼠标移动到右侧的iframe时，鼠标移动时 $(document).mousemove 并不会响应........
+tags: [js, resize bar]
+---
+
+<p>将网页化成两个区域，左边区域是一个树结构，右边区域是一个iframe，点击左边区域时，右边区域加载页面。</p>
+<p>实现功能：在两个区域间加一个可<span style="color: #ff0000;"><strong>拖动条，拖动时改变左右两个区域的大小</strong></span>。</p>
+<p>在Google上搜索<strong>slider</strong>，出来的结果都是关于滑动块的，最后搜索<strong>resize bar</strong>才找到正确的结果。</p>
+<p><span style="color: #0000ff;"><strong>解决方案</strong></span>：jsfiddle的一个示例&nbsp;<a href="http://jsfiddle.net/gaby/Bek9L/186/">http://jsfiddle.net/gaby/Bek9L/186/</a></p>
+<pre>&lt;script type='text/javascript'&gt;<span style="color: #008000;">//</span><span style="color: #008000;">&lt;![CDATA[ </span>
+$(window).load(<span style="color: #0000ff;">function</span><span style="color: #000000;">(){
+</span><span style="color: #0000ff;">var</span> i = 0<span style="color: #000000;">;
+</span><span style="color: #0000ff;">var</span> dragging = <span style="color: #0000ff;">false</span><span style="color: #000000;">;
+   $(</span>'#dragbar').mousedown(<span style="color: #0000ff;">function</span><span style="color: #000000;">(e){
+       e.preventDefault();
+       
+       dragging </span>= <span style="color: #0000ff;">true</span><span style="color: #000000;">;
+       </span><span style="color: #0000ff;">var</span> main = $('#main'<span style="color: #000000;">);
+       </span><span style="color: #0000ff;">var</span> ghostbar = $('&lt;div&gt;'<span style="color: #000000;">,
+                        {id:</span>'ghostbar'<span style="color: #000000;">,
+                         css: {
+                                height: main.outerHeight(),
+                                top: main.offset().top,
+                                left: main.offset().left
+                               }
+                        }).appendTo(</span>'body'<span style="color: #000000;">);
+       
+        $(</span>'#mousestatus').html("mousedown" + i++<span style="color: #000000;">);
+       
+        $(document).mousemove(</span><span style="color: #0000ff;">function</span><span style="color: #000000;">(e){
+          ghostbar.css(</span>"left",e.pageX+2<span style="color: #000000;">);
+       });
+    });
+   $(document).mouseup(</span><span style="color: #0000ff;">function</span><span style="color: #000000;">(e){
+       $(</span>'#clickevent').html('in another mouseUp event' + i++<span style="color: #000000;">);
+       </span><span style="color: #0000ff;">if</span><span style="color: #000000;"> (dragging) 
+       {
+           $(</span>'#sidebar').css("width",e.pageX+2<span style="color: #000000;">);
+           $(</span>'#main').css("left",e.pageX+2<span style="color: #000000;">);
+           $(</span>'#ghostbar'<span style="color: #000000;">).remove();
+           $(document).unbind(</span>'mousemove'<span style="color: #000000;">);
+           dragging </span>= <span style="color: #0000ff;">false</span><span style="color: #000000;">;
+       }
+    });
+});</span><span style="color: #008000;">//</span><span style="color: #008000;">]]&gt;  </span>
+&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;div id="sidebar"&gt;
+    &lt;span id="position"&gt;&lt;/span&gt;
+    &lt;div id="dragbar"&gt;&lt;/div&gt;
+<span style="color: #000000;">    sidebar
+</span>&lt;/div&gt;
+&lt;div id="main"&gt;
+  &lt;iframe id="myiframe"&gt;<span style="color: #000000;">
+    main
+  </span>&lt;/iframe&gt;
+&lt;/div&gt;</pre>
+<p>以上示例能实现滑动效果，但是当<span style="color: #ff0000;"><strong>鼠标移动到右侧的iframe时，鼠标移动时&nbsp;$(document).mousemove 并不会响应</strong></span>，因为在iframe中已经不再是 $(document)了。</p>
+<p><strong><span style="color: #0000ff;">解决办法</span></strong>：在原始代码的基础上添加 $("#myframe").contents().mousemove 和 $("#myframe").contents().mouseup 并在up时将 $(document) 和 $("#myframe")的 mousemove事件都unbind。</p>
+<p>改后的代码如下：</p>
+<pre>&lt;script type='text/javascript'&gt;<span style="color: #008000;">//</span><span style="color: #008000;">&lt;![CDATA[ </span>
+$(window).load(<span style="color: #0000ff;">function</span><span style="color: #000000;">(){
+</span><span style="color: #0000ff;">var</span> i = 0<span style="color: #000000;">;
+</span><span style="color: #0000ff;">var</span> dragging = <span style="color: #0000ff;">false</span><span style="color: #000000;">;
+   $(</span>'#dragbar').mousedown(<span style="color: #0000ff;">function</span><span style="color: #000000;">(e){
+       e.preventDefault();
+       
+       dragging </span>= <span style="color: #0000ff;">true</span><span style="color: #000000;">;
+       </span><span style="color: #0000ff;">var</span> main = $('#main'<span style="color: #000000;">);
+       </span><span style="color: #0000ff;">var</span> ghostbar = $('&lt;div&gt;'<span style="color: #000000;">,
+                        {id:</span>'ghostbar'<span style="color: #000000;">,
+                         css: {
+                                height: main.outerHeight(),
+                                top: main.offset().top,
+                                left: main.offset().left
+                               }
+                        }).appendTo(</span>'body'<span style="color: #000000;">);
+       
+        $(</span>'#mousestatus').html("mousedown" + i++<span style="color: #000000;">);
+       
+        $(document).mousemove(</span><span style="color: #0000ff;">function</span><span style="color: #000000;">(e){
+          ghostbar.css(</span>"left",e.pageX+2<span style="color: #000000;">);
+       });
+        </span><span style="color: #008000;">//</span><span style="color: #008000;"> 此处新增，当鼠标在iframe中时也会移动</span>
+        $("#myiframe").contents().mousemove(<span style="color: #0000ff;">function</span><span style="color: #000000;">(e){
+          ghostbar.css(</span>"left", e.pageX + $main.offset().left + $("#dragbar").width() * 2<span style="color: #000000;">);
+       });
+    });
+   $(document).mouseup(</span><span style="color: #0000ff;">function</span><span style="color: #000000;">(e){
+       $(</span>'#clickevent').html('in another mouseUp event' + i++<span style="color: #000000;">);
+       </span><span style="color: #0000ff;">if</span><span style="color: #000000;"> (dragging) 
+       {
+           $(</span>'#sidebar').css("width",e.pageX+2<span style="color: #000000;">);
+           $(</span>'#main').css("left",e.pageX+2<span style="color: #000000;">);
+           $(</span>'#ghostbar'<span style="color: #000000;">).remove();
+           $(document).unbind(</span>'mousemove'<span style="color: #000000;">);
+           </span><span style="color: #008000;">//</span><span style="color: #008000;"> 此处新增，解绑时将myiframe也接触</span>
+           $("#myiframe").contents().unbind('mousemove'<span style="color: #000000;">);
+           dragging </span>= <span style="color: #0000ff;">false</span><span style="color: #000000;">;
+       }
+    });
+    </span><span style="color: #008000;">//</span><span style="color: #008000;"> 新增 myiframe的mouseup事件</span>
+    $("#myiframe").contents().mouseup(<span style="color: #0000ff;">function</span><span style="color: #000000;">(e){
+       </span><span style="color: #0000ff;">if</span><span style="color: #000000;"> (dragging) 
+       {
+           $left.css(</span>"width", e.pageX + $right.offset().left +<span style="color: #000000;"> dw);
+           $right.css(</span>"left", e.pageX + $right.offset().left +<span style="color: #000000;"> dw);
+           $(</span>'#ghostbar'<span style="color: #000000;">).remove();
+           $(document).unbind(</span>'mousemove'<span style="color: #000000;">);
+           $(</span>"#myiframe").contents().unbind('mousemove'<span style="color: #000000;">);
+           dragging </span>= <span style="color: #0000ff;">false</span><span style="color: #000000;">;
+       }
+    });
+});</span><span style="color: #008000;">//</span><span style="color: #008000;">]]&gt;  </span>
+&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div id="sidebar"&gt;
+  &lt;span id="position"&gt;&lt;/span&gt;
+  &lt;div id="dragbar"&gt;&lt;/div&gt;
+<span style="color: #000000;">  sidebar
+</span>&lt;/div&gt;
+&lt;div id="main"&gt;
+  &lt;iframe id="myiframe"&gt;main&lt;/iframe&gt;
+&lt;/div&gt;</pre>
+<p>这样即使有iframe，鼠标移动时也能捕捉到事件，完成想要的拖动改变区域大小的效果。</p>
