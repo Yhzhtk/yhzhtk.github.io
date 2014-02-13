@@ -9,7 +9,7 @@ tags: [geohash]
 <p>以下面以这幅图来看，图片将经度为0作为X轴的原点，纬度为0作为Y轴的原点，图中为了问题简单化，仅化了3层，实际中3层是不够的。</p>
 <p><img src="http://images.cnitblog.com/blog/550996/201402/131349441774720.jpg" alt=""></p>
 <p>假设坐标轴正方向表示1，负方向表示0。那么按照GeoHash方法划分区域，则A到J的GeoHash分别为：</p>
-<table border="0">
+<table class="table table-bordered" style="width:80%">
 <tbody>
 <tr>
 <td>位置点</td>
