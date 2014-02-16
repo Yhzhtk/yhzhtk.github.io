@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Lucene 如果通过GeoHash 查询距离
+title: Lucene 如何通过GeoHash 查询距离
 description: Lucene 通过 GeoHash 判断两个点的距离，是通过GeoHash的经纬度Hash分别按照二进制取差，绝对值越小，则距离越近，而不是从前往后匹配hash字符串。
 tags: [geohash]
 ---
