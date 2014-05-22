@@ -14,6 +14,8 @@ tags: [rpm安装gitlab]
 直接下载地址：<a href="http://downloads-packages.s3.amazonaws.com/gitlab-6.7.2_omnibus-1.el6.x86_64.rpm">gitlab-6.7.2_omnibus-1.el6.x86_64.rpm</a>
 <h2>2、安装</h2>
 rpm包，使用-ivh参数即可安装，运行以下命令，默认安装的路径在 /opt/gitlab/ 下<!--more-->
+
+<!--break-->
 <pre class="EnlighterJSRAW" data-enlighter-language="ruby"> rpm -ivh gitlab-6.7.2_omnibus-1.el6.x86_64.rpm</pre>
 <h2>3、初始化</h2>
 安装完了需要初始化<span style="color: #333333;">PostgreSQL</span>、Nginx、<span style="color: #333333;">Redis</span>等，运行以下命令
@@ -101,3 +103,6 @@ GitLab设置IP或者域名有两个地方，一个是web端(gitlab-rails)的，�
 最后运行成功后，效果如下：
 
 <a href="http://justdull.com/wp-content/uploads/2014/05/gitlab.gif"><img class="aligncenter wp-image-119" src="http://justdull.com/wp-content/uploads/2014/05/gitlab.gif" alt="gitlab" width="600" height="446" /></a>
+
+<small>转自: <a href="http://justdull.com/2014/05/centos%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AEgitlab/">http://justdull.com/2014/05/centos%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AEgitlab/</a></small>
+
