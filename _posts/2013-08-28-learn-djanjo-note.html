@@ -386,15 +386,15 @@ name: 命名URL，让你清楚的区别其他的模板，允许你全局改变ur
 
 <p>下面示例写一个模板文件，放在<code>polls/templates/polls/index.html</code></p>
 
-<pre><code> {{ "{%" }} if latest_poll_list {{ "%}" }}
+<pre><code>&#123;% if latest_poll_list %&#125;
     &lt;ul&gt;
-    {{ "{%" }} for poll in latest_poll_list {{ "%}" }}
-        &lt;li&gt;&lt;a href=&quot;/polls/{{ "{{" }} poll.id {{ "}}" }}/&quot;&gt;{{ "{{" }} poll.question {{ "}}" }}&lt;/a&gt;&lt;/li&gt;
-    {{ "{%" }} endfor {{ "%}" }}
+    &#123;% for poll in latest_poll_list %&#125;
+        &lt;li&gt;&lt;a href=&quot;/polls/&#123;&#123; poll.id &#125;&#125;/&quot;&gt;&#123;&#123; poll.question &#125;&#125;&lt;/a&gt;&lt;/li&gt;
+    &#123;% endfor %&#125;
     &lt;/ul&gt;
-{{ "{%" }} else {{ "%}" }}
+&#123;% else %&#125;
     &lt;p&gt;No polls are available.&lt;/p&gt;
-{{ "{%" }} endif {{ "%}" }}</code></pre>
+&#123;% endif %&#125;</code></pre>
 
 <p>修改<code>polls/view.py</code>中的index方法，import模板支持：</p>
 <pre class='brush: python;'>
@@ -450,13 +450,13 @@ name: 命名URL，让你清楚的区别其他的模板，允许你全局改变ur
 
 <p>Django模板也很强大，现在列出部分使用情况，后续再学习：</p>
 
-<pre><code>&lt;h1&gt;{{ "{{" }} poll.question {{ "}}" }}&lt;/h1&gt;
+<pre><code>&lt;h1&gt;&#123;&#123; poll.question &#125;&#125;&lt;/h1&gt;
 &lt;ul&gt;
-{{ "{%" }} for choice in poll.choice_set.all {{ "%}" }}
-    &lt;li&gt;{{ "{{" }} choice.choice_text {{ "}}" }}&lt;/li&gt;
-{{ "{%" }} endfor {{ "%}" }}
+&#123;% for choice in poll.choice_set.all %&#125;
+    &lt;li&gt;&#123;&#123; choice.choice_text &#125;&#125;&lt;/li&gt;
+&#123;% endfor %&#125;
 &lt;/ul&gt;
 
-&lt;li&gt;&lt;a href=&quot;{{ "{%" }} url &#39;detail&#39; poll.id {{ "%}" }}&quot;&gt;{{ "{{" }} poll.question {{ "}}" }}&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;&#123;% url &#39;detail&#39; poll.id %&#125;&quot;&gt;&#123;&#123; poll.question &#125;&#125;&lt;/a&gt;&lt;/li&gt;
 
-{{ "{%" }} load url from future {{ "%}" }}</code></pre>
+&#123;% load url from future %&#125;</code></pre>
