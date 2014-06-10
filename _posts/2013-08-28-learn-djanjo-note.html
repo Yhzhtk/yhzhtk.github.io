@@ -20,14 +20,12 @@ tags: [Django, python]
 <pre><code>tar xzvf Django-1.5.2.tar.gz
 cd Django-1.5.2
 python setup.py install</code></pre>
-<!--break--><script src='http://yhzhtk.info/syntax/scripts/shCore.js' type='text/javascript'><![CDATA[
-]]></script><script src='http://yhzhtk.info/syntax/scripts/shBrushPython.js' type='text/javascript'><![CDATA[
-]]></script><script src='http://yhzhtk.info/syntax/scripts/shBrushSql.js' type='text/javascript'><![CDATA[
-]]></script><script src='http://yhzhtk.info/syntax/scripts/shBrushPlain.js' type='text/javascript'><![CDATA[
-]]></script><link href='http://yhzhtk.info/syntax/styles/shCoreUse.css' rel='stylesheet' type='text/css'>
-</link><script type='text/javascript'><![CDATA[
-SyntaxHighlighter.all();
-]]></script>
+<!--break--><script src='http://yhzhtk.info/syntax/scripts/shCore.js' type='text/javascript'>
+</script><script src='http://yhzhtk.info/syntax/scripts/shBrushPython.js' type='text/javascript'>
+</script><script src='http://yhzhtk.info/syntax/scripts/shBrushSql.js' type='text/javascript'>
+</script><script src='http://yhzhtk.info/syntax/scripts/shBrushPlain.js' type='text/javascript'>
+</script><link href='http://yhzhtk.info/syntax/styles/shCoreUse.css' rel='stylesheet' type='text/css'>
+</link><script type='text/javascript'>SyntaxHighlighter.all();</script>
 <p>安装完成之后，在命令行输入：</p>
 
 <pre><code>python -c &quot;import django; print(django.get_version())&quot;</code></pre>
@@ -385,15 +383,15 @@ name: 命名URL，让你清楚的区别其他的模板，允许你全局改变ur
 
 <p>下面示例写一个模板文件，放在<code>polls/templates/polls/index.html</code></p>
 
-<pre><code>{% if latest_poll_list %}
+<pre><code>{% if latest_poll_list {{ "%}" }}
     &lt;ul&gt;
-    {% for poll in latest_poll_list %}
+    {{ "{%" }} for poll in latest_poll_list {{ "%}" }}
         &lt;li&gt;&lt;a href=&quot;/polls/{{ poll.id }}/&quot;&gt;{{ poll.question }}&lt;/a&gt;&lt;/li&gt;
-    {% endfor %}
+    {{ "{%" }} endfor {{ "%}" }}
     &lt;/ul&gt;
-{% else %}
+{{ "{%" }} else {{ "%}" }}
     &lt;p&gt;No polls are available.&lt;/p&gt;
-{% endif %}</code></pre>
+{{ "{%" }} endif %}</code></pre>
 
 <p>修改<code>polls/view.py</code>中的index方法，import模板支持：</p>
 <pre class='brush: python;'>
@@ -451,12 +449,12 @@ name: 命名URL，让你清楚的区别其他的模板，允许你全局改变ur
 
 <pre><code>&lt;h1&gt;{{ poll.question }}&lt;/h1&gt;
 &lt;ul&gt;
-{% for choice in poll.choice_set.all %}
+{{ "{%" }} for choice in poll.choice_set.all {{ "%}" }}
     &lt;li&gt;{{ choice.choice_text }}&lt;/li&gt;
-{% endfor %}
+{{ "{%" }} endfor {{ "%}" }}
 &lt;/ul&gt;
 
 &lt;li&gt;&lt;a href=&quot;{% url &#39;detail&#39; poll.id %}&quot;&gt;{{ poll.question }}&lt;/a&gt;&lt;/li&gt;
 
-{% load url from future %}</code></pre>
+{{ "{%" }} load url from future %}</code></pre>
 
