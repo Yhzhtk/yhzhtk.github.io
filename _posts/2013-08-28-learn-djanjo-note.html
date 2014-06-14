@@ -4,7 +4,7 @@ title: Django 学习笔记
 description: Django是一个高效的Python Web框架，开发小型Web应用使用Django是个非常不错的选择，其核心有：用于创建模型的对象关系映射、为最终用户设计的完美管理界面、一流的 URL 设计、设计者友好的模板语言、缓存系统
 tags: [Django, python]
 ---
-
+{% include syntax-python-sql.html %}
 
 <h4 id="django">一、Django介绍和安装</h4>
 
@@ -21,14 +21,8 @@ tags: [Django, python]
 <pre><code>tar xzvf Django-1.5.2.tar.gz
 cd Django-1.5.2
 python setup.py install</code></pre>
-<!--break--><script src='http://yhzhtk.info/syntax/scripts/shCore.js' type='text/javascript'><![CDATA[
-]]></script><script src='http://yhzhtk.info/syntax/scripts/shBrushPython.js' type='text/javascript'><![CDATA[
-]]></script><script src='http://yhzhtk.info/syntax/scripts/shBrushSql.js' type='text/javascript'><![CDATA[
-]]></script><script src='http://yhzhtk.info/syntax/scripts/shBrushPlain.js' type='text/javascript'><![CDATA[
-]]></script><link href='http://yhzhtk.info/syntax/styles/shCoreUse.css' rel='stylesheet' type='text/css'>
-</link><script type='text/javascript'>
-SyntaxHighlighter.all();
-</script>
+<!--break-->
+
 <p>安装完成之后，在命令行输入：</p>
 
 <pre><code>python -c &quot;import django; print(django.get_version())&quot;</code></pre>

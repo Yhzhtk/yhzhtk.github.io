@@ -4,31 +4,32 @@ title: centos搭建wordpress
 description: centos搭建和配置wordpress, 很简单，我记录下自己的步骤，包括遇到的依赖、数据库配置及权限问题。
 tags: [CentOs, WordPress]
 ---
+{% include syntax-php-sql.html %}
 
-<p>centos搭建wordpress&nbsp;很简单，我记录下自己的步骤，包括遇到的依赖、数据库配置及权限问题。</p>
+<p>centos搭建wordpress 很简单，我记录下自己的步骤，包括遇到的依赖、数据库配置及权限问题。</p>
 <h3>1、下载</h3>
-<p>资源链接:&nbsp;<a href="http://cn.wordpress.org/">http://cn.wordpress.org/</a>&nbsp;(中文版)&nbsp;<a href="http://wordpress.org/">http://wordpress.org/</a>&nbsp;(英文版)</p>
-<p>直接下载：<a href="http://cn.wordpress.org/wordpress-3.9-zh_CN.zip">wordpress-3.9-zh_CN.zip</a>(中文版)&nbsp;<a href="http://wordpress.org/latest.zip">http://wordpress.org/latest.zip</a>(英文最新版)</p>
+<p>资源链接: <a href="http://cn.wordpress.org/">http://cn.wordpress.org/</a> (中文版) <a href="http://wordpress.org/">http://wordpress.org/</a> (英文版)</p>
+<p>直接下载：<a href="http://cn.wordpress.org/wordpress-3.9-zh_CN.zip">wordpress-3.9-zh_CN.zip</a>(中文版) <a href="http://wordpress.org/latest.zip">http://wordpress.org/latest.zip</a>(英文最新版)</p>
 <h3>2、安装</h3>
 <p>安装非常简单，直接解压下载的zip即可。但是需要多个依赖。</p>
 <p>主要是以下3个：apache + php + mysql。<span id="more-127"></span></p>
-<pre class="EnlighterJSRAW" data-enlighter-language="shell" style="display: none;">yum -y install httpd
+<pre class="brush: plain;">yum -y install httpd
 yum -y install mysql
 yum -y install mysql-server
 yum -y install php
 yum -y install php-mysql
-</pre><ol class="enlighterEnlighterJS EnlighterJS" id="EnlighterJS_hwepw7j1"><li class="firstline odd hoverEnabled"><span class="unknown">yum -y </span><span class="kw1">install</span><span class="unknown"> httpd</span></li><li class="even hoverEnabled"><span class="unknown">yum -y </span><span class="kw1">install</span><span class="unknown"> mysql</span></li><li class="odd hoverEnabled"><span class="unknown">yum -y </span><span class="kw1">install</span><span class="unknown"> mysql-server</span></li><li class="even hoverEnabled"><span class="unknown">yum -y </span><span class="kw1">install</span><span class="unknown"> php</span></li><li class="lastline odd hoverEnabled"><span class="unknown">yum -y </span><span class="kw1">install</span><span class="unknown"> php-mysql</span></li></ol>
+</pre>
 <p>当然也可以一个命令安装所有依赖，如果之前有mysql就不需要了。</p>
-<pre class="EnlighterJSRAW" data-enlighter-language="shell" style="display: none;">yum -y install httpd mysql mysql-server php php-mysql</pre><ol class="enlighterEnlighterJS EnlighterJS" id="EnlighterJS_hwepw7j2"><li class="firstline lastline odd hoverEnabled"><span class="unknown">yum -y </span><span class="kw1">install</span><span class="unknown"> httpd mysql mysql-server php php-mysql</span></li></ol>
+<pre class="brush: plain;">yum -y install httpd mysql mysql-server php php-mysql</pre>
 <p>安装好了之后，将刚下载的wordpress-3.9-zh_CN.zip解压到 /var/www/html/ 下，注意将只移动wordpress路径下的文件，而不移到这个文件夹，否则访问的时候，需要加上wordpress。</p>
 <h3>3、配置数据库</h3>
 <p>登陆到mysql命令行，创建数据库wordpress，这个名字可以随意命名</p>
-<pre class="EnlighterJSRAW" data-enlighter-language="sql" style="display: none;">create database wordpress;</pre><ol class="enlighterEnlighterJS EnlighterJS" id="EnlighterJS_hwepw7j3"><li class="firstline lastline odd hoverEnabled"><span class="kw1">create</span><span class="unknown"> </span><span class="kw1">database</span><span class="unknown"> wordpress;</span></li></ol>
+<pre class="brush: sql;">create database wordpress;</pre>
 <p>创建用户名赋予操作wordpress的权限：</p>
-<pre class="EnlighterJSRAW" data-enlighter-language="sql" style="display: none;">grant all privileges on wordpress.* to "wpuser"@"localhost" identified by "pwd";</pre><ol class="enlighterEnlighterJS EnlighterJS" id="EnlighterJS_hwepw7j4"><li class="firstline lastline odd hoverEnabled"><span class="kw1">grant</span><span class="unknown"> </span><span class="kw3">all</span><span class="unknown"> </span><span class="kw1">privileges</span><span class="unknown"> </span><span class="kw1">on</span><span class="unknown"> wordpress.* </span><span class="kw1">to</span><span class="unknown"> </span><span class="st0">"wpuser"</span><span class="unknown">@</span><span class="st0">"localhost"</span><span class="unknown"> identified </span><span class="kw1">by</span><span class="unknown"> </span><span class="st0">"pwd"</span><span class="unknown">;</span></li></ol>
-<p>其中用户名是”wpuser”，可任意指定，密码是”pwd”，也可以任意指定。</p>
-<p>配置好数据库了，下面修改wordpress里的配置。打开&nbsp;<strong>/var/www/html/wp-config.php</strong>，修改如下：</p>
-<pre class="EnlighterJSRAW" data-enlighter-language="php" style="display: none;">// ** MySQL 设置 - 具体信息来自您正在使用的主机 ** //
+<pre class="brush: sql;">grant all privileges on wordpress.* to "wpuser"@"localhost" identified by "pwd";</pre>
+<p>其中用户名是&#8221;wpuser&#8221;，可任意指定，密码是&#8221;pwd&#8221;，也可以任意指定。</p>
+<p>配置好数据库了，下面修改wordpress里的配置。打开 <strong>/var/www/html/wp-config.php</strong>，修改如下：</p>
+<pre class="brush: php;">// ** MySQL 设置 - 具体信息来自您正在使用的主机 ** //
 /** WordPress数据库的名称 */
 define('DB_NAME', 'wordpress');
 
@@ -42,25 +43,25 @@ define('DB_PASSWORD', 'pwd');
 define('DB_HOST', 'localhost');
 
 /** 创建数据表时默认的文字编码 */
-define('DB_CHARSET', 'utf8');</pre><ol class="enlighterEnlighterJS EnlighterJS" id="EnlighterJS_hwepw7j5"><li class="firstline odd hoverEnabled"><span class="co1">// ** MySQL 设置 - 具体信息来自您正在使用的主机 ** //</span><span class="unknown"></span></li><li class="even hoverEnabled"><span class="unknown"></span><span class="co2">/** WordPress数据库的名称 */</span><span class="unknown"></span></li><li class="odd hoverEnabled"><span class="unknown"></span><span class="kw4">define</span><span class="br0">(</span><span class="st0">'DB_NAME'</span><span class="unknown">, </span><span class="st0">'wordpress'</span><span class="br0">)</span><span class="unknown">;</span></li><li class="even hoverEnabled"><span class="unknown"></span></li><li class="odd hoverEnabled"><span class="unknown"></span><span class="co2">/** MySQL数据库用户名 */</span><span class="unknown"></span></li><li class="even hoverEnabled"><span class="unknown"></span><span class="me1">define</span><span class="br0">(</span><span class="st0">'DB_USER'</span><span class="unknown">, </span><span class="st0">'wpuser'</span><span class="br0">)</span><span class="unknown">;</span></li><li class="odd hoverEnabled"><span class="unknown"></span></li><li class="even hoverEnabled"><span class="unknown"></span><span class="co2">/** MySQL数据库密码 */</span><span class="unknown"></span></li><li class="odd hoverEnabled"><span class="unknown"></span><span class="kw2">define</span><span class="br0">(</span><span class="st0">'DB_PASSWORD'</span><span class="unknown">, </span><span class="st0">'pwd'</span><span class="br0">)</span><span class="unknown">;</span></li><li class="even hoverEnabled"><span class="unknown"></span></li><li class="odd hoverEnabled"><span class="unknown"></span><span class="co2">/** MySQL主机 */</span><span class="unknown"></span></li><li class="even hoverEnabled"><span class="unknown"></span><span class="kw4">define</span><span class="br0">(</span><span class="st0">'DB_HOST'</span><span class="unknown">, </span><span class="st0">'localhost'</span><span class="br0">)</span><span class="unknown">;</span></li><li class="odd hoverEnabled"><span class="unknown"></span></li><li class="even hoverEnabled"><span class="unknown"></span><span class="co2">/** 创建数据表时默认的文字编码 */</span><span class="unknown"></span></li><li class="lastline odd hoverEnabled"><span class="unknown"></span><span class="kw4">define</span><span class="br0">(</span><span class="st0">'DB_CHARSET'</span><span class="unknown">, </span><span class="st0">'utf8'</span><span class="br0">)</span><span class="unknown">;</span></li></ol>
+define('DB_CHARSET', 'utf8');</pre>
 <h3>4、启动HTTPD</h3>
-<pre class="EnlighterJSRAW" data-enlighter-language="shell" style="display: none;">service httpd start</pre><ol class="enlighterEnlighterJS EnlighterJS" id="EnlighterJS_hwepw7j6"><li class="firstline lastline odd hoverEnabled"><span class="unknown">service httpd start</span></li></ol>
+<pre class="brush: plain;">service httpd start</pre>
 <p>同理，要停止使用stop。这样，就能通过你的ip或域名访问到wordpress，如 http://justdull.com。</p>
 <p>其中管理后台，只需要在域名后加 wp-admin即可。如 http://justdull.com/wp-admin</p>
-<p>这时。如果你发现网页没有样式，打开源码发现资源链接的域名或者ip都不正确，可以在&nbsp;<strong>/var/www/html/wp-config.php </strong>中加上一下你的域名或者ip信息，然后重启httpd：</p>
-<pre class="EnlighterJSRAW" data-enlighter-language="php" style="display: none;">define('WP_HOME','http://justdull.com');
-define('WP_SITEURL','http://justdull.com');</pre><ol class="enlighterEnlighterJS EnlighterJS" id="EnlighterJS_hwepw7j7"><li class="firstline odd hoverEnabled"><span class="kw2">define</span><span class="br0">(</span><span class="st0">'WP_HOME'</span><span class="unknown">,</span><span class="st0">'http://justdull.com'</span><span class="br0">)</span><span class="unknown">;</span></li><li class="lastline even hoverEnabled"><span class="unknown"></span><span class="kw2">define</span><span class="br0">(</span><span class="st0">'WP_SITEURL'</span><span class="unknown">,</span><span class="st0">'http://justdull.com'</span><span class="br0">)</span><span class="unknown">;</span></li></ol>
+<p>这时。如果你发现网页没有样式，打开源码发现资源链接的域名或者ip都不正确，可以在 <strong>/var/www/html/wp-config.php </strong>中加上一下你的域名或者ip信息，然后重启httpd：</p>
+<pre class="brush: php;">define('WP_HOME','http://justdull.com');
+define('WP_SITEURL','http://justdull.com');</pre>
 <h3>5、权限问题</h3>
 <p><strong>a、在上传图片等资源文件时，可能会报以下错误：</strong></p>
 <blockquote><p>无法建立目录wp-content/uploads/2014/05。有没有上级目录的写权限？</p></blockquote>
 <p>是因为安装时是用root安装的，该路径属于root，而httpd是apache用户，没有写权限，用以下命令更改拥有即可。</p>
-<pre class="EnlighterJSRAW" data-enlighter-language="shell" style="display: none;">chown -R apache.apache /var/www/html/wp-content</pre><ol class="enlighterEnlighterJS EnlighterJS" id="EnlighterJS_hwepw7j8"><li class="firstline lastline odd hoverEnabled"><span class="kw1">chown</span><span class="unknown"> -R apache.apache /var/www/html/wp-content</span></li></ol>
+<pre class="brush: plain;">chown -R apache.apache /var/www/html/wp-content</pre>
 <p>上面的命令是最小化权限，当然也可以给wp-content目录给予 777 的权限，这就有点太大了。</p>
 <p><strong>b、在更新主题或者插件的时候，可能会报以下错误：</strong></p>
 <blockquote><p>要执行请求的操作，WordPress 需要访问您网页服务器的权限。 请输入您的 FTP 登录凭据以继续。</p></blockquote>
 <p>这仍然是没有足够的权限导致的，在上一部给了apache权限的情况下，需要再修改wp-config.php，加上以下代码：</p>
-<pre class="EnlighterJSRAW" data-enlighter-language="php" style="display: none;">define('FS_METHOD', 'direct');
+<pre class="brush: php;">define('FS_METHOD', 'direct');
 define('FS_CHMOD_DIR', 0777);
-define('FS_CHMOD_FILE', 0777);</pre><ol class="enlighterEnlighterJS EnlighterJS" id="EnlighterJS_hwepw7j9"><li class="firstline odd hoverEnabled"><span class="kw4">define</span><span class="br0">(</span><span class="st0">'FS_METHOD'</span><span class="unknown">, </span><span class="st0">'direct'</span><span class="br0">)</span><span class="unknown">;</span></li><li class="even hoverEnabled"><span class="unknown"></span><span class="kw2">define</span><span class="br0">(</span><span class="st0">'FS_CHMOD_DIR'</span><span class="unknown">, </span><span class="nu0">0777</span><span class="br0">)</span><span class="unknown">;</span></li><li class="lastline odd hoverEnabled"><span class="unknown"></span><span class="me1">define</span><span class="br0">(</span><span class="st0">'FS_CHMOD_FILE'</span><span class="unknown">, </span><span class="nu0">0777</span><span class="br0">)</span><span class="unknown">;</span></li></ol>
+define('FS_CHMOD_FILE', 0777);</pre>
 <p>不用重新启动，刷新页面重试就行啦。</p>
 <p>&nbsp;</p>
