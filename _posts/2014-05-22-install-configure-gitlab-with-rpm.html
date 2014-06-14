@@ -8,16 +8,16 @@ tags: [rpm安装gitlab]
 <a href="https://github.com/gitlabhq/gitlabhq" target="_blank">GitLab</a> 是一个开源的模仿 github 的项目，提供 git-shell 和 git-web 的功能，既能用命令操作，也有Web端的操作界面。
 
 官方首页给的<a href="https://github.com/gitlabhq/gitlab-recipes/tree/master/install/centos" target="_blank">安装gitlab</a>方法是使用一个个的命令，逐步安装，这在<span style="color: #333333;">Ubuntu/Debian 系统上比较容易。但在centos上就会出现各种问题，我的方式是下载gitlab的一个rpm包，所有依赖都已经包含在里面了，一键安装，然后进行一些列的配置就行了。</span>
-<h2>1、下载RPM包</h2>
+<h3>1、下载RPM包</h3>
 资源链接：<a href="https://www.gitlab.com/downloads/" target="_blank">https://www.gitlab.com/downloads/</a>
 
 直接下载地址：<a href="http://downloads-packages.s3.amazonaws.com/gitlab-6.7.2_omnibus-1.el6.x86_64.rpm">gitlab-6.7.2_omnibus-1.el6.x86_64.rpm</a>
-<h2>2、安装</h2>
+<h3>2、安装</h3>
 rpm包，使用-ivh参数即可安装，运行以下命令，默认安装的路径在 /opt/gitlab/ 下<!--more-->
 
 <!--break-->
 <pre class="EnlighterJSRAW" data-enlighter-language="ruby"> rpm -ivh gitlab-6.7.2_omnibus-1.el6.x86_64.rpm</pre>
-<h2>3、初始化</h2>
+<h3>3、初始化</h3>
 安装完了需要初始化<span style="color: #333333;">PostgreSQL</span>、Nginx、<span style="color: #333333;">Redis</span>等，运行以下命令
 <pre class="EnlighterJSRAW" data-enlighter-language="ruby">gitlab-ctl reconfigure</pre>
 这其中用到了 gitlab-ctl，这用于控制gitlab，详细参数说明如下：
@@ -57,7 +57,7 @@ rpm包，使用-ivh参数即可安装，运行以下命令，默认安装的路�
  Kill all processes and uninstall the process supervisor (data will be preserved).</pre>
 其中最常用的就是 start(开始) 和 stop (结束)了。这时就可以通过start启动gitlab
 <pre class="EnlighterJSRAW" data-enlighter-language="ruby">gitlab-ctl start</pre>
-<h2>4、配置系统邮件</h2>
+<h3>4、配置系统邮件</h3>
 gitlab 在注册需要发送邮件，项目更改也需要发送邮箱，所以需要配置一个邮箱。
 
 编辑 <b style="color: #2c2c2c;">/opt/gitlab/embedded/service/gitlab-rails/config/environments/production.rb</b>
@@ -84,7 +84,7 @@ config.action_mailer.smtp_settings = {
  email_from: account@gmail.com
  # Email address of your support contact (default: same as email_from)
  support_email:account@gmail.com</pre>
-<h2>5、设置访问的IP或者域名</h2>
+<h3>5、设置访问的IP或者域名</h3>
 GitLab设置IP或者域名有两个地方，一个是web端(gitlab-rails)的，一是git-shell的，配置修改如下。
 
 1、打开<strong> /opt/gitlab/embedded/service/gitlab-rails/config/gitlab.yml</strong>
