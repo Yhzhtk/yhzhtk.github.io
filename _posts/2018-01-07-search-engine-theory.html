@@ -16,9 +16,10 @@ tags: [笔记迁移, note, issue]
 <h3><a id="user-content-使用sql-like" class="anchor" aria-hidden="true" href="#使用sql-like"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>使用SQL Like</h3>
 <pre><code>select * from item where name like '%秋裤%'
 </code></pre>
+<!--break-->
 <p>如上，大家第一能想到的实现是用 like，但这无法使用上索引，会在大量数据集上做一次遍历操作，查询会非常的慢。有没有更简单的方法呢，可能会说能不能加个秋裤的分类或者标签，很好，那如果新增一个商品品类怎么办呢？要加无数个分类和标签吗？如何能更简单高效的处理全文检索呢？</p>
 <h3><a id="user-content-使用搜索引擎" class="anchor" aria-hidden="true" href="#使用搜索引擎"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>使用搜索引擎</h3>
-<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/Yhzhtk/search/raw/master/blog/img/search_process.png"><img src="/Yhzhtk/search/raw/master/blog/img/search_process.png" alt="image.png" style="max-width:100%;"></a></p>
+<p><a target="_blank" rel="noopener noreferrer" href="https://raw.githubusercontent.com/Yhzhtk/search/master/blog/img/search_process.png"><img src="/Yhzhtk/search/raw/master/blog/img/search_process.png" alt="image.png" style="max-width:100%;"></a></p>
 <p>答案是搜索，会事先 build 一个倒排索引，通过词法语法分析、分词、构建词典、构建倒排表、压缩优化等操作构建一个索引，查询时通过词典能快速拿到结果。这既能解决全文检索的问题，又能解决了SQL查询速度慢的问题。</p>
 <p><strong>那么，淘宝是如何在1毫秒从上亿个商品找到上千种秋裤的呢，谷歌如何在1毫秒从万亿个网页中找寻到与你关键字匹配的几十万个网页，如此大的数据量是怎么做到毫秒返回的。</strong></p>
 <h1><a id="user-content-二搜索引擎是怎么做的" class="anchor" aria-hidden="true" href="#二搜索引擎是怎么做的"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>二、搜索引擎是怎么做的？</h1>
@@ -106,7 +107,7 @@ tags: [笔记迁移, note, issue]
 <p>由此，一个倒排索引就完成了，搜索 “检索” 时，得到 id1, id2，说明这两条数据都有，搜索 “服务” 只有 id1 存在。但如果搜索 “检索系统”，此时会先建搜索词按照与构建同一种策略分词，得到 “检索-系统”，两个词项，分别搜索 检索 -&gt; id1, id2 和 系统 -&gt; id2，然后对其做一个交集，得到 id2。同理，通过求并集可以支持更复杂的查询。</p>
 <p>倒排索引到此也就讲清楚了吧。</p>
 <h3><a id="user-content-存储结构" class="anchor" aria-hidden="true" href="#存储结构"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>存储结构</h3>
-<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/Yhzhtk/search/raw/master/blog/img/store_structure.png"><img src="/Yhzhtk/search/raw/master/blog/img/store_structure.png" alt="image.png" style="max-width:100%;"></a></p>
+<p><a target="_blank" rel="noopener noreferrer" href="https://raw.githubusercontent.com/Yhzhtk/search/master/blog/img/store_structure.png"><img src="/Yhzhtk/search/raw/master/blog/img/store_structure.png" alt="image.png" style="max-width:100%;"></a></p>
 <p>以 Lucene 为例，简单说明一下 Lucene 的存储结构。从大到小是Index -&gt; Segment -&gt; Doc -&gt; Field  -&gt; Term，类比 MySQL 为 Database -&gt; Table -&gt; Record -&gt; Field -&gt; Value。</p>
 <h2><a id="user-content-part-3查询结果排序" class="anchor" aria-hidden="true" href="#part-3查询结果排序"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Part 3、查询结果排序</h2>
 <p>搜索结果排序是根据 关键字 和 Document 的相关性得分排序，通常意义下，除了可以人工的设置权重 boost，也存在一套非常有用的相关性得分算法，看完你会觉得非常有意思。</p>
@@ -120,15 +121,15 @@ tags: [笔记迁移, note, issue]
 <p>上面解释了 TF 和 IDF，那么 TF 和 IDF 谁更重要呢，怎么计算最终的相关性得分呢？那就是 BM25。</p>
 <p>BM25算法，通常用来作搜索相关性平分。一句话概况其主要思想：对Query进行语素解析，生成语素qi；然后，对于每个搜索结果D，计算每个语素qi与D的相关性得分，最后，将qi相对于D的相关性得分进行加权求和，从而得到Query与D的相关性得分。
 BM25算法的一般性公式如下：</p>
-<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/Yhzhtk/search/raw/master/blog/img/score_bm25_1.png"><img src="/Yhzhtk/search/raw/master/blog/img/score_bm25_1.png" alt="image.png" style="max-width:100%;"></a></p>
+<p><a target="_blank" rel="noopener noreferrer" href="https://raw.githubusercontent.com/Yhzhtk/search/master/blog/img/score_bm25_1.png"><img src="/Yhzhtk/search/raw/master/blog/img/score_bm25_1.png" alt="image.png" style="max-width:100%;"></a></p>
 <p>其中，Q表示Query，qi表示Q解析之后的一个语素（对中文而言，我们可以把对Query的分词作为语素分析，每个词看成语素qi。）；d表示一个搜索结果文档；Wi表示语素qi的权重；R(qi，d)表示语素qi与文档d的相关性得分。</p>
 <p>其中 Wi 通常使用 IDF 来表达，R 使用 TF 来表达；综上，BM25算法的相关性得分公式可总结为：</p>
-<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/Yhzhtk/search/raw/master/blog/img/score_bm25_2.png"><img src="/Yhzhtk/search/raw/master/blog/img/score_bm25_2.png" alt="image.png" style="max-width:100%;"></a></p>
+<p><a target="_blank" rel="noopener noreferrer" href="https://raw.githubusercontent.com/Yhzhtk/search/master/blog/img/score_bm25_2.png"><img src="/Yhzhtk/search/raw/master/blog/img/score_bm25_2.png" alt="image.png" style="max-width:100%;"></a></p>
 <p>BM25 通过使用不同的语素分析方法、语素权重判定方法，以及语素与文档的相关性判定方法，我们可以衍生出不同的搜索相关性得分计算方法，这就为我们设计算法提供了较大的灵活性。</p>
 <h2><a id="user-content-part-4空间索引" class="anchor" aria-hidden="true" href="#part-4空间索引"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Part 4、空间索引</h2>
 <p>在点评口碑上，经常有类似的场景，搜索 “1公里以内的美食”，那么这个1公里怎么实现呢？</p>
 <p>在数据库中可以通过暴力计算、矩形过滤、以及B树对经度和维度建索引，但这性能仍然很慢(可参考 <a href="https://www.cnblogs.com/LBSer/p/3392491.html" rel="nofollow">为什么需要空间索引</a> )。搜索里用了一个很巧妙的方法，Geo Hash。</p>
-<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/Yhzhtk/search/raw/master/blog/img/geo_all.png"><img src="/Yhzhtk/search/raw/master/blog/img/geo_all.png" alt="image.png" style="max-width:100%;"></a></p>
+<p><a target="_blank" rel="noopener noreferrer" href="https://raw.githubusercontent.com/Yhzhtk/search/master/blog/img/geo_all.png"><img src="/Yhzhtk/search/raw/master/blog/img/geo_all.png" alt="image.png" style="max-width:100%;"></a></p>
 <p>如上图，表示根据 GeoHash 对北京几个区域生成的字符串，有几个特点：</p>
 <ul>
 <li>一个字符串，代表一个矩形区域</li>
@@ -157,10 +158,10 @@ BM25算法的一般性公式如下：</p>
 </ol>
 <p>即最后天安门的4位 Geo Hash 为 “WX4G”，如果需要经度更准确，在对应的经纬度编码粒度再往下追溯即可。</p>
 <p>附：Base32 编码图</p>
-<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/Yhzhtk/search/raw/master/blog/img/base_32.png"><img src="/Yhzhtk/search/raw/master/blog/img/base_32.png" alt="image.png" style="max-width:100%;"></a></p>
+<p><a target="_blank" rel="noopener noreferrer" href="https://raw.githubusercontent.com/Yhzhtk/search/master/blog/img/base_32.png"><img src="/Yhzhtk/search/raw/master/blog/img/base_32.png" alt="image.png" style="max-width:100%;"></a></p>
 <h3><a id="user-content-geo-hash-如何用于地理搜索" class="anchor" aria-hidden="true" href="#geo-hash-如何用于地理搜索"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Geo Hash 如何用于地理搜索？</h3>
 <p>举个例子，搜索天安门附近 200 米的景点，如下是天安门附近的Geo编码</p>
-<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/Yhzhtk/search/raw/master/blog/img/geohash_tiananmen.png"><img src="/Yhzhtk/search/raw/master/blog/img/geohash_tiananmen.png" alt="image.png" style="max-width:100%;"></a></p>
+<p><a target="_blank" rel="noopener noreferrer" href="https://raw.githubusercontent.com/Yhzhtk/search/master/blog/img/geohash_tiananmen.png"><img src="/Yhzhtk/search/raw/master/blog/img/geohash_tiananmen.png" alt="image.png" style="max-width:100%;"></a></p>
 <p>搜索过程如下：</p>
 <ol>
 <li>首先确定天安门的Geo Hash为 WX4G0B，（6位区域码约 0.34平分千米，约为长宽600米区域)</li>
@@ -170,10 +171,10 @@ BM25算法的一般性公式如下：</p>
 </ol>
 <p>由上面步骤可以看出，Geo Hash 将原本大量的距离计算，变成一个字符串检索缩小范围后，再进行小范围的距离计算，及快速又准确的进行距离搜索。</p>
 <h3><a id="user-content-geo-hash-依据的数学原理" class="anchor" aria-hidden="true" href="#geo-hash-依据的数学原理"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Geo Hash 依据的数学原理</h3>
-<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/Yhzhtk/search/raw/master/blog/img/peano.png"><img src="/Yhzhtk/search/raw/master/blog/img/peano.png" alt="image.png" style="max-width:100%;"></a></p>
+<p><a target="_blank" rel="noopener noreferrer" href="https://raw.githubusercontent.com/Yhzhtk/search/master/blog/img/peano.png"><img src="/Yhzhtk/search/raw/master/blog/img/peano.png" alt="image.png" style="max-width:100%;"></a></p>
 <p>如图所示，我们将二进制编码的结果填写到空间中，当将空间划分为四块时候，编码的顺序分别是左下角00，左上角01，右下脚10，右上角11，也就是类似于Z的曲线。当我们递归的将各个块分解成更小的子块时，编码的顺序是自相似的（分形），每一个子快也形成Z曲线，这种类型的曲线被称为Peano空间填充曲线。</p>
 <p>这种类型的空间填充曲线的优点是将二维空间转换成一维曲线（事实上是分形维），对大部分而言，编码相似的距离也相近， 但Peano空间填充曲线最大的缺点就是突变性，有些编码相邻但距离却相差很远，比如0111与1000，编码是相邻的，但距离相差很大。</p>
-<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/Yhzhtk/search/raw/master/blog/img/all_curve.png"><img src="/Yhzhtk/search/raw/master/blog/img/all_curve.png" alt="image.png" style="max-width:100%;"></a></p>
+<p><a target="_blank" rel="noopener noreferrer" href="https://raw.githubusercontent.com/Yhzhtk/search/master/blog/img/all_curve.png"><img src="/Yhzhtk/search/raw/master/blog/img/all_curve.png" alt="image.png" style="max-width:100%;"></a></p>
 <p>除Peano空间填充曲线外，还有很多空间填充曲线，如图所示，其中效果公认较好是Hilbert空间填充曲线，相较于Peano曲线而言，Hilbert曲线没有较大的突变。为什么GeoHash不选择Hilbert空间填充曲线呢？可能是Peano曲线思路以及计算上比较简单吧，事实上，Peano曲线就是一种四叉树线性编码方式。</p>
 <h2><a id="user-content-part-5数值索引" class="anchor" aria-hidden="true" href="#part-5数值索引"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Part 5、数值索引</h2>
 <p>Lucene的倒排索引决定，索引内容是一个可排序的字符串，如果要查找一个数字，那么也需要将数字转成字符串。这样，检索一个数字是没问题的，如果需要搜索一个数值范围，怎么做呢？</p>
@@ -192,7 +193,7 @@ BM25算法的一般性公式如下：</p>
 <p>故，涉及到范围不能简单的做字符串补位转换，是否存在及节省空间，又能更高效解决问题的方案呢？
 就是：</p>
 <p>数值Trie树，下面详细介绍</p>
-<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/Yhzhtk/search/raw/master/blog/img/number_range.png"><img src="/Yhzhtk/search/raw/master/blog/img/number_range.png" alt="image.png" style="max-width:100%;"></a></p>
+<p><a target="_blank" rel="noopener noreferrer" href="https://raw.githubusercontent.com/Yhzhtk/search/master/blog/img/number_range.png"><img src="/Yhzhtk/search/raw/master/blog/img/number_range.png" alt="image.png" style="max-width:100%;"></a></p>
 <p>上面说了怎么索引，那么Query呢？比如我给你一个Range Query从423-642，怎么找到那6个term呢？</p>
 <p>我们首先可以用shift==0找到范围的起点后终点（有可能没有相等的，比如搜索422，也会找到423）。然后一直往上找，直到找到一个共同的祖先（肯定能找到，因为树根是所有叶子节点的祖先），对应起点，每次往上走的时候, 左边范围节点都要把它右边的兄弟节点都加进去, 右边范围节点都要把它左边的兄弟节点加进去, 若已经到达顶点, 则是将左边范围节点和右边范围节点之间的节点加进行去</p>
 <p>查找423到642之间的具体的区间：</p>
@@ -221,7 +222,7 @@ BM25算法的一般性公式如下：</p>
 <p>合并的过程：</p>
 <p>Basic Compaction</p>
 <p>每个文件固定N个数量，超过N，则新建一个sstable；当sstable数大于M，则合并一个大sstable；当大sstable的数量大于M，则合并一个更大的sstable文件，依次类推。</p>
-<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/Yhzhtk/search/raw/master/blog/img/lsm.png"><img src="/Yhzhtk/search/raw/master/blog/img/lsm.png" alt="image.png" style="max-width:100%;"></a></p>
+<p><a target="_blank" rel="noopener noreferrer" href="https://raw.githubusercontent.com/Yhzhtk/search/master/blog/img/lsm.png"><img src="/Yhzhtk/search/raw/master/blog/img/lsm.png" alt="image.png" style="max-width:100%;"></a></p>
 <p>但是，这会出现一个问题，就是大量的文件被创建，在最坏的情况下，所有的文件都要搜索。</p>
 <p>Levelled Compaction</p>
 <p>像 LevelDB 和 Cassandra解决这个问题的方法是：实现了一个分层的，而不是根据文件大小来执行合并操作。</p>
@@ -243,9 +244,9 @@ BM25算法的一般性公式如下：</p>
 <p>那么 FST 数据结构是什么原理呢？ 先来看看什么是 FSM (Finite State Machine)， 有限状态机，从“起始状态”到“终止状态”，可接受一个字符后，自循环或转移到下一个状态。</p>
 <p>而FST呢，就是一种特殊的 FSM，在 Lucene 中用来实现字典查找功能(NLP中还可以做转换功能)，FST 可以表示成FST&lt;Key, Value&gt;的形式</p>
 <p>举例：对“cat”、 “deep”、 “do”、 “dog” 、“dogs” 这5个单词构建FST（注：必须已排序），结构如下：</p>
-<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/Yhzhtk/search/raw/master/blog/img/fst1.png"><img src="/Yhzhtk/search/raw/master/blog/img/fst1.png" alt="image.png" style="max-width:100%;"></a></p>
+<p><a target="_blank" rel="noopener noreferrer" href="https://raw.githubusercontent.com/Yhzhtk/search/master/blog/img/fst1.png"><img src="/Yhzhtk/search/raw/master/blog/img/fst1.png" alt="image.png" style="max-width:100%;"></a></p>
 <p>当存在 value 为对应的 docId 时，如 cat/0 deep/1 do/2 dog/3 dogs/4， FST 结构图如下：</p>
-<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/Yhzhtk/search/raw/master/blog/img/fst2.png"><img src="/Yhzhtk/search/raw/master/blog/img/fst2.png" alt="image.png" style="max-width:100%;"></a></p>
+<p><a target="_blank" rel="noopener noreferrer" href="https://raw.githubusercontent.com/Yhzhtk/search/master/blog/img/fst2.png"><img src="/Yhzhtk/search/raw/master/blog/img/fst2.png" alt="image.png" style="max-width:100%;"></a></p>
 <p>FST 还有一个特点，就是在前缀公用的基础上，还会做一个后缀公用，目标同样是为了压缩存储空间。</p>
 <p>其中红色的弧线表 NEXT-optimized，可以通过 <a href="http://examples.mikemccandless.com/fst.py?terms=cat%2F0%0D%0Adeep%2F1%0D%0Ado%2F2%0D%0Adog%2F3%0D%0Adogs%2F4&amp;cmd=Build+it%21" rel="nofollow">画图工具</a> 来测试。</p>
 <h2><a id="user-content-skiplist" class="anchor" aria-hidden="true" href="#skiplist"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>SkipList</h2>
@@ -255,7 +256,7 @@ BM25算法的一般性公式如下：</p>
 <li>跳跃有一个固定的间隔，这个是需要建立SkipList的时候指定好，例如下图以间隔是;</li>
 <li>SkipList的层次，这个是指整个SkipList有几层</li>
 </ol>
-<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/Yhzhtk/search/raw/master/blog/img/skiplist.png"><img src="/Yhzhtk/search/raw/master/blog/img/skiplist.png" alt="image.png" style="max-width:100%;"></a></p>
+<p><a target="_blank" rel="noopener noreferrer" href="https://raw.githubusercontent.com/Yhzhtk/search/master/blog/img/skiplist.png"><img src="/Yhzhtk/search/raw/master/blog/img/skiplist.png" alt="image.png" style="max-width:100%;"></a></p>
 <p>在什么位置设置跳表指针？
 • 设置较多的指针，较短的步长， 更多的跳跃机会
 • 更多的指针比较次数和更多的存储空间
@@ -263,13 +264,13 @@ BM25算法的一般性公式如下：</p>
 <p>如果倒排表的长度是L，那么在每隔一个步长S处均匀放置跳表指针。</p>
 <h2><a id="user-content-bkd-tree" class="anchor" aria-hidden="true" href="#bkd-tree"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>BKD Tree</h2>
 <p>也叫 Block KD-tree，根据FST思路，如果查询条件非常多，需要对每个条件根据 FST 查出结果，进行求并集操作。如果是数值类型，那么潜在的 Term 可能非常多，查询销量也会很低，为了支持高效的数值类或者多维度查询，引入 BKD Tree。在一维下就是一棵二叉搜索树，在二维下是如果要查询一个区间，logN的复杂度就可以访问到叶子节点对应的倒排链。</p>
-<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/Yhzhtk/search/raw/master/blog/img/bkd_tree1.png"><img src="/Yhzhtk/search/raw/master/blog/img/bkd_tree1.png" alt="image.png" style="max-width:100%;"></a></p>
+<p><a target="_blank" rel="noopener noreferrer" href="https://raw.githubusercontent.com/Yhzhtk/search/master/blog/img/bkd_tree1.png"><img src="/Yhzhtk/search/raw/master/blog/img/bkd_tree1.png" alt="image.png" style="max-width:100%;"></a></p>
 <ol>
 <li>确定切分维度，这里维度的选取顺序是数据在这个维度方法最大的维度优先。一个直接的理解就是，数据分散越开的维度，我们优先切分。</li>
 <li>切分点的选这个维度最中间的点。</li>
 <li>递归进行步骤1，2，我们可以设置一个阈值，点的数目少于多少后就不再切分，直到所有的点都切分好停止。</li>
 </ol>
-<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/Yhzhtk/search/raw/master/blog/img/bkd_tree2.png"><img src="/Yhzhtk/search/raw/master/blog/img/bkd_tree2.png" alt="image.png" style="max-width:100%;"></a></p>
+<p><a target="_blank" rel="noopener noreferrer" href="https://raw.githubusercontent.com/Yhzhtk/search/master/blog/img/bkd_tree2.png"><img src="/Yhzhtk/search/raw/master/blog/img/bkd_tree2.png" alt="image.png" style="max-width:100%;"></a></p>
 <h2><a id="user-content-bitset-过滤" class="anchor" aria-hidden="true" href="#bitset-过滤"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>BitSet 过滤</h2>
 <p>二进制处理，通过BKD-Tree查找到的docID是无序的，所以要么先转成有序的docID数组，或者构造BitSet，然后再与其他结果合并。</p>
 <h2><a id="user-content-indexsorting" class="anchor" aria-hidden="true" href="#indexsorting"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>IndexSorting</h2>
