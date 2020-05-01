@@ -12,6 +12,7 @@ body {
 }
 
 #loveHeart {
+	float: top;
 	margin:auto;
 	width:670px;
 	height:625px;
@@ -67,6 +68,7 @@ body {
 }
 
 #code {
+	float: top;
 	margin:auto;
 	width: 490px;
 	height: 500px;
