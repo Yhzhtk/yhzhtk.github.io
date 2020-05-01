@@ -12,6 +12,11 @@
 <script src="./xiaomeng_files/hm.js"></script><script type="text/javascript" src="./xiaomeng_files/jquery.js"></script>
 <script type="text/javascript" src="./xiaomeng_files/garden.js"></script>
 <body>
+	<div class="audio">
+		<audio autoplay loop> 
+		  <source src="./xiaomeng_files/faded.mp3" type="audio/mpeg">
+		</audio>
+	</div>
 <script>
     var bodyfrm = ( document.compatMode.toLowerCase()=="css1compat" ) ? document.documentElement : document.body;
     var adst = document.getElementById("ShowAD").style;
@@ -29,6 +34,25 @@
 </script>
 <div id="mainDiv">
 <div id="content" style="width: 1160px; height: 625px; margin-top: 10px; margin-left: 60px;">
+
+<div id="loveHeart">
+<canvas id="garden" width="670" height="625"></canvas>
+<div id="words" style="position: absolute; top: 140px; left: 633px;">
+<div id="messages" style="display: block;">
+&nbsp;&nbsp;Girls, We have &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<br> known each other <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for
+<br>
+<div id="elapseClock">&nbsp;&nbsp;&nbsp;&nbsp;<span class="digit">96</span> days <span class="digit">4</span> hrs <span class="digit"><br>&nbsp;&nbsp;07</span> mins <span class="digit">16</span> secs</div>
+</div>
+<div id="loveu" style="display: block;">
+Look forward to longer.<br>
+<div class="signature">- Mr GU</div>
+</div>
+</div>
+</div>
+
 <div id="code" style="margin-top: 62.5px;">
 Boy * i = <span class="keyword">new</span> Boy(<span class="string">"顾老师"</span>);<br>
 <span class="comments">// It's me. </span><br>
@@ -61,29 +85,9 @@ Girl * u ;<br>
 <span class="placeholder">sys.exit(-1); <span class="comments"><br>// Until reboot.</span><br>
 }<br>
 </span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span>_</div>
-<div id="loveHeart">
-<canvas id="garden" width="670" height="625"></canvas>
-<div id="words" style="position: absolute; top: 140px; left: 633px;">
-<div id="messages" style="display: block;">
-&nbsp;&nbsp;Girls, We have &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<br> known each other <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for
-<br>
-<div id="elapseClock">&nbsp;&nbsp;&nbsp;&nbsp;<span class="digit">96</span> days <span class="digit">4</span> hrs <span class="digit"><br>&nbsp;&nbsp;07</span> mins <span class="digit">16</span> secs</div>
-</div>
-<div id="loveu" style="display: block;">
-Look forward to longer.<br>
-<div class="signature">- Mr GU</div>
-</div>
-</div>
-</div>
-</div>
-</div>
 
-<audio controls autoplay loop> 
-  <source src="./xiaomeng_files/faded.mp3" type="audio/mpeg">
-</audio>
+</div>
+</div>
 
 <script type="text/javascript">
 		var offsetX = $("#loveHeart").width() / 2;
@@ -95,6 +99,7 @@ Look forward to longer.<br>
 		nolovetime.setSeconds(0);
 		nolovetime.setMilliseconds(0);
 		
+		adjustCodePosition();
 		if (!document.createElement('canvas').getContext) {
 			var msg = document.createElement("div");
 			msg.id = "errorMsg";

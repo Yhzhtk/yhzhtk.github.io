@@ -12,7 +12,7 @@ body {
 }
 
 #loveHeart {
-	float: left;
+	margin:auto;
 	width:670px;
 	height:625px;
 }
@@ -30,6 +30,7 @@ body {
 }
 
 #words {
+	margin:auto;
 	font-family: "sans-serif";
 	width: 500px;
 	font-size: 24px;
@@ -55,6 +56,7 @@ body {
 }
 
 #loveu .signature{
+	margin:auto;
 	margin-top: 10px;
 	font-size: 20px;
 	font-style: italic;
@@ -65,13 +67,14 @@ body {
 }
 
 #code {
-	float: left;
+	margin:auto;
 	width: 490px;
 	height: 500px;
 	color: #333;
 	font-family: "Consolas", "Monaco", "Bitstream Vera Sans Mono", "Courier New", "sans-serif";
 	font-size: 12px;
 }
+
 
 #code .string{
 	color: #2a36ff;
