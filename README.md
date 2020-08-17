@@ -1,8 +1,8 @@
-我的博客：[Yhzhtk.info](http://yhzhtk.info)
+我的博客：[yhzhtk.github.io](http://yhzhtk.github.io/)
 ====
 
 ### 记录工作和学习的点点滴滴。
-![头像](http://yhzhtk.info/images/about.png)
+![头像](http://yhzhtk.github.io/images/about.png)
 
 网站是自己捣鼓起来的，尊崇简单实用原则做的，可能有些地方还做得不好，看着顺眼就行。若有意见建议，欢迎批评指正。
 
@@ -22,7 +22,7 @@
 
 #### 联系方式
 
-- Blog：[http://yhzhtk.info](http://yhzhtk.info)
+- Blog：[http://yhzhtk.github.io](http://yhzhtk.github.io)
 - Weibo：[1826219461](http://weibo.com/u/1826219461)
 - Email：yhzhtk@gmail.com
 - QQ：NTY0NzI0OTEz(懂)
